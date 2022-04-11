@@ -1,54 +1,184 @@
-<!DOCTYPE html>
-<html>
+<!doctype html>
+<html lang="en">
 
 <head>
-    <title>Login</title>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="login.css">
+  <!-- Required meta tags -->
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <link href="css/style.css" rel="stylesheet" />
+
+  <title>Bocaillo</title>
 </head>
+<!-- Container -->
 
-<body>
-    <header>
-        <img src="img/grupo.png" id="icongrupo" alt="Icono Login">
-        <h1>Introduzca los datos de usuario:</h1>
-        <form method="post" action="LoginServlet" name="datos" accept-charset="UTF-8">
-            <table>
-                <tr>
-                    <td>
-                        <label for="username">Username:</label>
-                    </td>
-                    <td>
-                        <input type="text" name="username" id="username" title="Introduce
-                    your name" autocomplete="username" required="required" placeholder="Username"
-                            style="width : 100px;" />
-                    </td>
-                    <td>
+<body class="container-fluid border border-primary">
+  <main class="row">
+    <!-- NavBar -->
+    <article class="col-12 p-0">
+      <nav class="navbar navbar-expand-lg navbar-dark" style="background-color: #664E88;">
+        <div class="container-fluid">
+          <a class="navbar-brand" href="#">Bocaillo</a>
 
-                    </td>
-                </tr>
+          <a class="navbar-brand" href="#">
+            <img alt="Brand" width="30" height="24" src="img/bocaillo.png">
+          </a>
 
-                <tr>
-                    <td>
-                        <label for="password">Password:</label>
-                    </td>
-                    <td>
-                        <input type="password" name="password" id="password" title="Introduce
-                    your password" autocomplete="new-password" required="required" placeholder="Password"
-                            style="width : 100px;" />
-                    </td>
-                    <td>
+          <div class="collapse navbar-collapse" id="navbarTogglerDemo03">
+            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+              <li class="nav-item">
+                <a class="nav-link" aria-current="page" href="index.html">Inicio</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="#">Categorias</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="#">Trending</a>
+              </li>
+            </ul>
+            <form class="d-flex">
+              <input class="form-control me-2" type="search" placeholder="Buscar" aria-label="Search">
+              <button class="btn btn-light" type="submit">Buscar</button>
+            </form>
+          </div>
+        </div>
+      </nav>
+    </article>
+  </main>
 
-                    </td>
-                </tr>
-            </table>
-                <b>
-                    <div><input type="submit" value="Login" /></div>
-                    <div><input type="submit" value="Register" href="registro.html" /></div>
-                </b>
-            
-        </form>
-    </header>
+  <!-- BreadCrumb -->
+  <article class="row">
+    <article class="col-12 p-1" style="background-color: #63B4B8;">
+      <nav aria-label="breadcrumb">
+        <ol class="breadcrumb">
+          <li class="breadcrumb-item ps-1 text-light" aria-current="page">Pagina inicial</li>
+          <li class="breadcrumb-item ps-1 text-light" aria-current="page">Login </li>
+        </ol>
+      </nav>
+    </article>
+  </article>
+
+  <!-- SideBar -->
+  <main class="row">
+    <article class="d-none d-lg-block col-1 p-0 m-0">
+      <div class="d-flex flex-column flex-shrink-1 text-white"
+        style="width: 100%; height: 100%; background: linear-gradient(179.99deg, rgba(99, 180, 184, 0.85) 0.01%, rgba(102, 78, 136, 0.78) 103.25%);">
+        <a href="/" class="d-flex align-items-center mb-3 mb-md-0 me-md-auto text-white text-decoration-none">
+          <svg class="bi me-2" width="40" height="32">
+            <use xlink:href="#bootstrap"></use>
+          </svg>
+          <span class="fs-4">Sidebar</span>
+        </a>
+        <hr>
+        <ul class="nav nav-pills flex-column mb-auto">
+          <li class="nav-item">
+            <a href="#" class="nav-link text-white" aria-current="page">
+              <svg class="bi me-2" width="16" height="16">
+                <use xlink:href="#home"></use>
+              </svg>
+              Home
+            </a>
+          </li>
+          <li>
+            <a href="#" class="nav-link text-white">
+              <svg class="bi me-2" width="16" height="16">
+                <use xlink:href="#speedometer2"></use>
+              </svg>
+              Dashboard
+            </a>
+          </li>
+          <li>
+            <a href="#" class="nav-link text-white">
+              <svg class="bi me-2" width="16" height="16">
+                <use xlink:href="#table"></use>
+              </svg>
+              Orders
+            </a>
+          </li>
+          <li>
+            <a href="#" class="nav-link text-white">
+              <svg class="bi me-2" width="16" height="16">
+                <use xlink:href="#grid"></use>
+              </svg>
+              Products
+            </a>
+          </li>
+          <li>
+            <a href="#" class="nav-link text-white">
+              <svg class="bi me-2" width="16" height="16">
+                <use xlink:href="#people-circle"></use>
+              </svg>
+              Customers
+            </a>
+          </li>
+        </ul>
+        <hr>
+      </div>
+    </article>
+
+
+    <!-- Login -->
+    <article class="col-3">
+    </article>
+    <article class="col-5 p-3">
+
+      <h2 id="labelIniciarSesion"> Iniciar Sesion</h2>
+      <img src="img/grupo.png" id="iconoGrupo" alt="Icono Login">
+
+      <form method="post" name="datos" accept-charset="UTF-8" id="formLogin">
+
+        <div class="form-floating">
+          <input type="text" class="form-control" id="floatingInput">
+          <label for="floatingInput">Username</label>
+        </div>
+
+        <div class="mt-3"></div>
+
+        <div class="form-floating">
+          <input type="password" class="form-control" id="floatingPassword">
+          <label for="floatingPassword">Password</label>
+        </div>
+
+        <div class="checkbox mb-3">
+          <label>
+            <input type="checkbox" value="remember-me"> Remember me
+          </label>
+        </div>
+        
+        <button class="w-100 btn btn-lg btn-primary" type="submit">Sign in</button>
+      </form>
+
+      <div class="mt-5"></div>
+
+    </article>
+    <article class="col-3">
+    </article>
+  </main>
+
+  <!-- Pie de pagina-->
+  <div class="row">
+    <footer class="py-4 d-flex" style="background-color: #664E88;">
+      <!-- d-flex fixed-bottom flex-wrap justify-content-between align-items-center py-3 border-top -->
+      <p class="text-lg-start text-light">© 2021 Company, Inc</p>
+
+      <a
+        class="col-md-4 d-flex align-items-center justify-content-center mb-3 mb-md-0 me-md-auto link-dark text-decoration-none">
+      </a>
+
+      <ul class="nav col-md-4 justify-content-end">
+        <li class="nav-item"><a href="#" class="nav-link px-2 text-light">Home</a></li>
+        <li class="nav-item"><a href="#" class="nav-link px-2 text-light">Features</a></li>
+        <li class="nav-item"><a href="#" class="nav-link px-2 text-light">Pricing</a></li>
+        <li class="nav-item"><a href="#" class="nav-link px-2 text-light">FAQs</a></li>
+        <li class="nav-item"><a href="#" class="nav-link px-2 text-light">About</a></li>
+      </ul>
+    </footer>
+  </div>
+  <!--</article>-->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"
+    crossorigin="anonymous"></script>
+
 </body>
 
 </html>
