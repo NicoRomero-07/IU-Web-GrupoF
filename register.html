@@ -15,7 +15,7 @@
 <body class="container-fluid border border-primary">
   <main class="row">
     <!-- NavBar -->
-    <div class="col-12 p-0">
+    <article class="col-12 p-0">
       <nav class="navbar navbar-expand-lg navbar-dark" style="background-color: #664E88;">
         <div class="container-fluid">
           <a class="navbar-brand" href="#">Bocaillo</a>
@@ -43,7 +43,7 @@
           </div>
         </div>
       </nav>
-    </div>
+    </article>
   </main>
 
   <!-- BreadCrumb -->
@@ -52,16 +52,16 @@
       <nav aria-label="breadcrumb">
         <ol class="breadcrumb">
           <li class="breadcrumb-item" aria-current="page"><a href="index.html" class="text-light">Pagina Inicial</a></li>
-          <li class="breadcrumb-item" aria-current="page"><a href="login.html" class="text-light">Login</a></li>
+          <li class="breadcrumb-item" aria-current="page"><a href="register.html" class="text-light">Registro</a></li>
         </ol>
       </nav>
     </div>
   </nav>
 
-  <!-- Section -->
-  <section class="row">
+  <!-- Main -->
+  <main class="row">
     <!-- SideBar -->
-    <div class="d-none d-lg-block col-2 p-0 m-0">
+    <article class="d-none d-lg-block col-2 p-0 m-0">
       <div class="d-flex flex-column flex-shrink-1 text-white"
         style="width: 100%; height: 100%; background: linear-gradient(179.99deg, rgba(99, 180, 184, 0.85) 0.01%, rgba(102, 78, 136, 0.78) 103.25%);">
         <a href="/" class="d-flex align-items-center mb-3 mb-md-0 me-md-auto text-white text-decoration-none">
@@ -115,20 +115,21 @@
         </ul>
         <hr>
       </div>
-    </div>
+    </article>
 
-    <!-- Login -->
-    <div class="container col-5 p-3 mx-auto">
-      <h2 class="text-center" id="labelIniciarSesion"> Iniciar Sesion</h2>
+
+    <!-- Register -->
+    <article class="container col-5 p-3 mx-auto">
+      <h2 class="text-center" id="labelRegister"> Register </h2>
       <div class="text-center">
-        <img class="my-3 mx-auto img-fluid" src="img/grupo.png" id="iconoGrupo" alt="iconoGrupo" height="256">
+        <img class="my-3 mx-auto img-fluid" src="img/grupo.png" id="iconoGrupo" alt="iconGrupo" height="256">
       </div>
-      <form class="text-center" method="post" name="datos" accept-charset="UTF-8" id="formLogin">
+      <form class="text-center" method="post" name="datos" accept-charset="UTF-8" id="formRegister" href="index.html">
 
         <div class="col-12">
           <label for="username" class="form-label">Username</label>
           <div class="input-group has-validation w-50 mx-auto">
-            <input type="text" class="form-control" id="username" required="required">
+            <input type="text" class="form-control" id="username">
             <div class="invalid-feedback">
               Your username is required.
             </div>
@@ -138,26 +139,40 @@
         <div class="col-12">
           <label for="password" class="form-label">Password </label>
           <div class="input-group has-validation w-50 mx-auto">
-            <input type="password" class="form-control" id="password" required="required">
+            <input type="password" class="form-control" id="password">
             <div class="invalid-feedback">
               Your password is required.
             </div>
           </div>
         </div>
 
-        <div class="checkbox my-3">
-          <label>
-            <input type="checkbox" value="remember-me"> Remember me
-          </label>
+        <div class="col-12">
+          <label for="password" class="form-label">Confirm Password </label>
+          <div class="input-group has-validation w-50 mx-auto">
+            <input type="password" class="form-control" id="password">
+            <div class="invalid-feedback">
+              Confirm password is required.
+            </div>
+          </div>
         </div>
-        <button class="w-50 btn btn-md btn-primary" type="submit"> <a href="index.html" class="nav-link text-white">Log in</a> </button>    
-        <button class="w-50 btn btn-md btn-secondary mt-3" type="submit"> <a href="register.html" class="nav-link text-white"> Register</a></button>
+
+        <div class="col-12">
+          <label for="email" class="form-label">Email </label>
+          <div class="input-group has-validation w-50 mx-auto">
+            <input type="email" class="form-control" id="email">
+            <div class="invalid-feedback">
+              Your email is required.
+            </div>
+          </div>
+        </div>
+
+        <button class="w-50 btn btn-md btn-primary mt-3" type="submit"><a class="nav-link text-white" href="index.html">Register</a></button>
       </form>
 
       <div class="mt-5"></div>
 
-    </div>
-  </section>
+    </article>
+  </main>
 
   <!-- Pie de pagina-->
   <div class="row mt-auto ">
