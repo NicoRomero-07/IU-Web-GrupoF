@@ -12,10 +12,9 @@
   </head>
   <!-- Container -->
   <body class="container-fluid">
-    <main class="row">
+    <header class="row">
         <!-- NavBar -->
-        <article class="col-12 p-0">
-            <nav class="navbar navbar-expand-lg navbar-dark" style="background-color: #664E88;">
+            <nav class="col-12 navbar navbar-expand-lg navbar-dark py-2" style="background-color: #664E88;">
                 <div class="container-fluid">
                   <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarTogglerDemo03" aria-controls="navbarTogglerDemo03" aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
@@ -30,7 +29,7 @@
                   <div class="collapse navbar-collapse" id="navbarTogglerDemo03">
                     <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                       <li class="nav-item">
-                        <a class="nav-link" aria-current="page" href="#">Inicio</a>
+                        <a class="nav-link" aria-current="page" href="#"><i class="bi bi-house-door"></i>&emsp;Inicio</a>
                       </li>
                       <li class="nav-item">
                         <a class="nav-link" href="#">Categorias</a>
@@ -43,182 +42,195 @@
                       <input class="form-control me-2" type="search" placeholder="Buscar" aria-label="Search">
                       <button class="btn btn-light" type="submit">Buscar</button>
                     </form>
+                    <!--Perfil-->
+                    <div class="dropdown mx-3">
+                      <a href="#" class="d-flex align-items-center link-dark text-decoration-none dropdown-toggle fs-5" id="dropdownUser2" data-bs-toggle="dropdown" aria-expanded="false">
+                        <i class="bi bi-person-circle"></i>
+                        <!--<img src="" alt="" width="32" height="32" class="rounded-circle me-2">-->
+                        <strong>&ensp;Username</strong>
+                      </a>
+                      <ul class="dropdown-menu text-small shadow" aria-labelledby="dropdownUser2">
+                        <li><a class="dropdown-item" href="#">Ajustes</a></li>
+                        <li><a class="dropdown-item" href="#">Perfil</a></li>
+                        <li><hr class="dropdown-divider"></li>
+                        <li><a class="dropdown-item" href="#">Cerrar sesion</a></li>
+                      </ul>
+                    </div>
                   </div>
                 </div>
               </nav>
-        </article>
-    </main>
+    
     <!-- BreadCrumb -->
-    <article class ="row">
-        <article class = "col-12 p-1"  style="background-color: #63B4B8;">
-            <nav aria-label="breadcrumb">
-                <ol class="breadcrumb"> 
-                  <li class="breadcrumb-item ps-1 text-light" aria-current="page">Pagina inicial</li>
-                </ol>
-            </nav>
-        </article>
-    </article>
+          <nav class = "row col-12 px-3 py-2 m-0"  style=" background-color: #63B4B8;" aria-label="breadcrumb">
+              <ol class="breadcrumb"> 
+                <li class="breadcrumb-item ps-1 text-light" aria-current="page">Pagina inicial</li>
+              </ol>
+          </nav>
+
+    </header>
     
-    
-    <!-- SideBar -->
     <main class="row">
-    <article class = "d-none d-lg-block col-2 p-0 m-0">
-      <div class="d-flex flex-column flex-shrink-1 text-white" style="width: 180px; height: 100%; background: linear-gradient(179.99deg, rgba(99, 180, 184, 0.85) 0.01%, rgba(102, 78, 136, 0.78) 103.25%);">
-        <a href="/" class="d-flex align-items-center mb-3 mb-md-0 me-md-auto text-white text-decoration-none">
-          <svg class="bi me-2" width="40" height="32"><use xlink:href="#bootstrap"></use></svg>
-          <span class="fs-4">Sidebar</span>
+    <!-- SideBar -->
+    <section class = "d-none d-lg-block col-lg-2 p-0 m-0">
+      <div class="d-flex flex-column flex-shrink-1 text-white" style="width: 100%; height: 100%; background: linear-gradient(179.99deg, rgba(99, 180, 184, 0.85) 0.01%, rgba(102, 78, 136, 0.78) 103.25%);">
+        <a href="/" class="d-flex justify-content-center align-items-center text-white text-decoration-none">
+          <span class="fs-4"><i class="bi bi-list"></i></span>
         </a>
         <hr>
         <ul class="nav nav-pills flex-column mb-auto">
           <li class="nav-item">
             <a href="#" class="nav-link text-white" aria-current="page">
-              <svg class="bi me-2" width="16" height="16"><use xlink:href="#home"></use></svg>
-              Home
+              <svg class="bi me-2" width="16" height="16"><use xlink:href="#publications"></use></svg>
+              Tus Publicaciones
             </a>
           </li>
           <li>
             <a href="#" class="nav-link text-white">
-              <svg class="bi me-2" width="16" height="16"><use xlink:href="#speedometer2"></use></svg>
-              Dashboard
+              <svg class="bi me-2" width="16" height="16"><use xlink:href="#participations"></use></svg>
+              Participaciones
             </a>
           </li>
           <li>
             <a href="#" class="nav-link text-white">
-              <svg class="bi me-2" width="16" height="16"><use xlink:href="#table"></use></svg>
-              Orders
+              <svg class="bi me-2" width="16" height="16"><use xlink:href="#favourites"></use></svg>
+              Favoritos
             </a>
           </li>
           <li>
             <a href="#" class="nav-link text-white">
-              <svg class="bi me-2" width="16" height="16"><use xlink:href="#grid"></use></svg>
-              Products
+              <svg class="bi me-2" width="16" height="16"><use xlink:href="#views"></use></svg>
+              Visualizaciones
             </a>
           </li>
           <li>
             <a href="#" class="nav-link text-white">
-              <svg class="bi me-2" width="16" height="16"><use xlink:href="#people-circle"></use></svg>
-              Customers
+              <svg class="bi me-2" width="16" height="16"><use xlink:href="#recents"></use></svg>
+              Recientes
             </a>
           </li>
         </ul>
         <hr>
       </div>
-    </article>
+    </section>
       <!-- Foros -->
-      <article class = "col-3 my-auto">
-        <div class="card mx-auto m-2" style="width: 18rem;">
-          <div class="card-body">
-            <h5 class="card-title">Card title</h5>
-            <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-            <a href="#" class="btn btn-primary">Go somewhere</a>
-          </div>
+    <section class = "row col-12 col-lg-6 my-auto mx-auto">
+      <article class="card mx-auto m-2 col-12 col-lg-6">
+        <div class="card-body">
+          <h5 class="card-title">FORO 1</h5>
+          <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+          <a href="#" class="btn btn-primary">Go somewhere</a>
         </div>
-        <div class="card mx-auto m-4" style="width: 18rem;">
-          <div class="card-body">
-            <h5 class="card-title">Card title</h5>
-            <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-            <a href="#" class="btn btn-primary">Go somewhere</a>
-          </div>
+      </article>
+      <article class="card mx-auto m-2 col-12 col-lg-6">
+        <div class="card-body">
+          <h5 class="card-title">FORO 2</h5>
+          <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+          <a href="#" class="btn btn-primary">Go somewhere</a>
         </div>
-        <div class="card mx-auto m-4" style="width: 18rem;">
-          <div class="card-body">
-            <h5 class="card-title">Card title</h5>
-            <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-            <a href="#" class="btn btn-primary">Go somewhere</a>
-          </div>
+      </article>
+      <article class="card mx-auto m-2 col-12 col-lg-6">
+        <div class="card-body">
+          <h5 class="card-title">FORO 3</h5>
+          <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+          <a href="#" class="btn btn-primary">Go somewhere</a>
         </div>
-    </article>
-    <article class = "col-3 my-auto">
-        <div class="card mx-auto m-2" style="width: 18rem;">
-          <div class="card-body">
-            <h5 class="card-title">Card title</h5>
-            <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-            <a href="#" class="btn btn-primary">Go somewhere</a>
-          </div>
+      </article>
+      <article class="card mx-auto m-2 col-12 col-lg-6">
+        <div class="card-body">
+          <h5 class="card-title">FORO 4</h5>
+          <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+          <a href="#" class="btn btn-primary">Go somewhere</a>
         </div>
-        <div class="card mx-auto m-4" style="width: 18rem;">
-          <div class="card-body">
-            <h5 class="card-title">Card title</h5>
-            <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-            <a href="#" class="btn btn-primary">Go somewhere</a>
-          </div>
+      </article>
+      <article class="card mx-auto m-2 col-12 col-lg-6">
+        <div class="card-body">
+          <h5 class="card-title">FORO 5</h5>
+          <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+          <a href="#" class="btn btn-primary">Go somewhere</a>
         </div>
-        <div class="card mx-auto m-4" style="width: 18rem;">
-          <div class="card-body">
-            <h5 class="card-title">Card title</h5>
-            <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-            <a href="#" class="btn btn-primary">Go somewhere</a>
-          </div>
+      </article>
+      <article class="card mx-auto m-2 col-12 col-lg-6">
+        <div class="card-body">
+          <h5 class="card-title">FORO 6</h5>
+          <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+          <a href="#" class="btn btn-primary">Go somewhere</a>
         </div>
-    </article>
+      </article>
+    </section>
+   <!-- Barra lateral derecha -->
+  <section class = "d-none d-lg-block col-lg-4 m-0">
+    <div class="p-2">
+      <button class="btn btn-secondary rounded-pill col-5 ">
+        <i class="bi bi-layout-text-sidebar-reverse"></i>
+        <br/>
+        Nuevo Foro
+      </button>
+      <button class="btn btn-secondary rounded-pill col-5">
+        <i class="bi bi-chat-dots"></i>
+        <br/>
+        Nuevo Mensaje
+      </button>
+    </div>
     <!-- Top autores -->
-    <article class = "col-3 my-auto">
-      <div class="card mx-auto m-4" style="width: 18rem; border-bottom: 0;">
-        <table class="table table-light table-hover"  style="margin-bottom: 0;">
-          <thead>
-            <tr>
-              <th scope="col">#</th>
-              <th scope="col">Top autores</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <th scope="row">1</th>
-              <td>Mark</td>
-            </tr>
-            <tr>
-              <th scope="row">2</th>
-              <td>Jacob</td>
-            </tr>
-            <tr>
-              <th scope="row">3</th>
-              <td>Larry the Bird</td>
-            </tr>
-            <tr>
-              <th scope="row">4</th>
-              <td>Mark</td>
-            </tr>
-            <tr>
-              <th scope="row">5</th>
-              <td>Mark</td>
-            </tr><tr>
-              <th scope="row">6</th>
-              <td>
-                <a href="">Mark</a>
-              </td>
-            </tr>
-            <tr>
-              <th scope="row">7</th>
-              <td>Mark</td>
-            </tr>
-          </tbody>
-        </table>
-      </div>
+    <article class="d-none d-lg-block bg-opacity-50 bg-secondary m-2 p-2 col-8">
+      <h2 class = "text-white">Top Autores</h2>
+      <hr>
+      <ul class="nav nav-pills flex-column mb-auto">
+        <li class="nav-item">
+          <a href="#" class="nav-link text-white">
+            1. Autor1
+          </a>
+        </li>
+        <li>
+          <a href="#" class="nav-link text-white">
+            2. Autor2
+          </a>
+        </li>
+        <li>
+          <a href="#" class="nav-link text-white">
+            3. Autor3
+          </a>
+        </li>
+        <li>
+          <a href="#" class="nav-link text-white">
+            4. Autor4
+          </a>
+        </li>
+        <li>
+          <a href="#" class="nav-link text-white">
+            5. Autor5
+          </a>
+        </li>
+      </ul>
+
     </article>
-  </main>
+  </section>
+</main>
+
     
     <!-- Pie de pagina-->
+
     
   <div class="row">
     <footer class="py-4 d-flex" style="background-color: #664E88;">
       <!-- d-flex fixed-bottom flex-wrap justify-content-between align-items-center py-3 border-top -->
-      <p class="text-lg-start text-light">© 2021 Company, Inc</p>
+    <ul class="nav justify-content-start">
+        <li class="nav-item"><a href="#" class="nav-link px-2 text-light">Español</a></li>
+        <li class="nav-item"><a href="#" class="nav-link px-2 text-light">English</a></li>
+        <li class="nav-item"><a href="#" class="nav-link px-2 text-light">中文</a></li>
+    </ul>
 
-      <a
-        class="col-md-4 d-flex align-items-center justify-content-center mb-3 mb-md-0 me-md-auto link-dark text-decoration-none">
-      </a>
+      <a class="col-md-4 d-flex align-items-center justify-content-center mb-3 mb-md-0 me-md-auto link-dark text-decoration-none"></a>
 
-      <ul class="nav col-md-4 justify-content-end">
-        <li class="nav-item"><a href="#" class="nav-link px-2 text-light">Home</a></li>
-        <li class="nav-item"><a href="#" class="nav-link px-2 text-light">Features</a></li>
-        <li class="nav-item"><a href="#" class="nav-link px-2 text-light">Pricing</a></li>
-        <li class="nav-item"><a href="#" class="nav-link px-2 text-light">FAQs</a></li>
-        <li class="nav-item"><a href="#" class="nav-link px-2 text-light">About</a></li>
+      <ul class="nav justify-content-end">
+        <li class="nav-item"><a href="#" class="nav-link px-2 text-light">Acerca de nosotros <i class="bi bi-people"></i></a></li>
+        <li class="nav-item"><a href="#" class="nav-link px-2 text-light">Ayuda <i class="bi bi-patch-question"></i></a></i></li>
+        <li class="p-2 text-light">© 2022, bocaillo.com, Inc. o sus afiliados</li>
       </ul>
+      
     </footer>
   </div>
     
-  
     <script src="node_modules/bootstrap/dist/js/bootstrap.min.js"></script>
   </body>
 </html>
