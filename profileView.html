@@ -110,46 +110,28 @@
       </div>
     </section>
 
-    <!-- Login -->
-    <div class="container col-5 p-3 mx-auto">
-      <h2 class="text-center" id="labelIniciarSesion"> Iniciar Sesion</h2>
-      <div class="text-center">
-        <img class="my-3 mx-auto img-fluid" src="img/grupo.png" id="iconoGrupo" alt="iconoGrupo" height="256">
+    <!-- Informacion de perfil -->
+    <div class="container col-10 p-3 mx-auto">
+      <div class="row">
+          <div class="col-5 text-center">
+            <img width="200" height="200" src="img/profilepicture.png">
+            <h3 class="">Username</h3>
+            <button class="w-40 btn btn-md btn-primary" type="submit"> <a href="editProfile.html" class="nav-link text-white">Edit profile</a> </button>
+          </div>
+          <div class="col-7">
+            <p>
+              <label for="username">Username: </label>
+            </p>
+            <p>
+                <label for="email" >Email: </label>
+            </p>
+            <p class="pb-4">
+                <label for="password" >Password: </label>
+            </p>
+            <button class="w-40 btn btn-md btn-secondary" type="submit"> <a href="" class="nav-link text-white">Log out</a> </button>
+            <button class="w-40 btn btn-md btn-outline-danger" type="submit"> <a href="" class="nav-link text-danger">Delete account</a> </button>
+          </div>
       </div>
-      <form class="text-center" method="post" name="datos" accept-charset="UTF-8" id="formLogin">
-
-        <div class="col-12">
-          <label for="username" class="form-label">Username</label>
-          <div class="input-group has-validation w-50 mx-auto">
-            <input type="text" class="form-control" id="username" required="required">
-            <div class="invalid-feedback">
-              Your username is required.
-            </div>
-          </div>
-        </div>
-
-        <div class="col-12">
-          <label for="password" class="form-lab git checkout --track origin/alfon
-          el">Password </label>
-          <div class="input-group has-validation w-50 mx-auto">
-            <input type="password" class="form-control" id="password" required="required">
-            <div class="invalid-feedback">
-              Your password is required.
-            </div>
-          </div>
-        </div>
-
-        <div class="checkbox my-3">
-          <label>
-            <input type="checkbox" value="remember-me"> Remember me
-          </label>
-        </div>
-        <button class="w-50 btn btn-md btn-primary" type="submit"> <a href="index.html" class="nav-link text-white">Log in</a> </button>    
-        <button class="w-50 btn btn-md btn-secondary mt-3" type="submit"> <a href="register.html" class="nav-link text-white"> Register</a></button>
-      </form>
-
-      <div class="mt-5"></div>
-
     </div>
   </section>
 </main>
