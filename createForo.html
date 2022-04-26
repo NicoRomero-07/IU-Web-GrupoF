@@ -1,18 +1,17 @@
 <!doctype html>
 <html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    
+    <!-- Bootstrap CSS -->
+    <link href="css/style.css" rel="stylesheet"/>
 
-<head>
-  <!-- Required meta tags -->
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-
-  <link href="css/style.css" rel="stylesheet" />
-
-  <title>Bocaillo</title>
-</head>
-<!-- Container -->
-
-<body class="container-fluid border border-primary">
+    <title>Bocaillo</title>
+  </head>
+  <!-- Container -->
+  <body class="container-fluid min-vh-100 d-flex flex-column justify-content-between">
     <header class="row">
         <!-- NavBar -->
       <nav class="col-12 navbar navbar-expand-lg navbar-dark py-2" style="background-color: #664E88;">
@@ -59,15 +58,13 @@
     <!-- BreadCrumb -->
           <nav class = "row col-12 px-3 py-2 m-0"  style=" background-color: #63B4B8;" aria-label="breadcrumb">
               <ol class="breadcrumb"> 
-                <li class="breadcrumb-item ps-1 text-light">Pagina inicial</li>
-                <li class="breadcrumb-item ps-1 text-light" aria-current="page">Crear foro</li>
+                <li class="breadcrumb-item ps-1 text-light"><a class = "text-light" href="index.html">Pagina inicial</a></li>
+                <li class="breadcrumb-item ps-1 text-light" href="index.html">Crear Foro</li>
               </ol>
           </nav>
 
     </header>
-    
-
-  <!-- Main -->
+    <!-- Main -->
   <main class="row">
     <!-- SideBar -->
     <section class = "d-none d-lg-block col-lg-2 p-0 m-0">
@@ -143,22 +140,29 @@
     </article>
   </main>
 
-  <!-- Pie de pagina-->
-  <div class="row mt-auto ">
-    <footer class="py-4 d-flex" style="background-color: #664E88;">
+    
+    <!-- Pie de pagina-->
+
+    
+  <footer class="row">
+    <div class="py-4 d-flex" style="background-color: #664E88;">
       <!-- d-flex fixed-bottom flex-wrap justify-content-between align-items-center py-3 border-top -->
-      <a
-        class="col-md-4 d-flex align-items-center justify-content-center mb-3 mb-md-0 me-md-auto link-dark text-decoration-none">
-      </a>
+    <ul class="nav justify-content-start col-6 col-md-4">
+        <li class="nav-item"><a href="#" class="nav-link px-2 text-light">Español</a></li>
+        <li class="nav-item"><a href="#" class="nav-link px-2 text-light">English</a></li>
+        <li class="nav-item"><a href="#" class="nav-link px-2 text-light">中文</a></li>
+    </ul>
 
-      <ul class="nav col-md-4 justify-content-end">
-        <li class="nav-item"><a href="#" class="nav-link px-2 text-light">Acerca de nosotros <i class="bi bi-people-fill"></i></a></li>
-        <li class="nav-item"><a href="#" class="nav-link px-2 text-light">Ayuda <i class="bi bi-patch-question"></i></a></li>
-        <li class="nav-item"><a href="#" class="nav-link px-2 text-light">© 2021 Company, Inc</a></li>
+      <a class="col-md-4 d-flex align-items-center justify-content-center mb-3 mb-md-0 me-md-auto link-dark text-decoration-none"></a>
+
+      <ul class="nav justify-content-end col-6 col-md-4">
+        <li class="nav-item"><a href="#" class="nav-link px-2 text-light">Acerca de nosotros <i class="bi bi-people"></i></a></li>
+        <li class="nav-item"><a href="#" class="nav-link px-2 text-light">Ayuda <i class="bi bi-patch-question"></i></a></i></li>
+        <li class="p-2 text-light">© 2022, bocaillo.com, Inc. o sus afiliados</li>
       </ul>
-    </footer>
-  </div>
-
-</body>
-
+    </div>
+  </footer>
+    
+    <script src="node_modules/bootstrap/dist/js/bootstrap.min.js"></script>
+  </body>
 </html>
