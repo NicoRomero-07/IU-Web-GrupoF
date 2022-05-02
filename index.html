@@ -60,15 +60,17 @@
           </nav>
 
     </header>
-    
+    <!-- MAin-->
     <main class="row ">
       <!-- Foros -->
     <section class = "row col-12 col-lg-6 mb-auto mx-auto">
        <!--Buscador-->
-      <div>    
-        <form class="mx-3 d-flex my-4 col-6">
-          <input class="form-control me-2 border-dark" type="search" aria-label="Search">
-          <a class="btn" style=" background-color: #bec0c3;" type="submit" href="JavaScriptResultoBuscar.html">Buscar</a>
+      <div>   
+        <form action="JavaScriptResultoBuscar.html" method="post" target="_blank" class="mx-3 d-flex my-4 col-6">
+          
+            <input class="form-control me-2 border-dark" type="search" name="busqueda" size="4" maxlength="4">
+            <input class="btn" style=" background-color: #bec0c3;" type="submit" type="submit" value="Buscar">
+          
         </form>
       </div>
       
@@ -188,5 +190,6 @@
   </footer>
     
     <script src="node_modules/bootstrap/dist/js/bootstrap.min.js"></script>
+    <script src="js/searchEnter.js"></script>
   </body>
 </html>
