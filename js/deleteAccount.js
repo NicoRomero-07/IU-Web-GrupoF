@@ -5,7 +5,7 @@ button.addEventListener("mouseenter", function(event) {
     button.classList.remove('text-danger');
     button.classList.add('text-white');
 
-  }, false);
+}, false);
 
 button.addEventListener("mouseout", function(event) {
 
