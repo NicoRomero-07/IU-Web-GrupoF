@@ -11,84 +11,83 @@
     <title>Bocaillo</title>
   </head>
   <!-- Container -->
-  <body class="container-fluid">
+  <body class="container-fluid min-vh-100 d-flex flex-column justify-content-between">
     <header class="row">
-      <!-- NavBar -->
-    <nav class="col-12 navbar navbar-expand-lg navbar-dark py-2" style="background-color: #664E88;">
-      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarTogglerDemo03" aria-controls="navbarTogglerDemo03" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-      </button>
-      <a class="navbar-brand" href="#">Bocaillo</a>
-      <a class="navbar-brand" href="#">
-        <img alt="Brand" width="35" height="35"
-        src="img/bocaillo.png">
-      </a>
+        <!-- NavBar -->
+      <nav class="col-12 navbar navbar-expand-lg navbar-dark py-2" style="background-color: #664E88;">
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarTogglerDemo03" aria-controls="navbarTogglerDemo03" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <a class="navbar-brand" href="index.html">Bocaillo</a>
+        <a class="navbar-brand" href="index.html">
+          <img alt="Brand" width="35" height="35"
+          src="img/bocaillo.png">
+        </a>
 
-      <div class="collapse navbar-collapse" id="navbarTogglerDemo03">
-        <ul class="navbar-nav me-auto ms-2 mb-2 mb-lg-0">
-          <li class="nav-item">
-            <a class="nav-link" aria-current="page" href="index.html"><i class="bi bi-house-door"></i>&emsp;Inicio</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="#">Categorias</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="#">Trending</a>
-          </li>
-        </ul>
-        <section class="row col-12 mx-0 col-lg-6 justify-content-end align-items-center">
-          
-          <!--Perfil-->
-          <div class="dropdown ms-3 col-4">
-            <a href="#" class="d-flex align-items-center link-light text-decoration-none dropdown-toggle fs-5" id="dropdownUser2" data-bs-toggle="dropdown" aria-expanded="false">
-              <i class="bi bi-person-circle"></i>
-              <!--<img src="" alt="" width="32" height="32" class="rounded-circle me-2">-->
-              <strong class="text-light">&ensp;Username</strong>
-            </a>
-            <ul class="dropdown-menu text-small shadow" aria-labelledby="dropdownUser2">
-              <li><a class="dropdown-item" href="#">Ajustes</a></li>
-              <li><a class="dropdown-item" href="#">Perfil</a></li>
-              <li><hr class="dropdown-divider"></li>
-              <li><a class="dropdown-item" href="#">Cerrar sesion</a></li>
-            </ul>
-          </div>
-        </section>
-      </div>
-    </nav>
-  
-  <!-- BreadCrumb -->
-        <nav class = "row col-12 px-3 py-2 m-0"  style=" background-color: #63B4B8;" aria-label="breadcrumb">
-            <ol class="breadcrumb"> 
-              <li class="breadcrumb-item ps-1 text-light" >Pagina inicial</li>
-              <li class="breadcrumb-item ps-1 text-light" aria-current="page">Confirmacion email</li>
-            </ol>
-        </nav>
-
-  </header>
-    
-    <!-- Contenido-->
-    <main class = "row p-5">
-        <h2>
-          <b>Confirmación Email</b>
-        </h2>
-        <p>
-            Hemos enviado un correo a la dirección xxx@email.com. <br>
-            Por favor compruebe su buzón y encuentra el mensaje que le hemos mandado.<br>
-            Puede que el mensaje tarde como máximo 10 minutos en llegar. <br>
-            
-        </p>
-        <!-- Temporizador -->
-        
-        <p>
-            En caso de que transcurrido el período de 10 minutos, tampoco haya recibido el email, pulsa el siguiente botón.
-        </p>
-        <div class="d-grid gap-2 col-6 justify-content-md-start">
-          <button type="button" class="btn btn-secondary">Enviar de nuevo</button>
-          <button type="button" class="btn btn-success"><a href="index.html" class="nav-link text-white">Volver a la página principal</a></button>
+        <div class="collapse navbar-collapse" id="navbarTogglerDemo03">
+          <ul class="navbar-nav me-auto ms-2 mb-2 mb-lg-0">
+            <li class="nav-item">
+              <a class="nav-link" href="#">Categorias</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#">Trending</a>
+            </li>
+          </ul>
+          <section class="row col-12 mx-0 col-lg-6 justify-content-end align-items-center">
+            <!--Perfil-->
+            <div class="dropdown ms-3 col-4">
+              <a href="#" class="d-flex align-items-center link-light text-decoration-none dropdown-toggle fs-5" id="dropdownUser2" data-bs-toggle="dropdown" aria-expanded="false">
+                <i class="bi bi-person-circle"></i>
+                <!--<img src="" alt="" width="32" height="32" class="rounded-circle me-2">-->
+                <strong class="text-light">&ensp;Username</strong>
+              </a>
+              <ul class="dropdown-menu text-small shadow" aria-labelledby="dropdownUser2">
+                <li><a class="dropdown-item" href="#">Ajustes</a></li>
+                <li><a class="dropdown-item" href="#">Perfil</a></li>
+                <li><hr class="dropdown-divider"></li>
+                <li><a class="dropdown-item" href="#">Cerrar sesion</a></li>
+              </ul>
+            </div>
+          </section>
         </div>
-    </main>
+      </nav>
     
-      
+    <!-- BreadCrumb -->
+          <nav class = "row col-12 px-3 py-2 m-0"  style=" background-color: #63B4B8;" aria-label="breadcrumb">
+              <ol class="breadcrumb"> 
+                <li class="breadcrumb-item ps-1 text-light"><a class = "text-light" href="index.html">Pagina inicial</a></li>
+                <li class="breadcrumb-item ps-1 text-light">Registro</li>
+                <li class="breadcrumb-item ps-1 text-light" aria-current="page">Confirmación email</li>
+              </ol>
+          </nav>
+
+    </header>
+   <!-- Contenido-->
+   <main class = "row p-5">
+    <h2>
+      <b>Confirmación Email</b>
+    </h2>
+    <p>
+        Hemos enviado un correo a la dirección xxx@email.com. <br>
+        Por favor compruebe su buzón y encuentra el mensaje que le hemos mandado.<br>
+        Puede que el mensaje tarde como máximo 10 minutos en llegar. <br>
+        
+    </p>
+    <!-- Temporizador-->
+    <div class="row justify-content-center border rounded-pill" id="countdown3"></div>
+
+    <p>
+        En caso de que transcurrido el período de 10 minutos, tampoco haya recibido el email, pulsa el siguiente botón.
+    </p>
+    <!--Botones-->
+    <div class="d-grid gap-2 col-6 justify-content-md-start">
+      <button type="button" class="btn btn-secondary">Enviar de nuevo</button>
+      <button type="button" class="btn btn-success"><a href="index.html" class="nav-link text-white">Volver a la página principal</a></button>
+    </div> 
+    
+</main>
+    
+    
     <!-- Pie de pagina-->
 
     
@@ -110,7 +109,8 @@
       </ul>
     </div>
   </footer>
-  
+    
     <script src="node_modules/bootstrap/dist/js/bootstrap.min.js"></script>
+    <script src="js/timer.js"></script>
   </body>
 </html>
