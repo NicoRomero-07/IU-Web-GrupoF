@@ -1,0 +1,124 @@
+<!doctype html>
+<html lang="es">
+
+<head>
+  <!-- Required meta tags -->
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <link href="css/style.css" rel="stylesheet" />
+
+  <title>Bocaillo</title>
+</head>
+<!-- Container -->
+
+<body class="container-fluid border border-primary">
+  <main class="row">
+
+    <!-- NavBar -->
+    <nav class="col-12 navbar navbar-expand-lg navbar-dark py-2" style="background-color: #664E88;">
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarTogglerDemo03" aria-controls="navbarTogglerDemo03" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <h1 class="navbar-brand"><a class="text-decoration-none text-light" href="index.html">Bocadillo</a></h1>
+      <a class="navbar-brand" href="index.html">
+        <img alt="Brand" width="35" height="35"
+        src="img/bocaillo.png">
+      </a>
+
+      <div class="collapse navbar-collapse" id="navbarTogglerDemo03">
+        <ul class="navbar-nav me-auto ms-2 mb-2 mb-lg-0">
+          <li class="nav-item">
+            <a class="nav-link" href="#">Categorias</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#">Trending</a>
+          </li>
+        </ul>
+        <section class="row col-12 mx-0 col-lg-6 justify-content-end align-items-center">
+          <!--Perfil-->
+          <div class="dropdown ms-3 col-4">
+            <a href="#" class="d-flex align-items-center link-light text-decoration-none dropdown-toggle fs-5" id="dropdownUser2" data-bs-toggle="dropdown" aria-expanded="false">
+              <i class="bi bi-person-circle"></i>
+              <!--<img src="" alt="" width="32" height="32" class="rounded-circle me-2">-->
+              <strong class="text-light">&ensp;Usuario</strong>
+            </a>
+            <ul class="dropdown-menu text-small shadow" aria-labelledby="dropdownUser2">
+              <li><a class="dropdown-item" href="#">Ajustes</a></li>
+              <li><a class="dropdown-item" href="#">Perfil</a></li>
+              <li><hr class="dropdown-divider"></li>
+              <li><a class="dropdown-item" href="#">Cerrar sesion</a></li>
+            </ul>
+          </div>
+        </section>
+      </div>
+    </nav>
+
+  </main>
+
+  <!-- BreadCrumb -->
+  <nav class="row p-1" style="background-color:#63B4B8;">
+    <ol class="breadcrumb my-2">
+      <li class="breadcrumb-item"><a href="index.html" class="text-light">Pagina Inicial</a></li>
+      <li class="breadcrumb-item text-light" aria-current="page">Login</a></li>
+    </ol>
+  </nav>
+
+  <main class="row">
+   
+    <!-- Login -->
+    <div class="container col-5 p-3 mx-auto">
+      <h2 class="text-center" id="labelIniciarSesion"> Iniciar Sesion</h2>
+      <div class="text-center">
+        <img class="my-3 mx-auto img-fluid" src="img/grupo.png" id="iconoGrupo" alt="iconoGrupo" height="256">
+      </div>
+      <form class="text-center" method="post" name="datos" accept-charset="UTF-8" id="formLogin">
+
+        <div class="col-12">
+          <label for="usuario" class="form-label">Usuario</label>
+          <div class="input-group has-validation w-50 mx-auto">
+            <input type="text" class="form-control" id="usuario">
+            <div class="invalid-feedback">
+              
+            </div>
+          </div>
+        </div>
+
+        <div class="col-12">
+          <label for="password" class="form-label">Contraseña </label>
+          <div class="input-group has-validation w-50 mx-auto">
+            <input type="password" class="form-control" id="password">
+            <div class="invalid-feedback">
+              Introduzca una contraseña
+            </div>
+          </div>
+        </div>
+        <button class="w-50 btn btn-md btn-primary" type="submit"> <a href="index.html" class="nav-link text-white">Iniciar Sesion</a> </button>    
+        <button class="w-50 btn btn-md btn-secondary mt-3" type="submit"> <a href="register.html" class="nav-link text-white"> Registro</a></button>
+      </form>
+
+      <div class="mt-5"></div>
+
+    </div>
+  </section>
+</main>
+
+  <!-- Pie de pagina-->
+  <div class="row mt-auto ">
+    <footer class="py-4 d-flex" style="background-color: #664E88;">
+      <!-- d-flex fixed-bottom flex-wrap justify-content-between align-items-center py-3 border-top -->
+      <a
+        class="col-md-4 d-flex align-items-center justify-content-center mb-3 mb-md-0 me-md-auto link-dark text-decoration-none">
+      </a>
+
+      <ul class="nav col-md-4 justify-content-end">
+        <li class="nav-item"><a href="#" class="nav-link px-2 text-light">Acerca de nosotros <i class="bi bi-people-fill"></i></a></li>
+        <li class="nav-item"><a href="#" class="nav-link px-2 text-light">Ayuda <i class="bi bi-patch-question"></i></a></li>
+        <li class="p-2 text-light">© 2022, bocaillo.com</li>
+      </ul>
+    </footer>
+  </div>
+
+</body>
+
+</html>
