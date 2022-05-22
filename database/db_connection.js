@@ -19,6 +19,8 @@ function readUsuario (id){
         return(data[0].nombre);
     });
 };
+
+module.exports = {pool,mysql,readUsuario};
 /*
 //CRUD Foro
 function addRowForo(propietario,nombre,descripcion,categoria) {
@@ -267,7 +269,7 @@ function deleteRowMensajePrivado(mensajeID) {
 }
 */
 
-module.exports = {pool,mysql,readUsuario};
+
 
 
 

@@ -1,5 +1,6 @@
 const express = require('express');
 const router = express.Router();
+const app = express();
 const connection = require('./database/db_connection');
 const pool = connection.pool;
 const mysql = connection.mysql;
@@ -31,10 +32,8 @@ router.get('/foro/:id',(req,res,next)=>{
     });
     
 });
-        
 
-
-router.get('/',(req,res)=>{
+router.get('/index',(req,res)=>{
     let selectQuery = 'SELECT * FROM ??';
     let query = mysql.format(selectQuery,["foro"]);
     pool.query(query,(err,data) => {
@@ -47,5 +46,28 @@ router.get('/',(req,res)=>{
     });
     
 });
+
+router.get('/',(req,res)=>{
+    res.render('login');
+});
+
+router.get('/register',(req,res)=>{
+    res.render('register');
+});
+
+router.get('/confirmed',(req,res)=>{
+    res.render('confirmed');
+});
+
+router.get('/confirmeEmail',(req,res)=>{
+    res.render('confirmeEmail');
+});
+
+router.post('/login',async(req, res)=>{
+    const user = req.body.usuario;
+    const password = req.body.password;
+    let passwordHash = await bcryptjs.hash(password,8);
+    //pool.query()
+})
 
 module.exports = router;

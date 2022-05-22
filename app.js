@@ -1,10 +1,81 @@
 const express = require('express');
+const bcrypt = require('bcryptjs/dist/bcrypt');
 const app = express();
 
 app.use('/',require('./router'));
 app.use(express.static( "views" ) );
+app.use(express.urlencoded({extended:false}))
+app.use(express.json());
 
+// 3 - Invocamos a dotenv
+const dotenv = require('dotenv');
+dotenv.config({path:'.env/.env'});
+
+//4 - El directorio view
+app.use('/resources',express.static('views'));
+app.use('/resources',express.static(__dirname + '/views'));
+
+// 5 - Establecemos el motor de plantillas ejs
 app.set('view engine','ejs');
+
+// 6 - Invocamos a bryptjs
+const bcryptjs = require('bcryptjs');
+
+// 7 - Variable de session
+const session = require('express-session');
+app.use(session({
+    secret:'secret',
+    resave: true,
+    saveUninitialized: true
+}));
+
+//8 - Invocamos a la bd
+const connection = require('./database/db_connection');
+const pool = connection.pool;
+
+app.post('/registerform', async (req, res)=>{
+
+    const usuario = req.body.usuario;
+    const password = req.body.password;
+    const password2 = req.body.password2;
+    const email = req.body.email;
+    if(password == password2){
+        let passwordHash = await bcryptjs.hash(password,8);
+        pool.query('INSERT INTO usuario SET ?',{nombre:usuario,email:email,contrasenya:passwordHash},async(error,results)=>{
+            if(error){
+                res.render('register',{
+                    usuario:usuario,
+                    alert:true,
+                    alertTitle:"Registro",
+                    alertMessage: "¡El usuario ya ha sido registrado, por favor inténtelo de nuevo!",
+                    alertIcon: 'error',
+                    showConfirmButton:true,
+                    ruta:'register'
+                })
+            }else{
+                res.render('register',{
+                    alert:true,
+                    alertTitle:"Registro",
+                    alertMessage: "¡Registro completado con éxito!",
+                    alertIcon: 'success',
+                    showConfirmButton:false,
+                    timer:3000,
+                    ruta:'index'
+                })
+            }
+        })
+    }else{
+        res.render('register',{
+            usuario:usuario,
+            alert:true,
+            alertTitle:"Registro",
+            alertMessage: "¡Las contraseñas no coinciden, por favor inténtelo de nuevo!",
+            alertIcon: 'error',
+            showConfirmButton:true,
+            ruta:'register'
+        })
+    }
+})
 
 app.listen(5000,()=>{
     console.log('SERVER corriendo en http://localhost:5000');
