@@ -70,7 +70,8 @@
       <div class="text-center">
         <img class="my-3 mx-auto img-fluid" src="img/grupo.png" id="iconoGrupo" alt="Icono de un grupo de personas" height="256">
       </div>
-      <form class="text-center needs-validation" method="POST" action="/registerform" id="register" novalidate>
+      
+      <form class="text-center needs-validation" method="POST" action="/registerform" novalidate>
 
         <div class="col-12">
           <label for="usuario" class="form-label">Usuario</label>
@@ -142,6 +143,7 @@
     <script src="node_modules/bootstrap/dist/js/bootstrap.min.js"></script>
     <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 
+    <!-- Alertas del registro -->
     <%if(typeof alert != "undefined"){ %>
         <script>
           Swal.fire({
@@ -156,7 +158,8 @@
         <%
       }
     %>
-    // Example starter JavaScript for disabling form submissions if there are invalid fields
+
+    <!-- Example starter JavaScript for disabling form submissions if there are invalid fields -->
     <script>
       (function () {
       'use strict'
@@ -178,5 +181,6 @@
         })
     })()
     </script>
+
   </body>
 </html>

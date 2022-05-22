@@ -33,6 +33,7 @@ app.use(session({
 const connection = require('./database/db_connection');
 const pool = connection.pool;
 
+// Cotrolador del registro
 app.post('/registerform', async (req, res)=>{
 
     const usuario = req.body.usuario;
@@ -75,6 +76,37 @@ app.post('/registerform', async (req, res)=>{
             ruta:'register'
         })
     }
+})
+
+// Controlador del login
+app.post('/loginform', async (req, res)=>{
+
+    const usuario = req.body.usuario;
+    const password = req.body.password;
+    let passwordHash = await bcryptjs.hash(password,8);
+        pool.query('SELECT * FROM usuario WHERE nombre = ?',[usuario],async(error,results)=>{
+            if(results.length == 0){
+                res.render('login',{
+                    alert:true,
+                    alertTitle:"Login",
+                    alertMessage: "¡El nombre de usuario introducido no está disponible!",
+                    alertIcon: 'error',
+                    showConfirmButton:true,
+                    ruta:''
+                });
+            }else if( !(await bcryptjs.compare(password, results[0].contrasenya)) ){
+                res.render('login',{
+                    alert:true,
+                    alertTitle:"Login",
+                    alertMessage: "¡Las contraseña introducida no es correcta, por favor inténtelo de nuevo!",
+                    alertIcon: 'error',
+                    showConfirmButton:true,
+                    ruta:''
+                });
+            }else{
+                res.redirect('./index');
+            }
+        })
 })
 
 app.listen(5000,()=>{

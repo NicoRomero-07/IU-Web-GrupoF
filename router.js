@@ -63,11 +63,4 @@ router.get('/confirmeEmail',(req,res)=>{
     res.render('confirmeEmail');
 });
 
-router.post('/login',async(req, res)=>{
-    const user = req.body.usuario;
-    const password = req.body.password;
-    let passwordHash = await bcryptjs.hash(password,8);
-    //pool.query()
-})
-
 module.exports = router;
