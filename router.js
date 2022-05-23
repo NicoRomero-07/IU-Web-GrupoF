@@ -1,5 +1,6 @@
 const express = require('express');
 const router = express.Router();
+const app = express();
 const connection = require('./database/db_connection');
 const pool = connection.pool;
 const mysql = connection.mysql;
@@ -31,10 +32,8 @@ router.get('/foro/:id',(req,res,next)=>{
     });
     
 });
-        
 
-
-router.get('/',(req,res)=>{
+router.get('/index',(req,res)=>{
     let selectQuery = 'SELECT * FROM ??';
     let query = mysql.format(selectQuery,["foro"]);
     pool.query(query,(err,data) => {
@@ -48,7 +47,6 @@ router.get('/',(req,res)=>{
     
 });
 
-
 //Acceso a crear foro
 router.get('/createForo', (req,res)=>{
     res.render('createForo');
@@ -57,5 +55,20 @@ router.get('/createForo', (req,res)=>{
 
 const crud = require('./controllers/crud');
 router.post('/crearForo', crud.crearForo);
+router.get('/',(req,res)=>{
+    res.render('login');
+});
+
+router.get('/register',(req,res)=>{
+    res.render('register');
+});
+
+router.get('/confirmed',(req,res)=>{
+    res.render('confirmed');
+});
+
+router.get('/confirmeEmail',(req,res)=>{
+    res.render('confirmeEmail');
+});
 
 module.exports = router;

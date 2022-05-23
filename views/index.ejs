@@ -19,9 +19,10 @@
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarTogglerDemo03" aria-controls="navbarTogglerDemo03" aria-expanded="false" aria-label="Toggle navigation">
           <span class="navbar-toggler-icon"></span>
         </button>
-        <h1 class="navbar-brand">Bocadillo</h1>
-        <a class="navbar-brand" href="index.html">
-          <img alt="Brand" width="35" height="35" src="./img/bocaillo.png" alt="Logo Bocaillo">
+        <h1 class="navbar-brand"><a class="text-decoration-none text-light" href="index">Bocadillo</a></h1>
+        <a class="navbar-brand" href="index">
+          <img alt="Brand" width="35" height="35"
+          src="img/bocaillo.png">
         </a>
 
         <div class="collapse navbar-collapse" id="navbarTogglerDemo03">
@@ -43,7 +44,7 @@
               </a>
               <ul class="dropdown-menu text-small shadow" aria-labelledby="dropdownUser2">
                 <li><a class="dropdown-item" href="#">Ajustes</a></li>
-                <li><a class="dropdown-item" href="profileView.html">Perfil</a></li>
+                <li><a class="dropdown-item" href="profileView">Perfil</a></li>
                 <li><hr class="dropdown-divider"></li>
                 <li><a class="dropdown-item" href="#">Cerrar sesion</a></li>
               </ul>
@@ -60,13 +61,13 @@
           </nav>
 
     </header>
-    <!-- MAin-->
+    <!-- Main-->
     <main class="row ">
       <!-- Foros -->
     <section class = "row col-12 col-lg-6 mb-auto mx-auto">
        <!--Buscador-->
       <div>   
-        <form action="JavaScriptResultoBuscar.html" method="post" target="_blank" class="mx-3 d-flex my-4 col-6">
+        <form action="JavaScriptResultoBuscar" method="post" target="_blank" class="mx-3 d-flex my-4 col-6">
           
             <input class="form-control me-2 border-dark" type="search" name="busqueda" size="4" maxlength="4" title="BarraDeBusqueda">
             <input class="btn" style=" background-color: #bec0c3;" type="submit" type="submit" value="Buscar" title="Boton Borrar">
@@ -76,7 +77,7 @@
       <% for (let i = 0; i< foros.length && i<6; i++){%>
       <article class="card mx-auto my-4 col-12 col-lg-5 border-dark">
         <div class="card-body">
-          <h5 class="card-title"> <a href="foroView.html" class="nav-link text-black"><%= foros[i].Nombre%></a></h5>
+          <h5 class="card-title"> <a href="foroView" class="nav-link text-black"><%= foros[i].Nombre%></a></h5>
           <p class="card-text"><%= foros[i].Descripcion%></p>
           <a href="/foro/<%=foros[i].idForo %>" class="btn btn-primary">Ver contenido</a>
         </div>
@@ -85,37 +86,37 @@
       <!--
       <article class="card mx-auto my-4 col-12 col-lg-5 border-dark">
         <div class="card-body">
-          <h5 class="card-title"> <a href="foroView.html" class="nav-link text-black">FORO 2</a></h5>
+          <h5 class="card-title"> <a href="foroView" class="nav-link text-black">FORO 2</a></h5>
           <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-          <a href="foroView.html" class="btn btn-primary">Ver contenido</a>
+          <a href="foroView" class="btn btn-primary">Ver contenido</a>
         </div>
       </article>
       <article class="card mx-auto my-4 col-12 col-lg-5 border-dark">
         <div class="card-body">
-          <h5 class="card-title"> <a href="foroView.html" class="nav-link text-black">FORO 3</a></h5>
+          <h5 class="card-title"> <a href="foroView" class="nav-link text-black">FORO 3</a></h5>
           <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-          <a href="foroView.html" class="btn btn-primary">Ver contenido</a>
+          <a href="foroView" class="btn btn-primary">Ver contenido</a>
         </div>
       </article>
       <article class="card mx-auto my-4 col-12 col-lg-5 border-dark">
         <div class="card-body">
-          <h5 class="card-title"> <a href="foroView.html" class="nav-link text-black">FORO 4</a></h5>
+          <h5 class="card-title"> <a href="foroView" class="nav-link text-black">FORO 4</a></h5>
           <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-          <a href="foroView.html" class="btn btn-primary">Ver contenido</a>
+          <a href="foroView" class="btn btn-primary">Ver contenido</a>
         </div>
       </article>
       <article class="card mx-auto my-4 col-12 col-lg-5 border-dark">
         <div class="card-body">
-          <h5 class="card-title"> <a href="foroView.html" class="nav-link text-black">FORO 5</a></h5>
+          <h5 class="card-title"> <a href="foroView" class="nav-link text-black">FORO 5</a></h5>
           <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-          <a href="foroView.html" class="btn btn-primary">Ver contenido</a>
+          <a href="foroView" class="btn btn-primary">Ver contenido</a>
         </div>
       </article>
       <article class="card mx-auto my-4 col-12 col-lg-5 border-dark">
         <div class="card-body">
-          <h5 class="card-title"> <a href="foroView.html" class="nav-link text-black">FORO 6</a></h5>
+          <h5 class="card-title"> <a href="foroView" class="nav-link text-black">FORO 6</a></h5>
           <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-          <a href="foroView.html" class="btn btn-primary">Ver contenido</a>
+          <a href="foroView" class="btn btn-primary">Ver contenido</a>
         </div>
       </article>
       -->
@@ -129,7 +130,7 @@
       </button>
       <button class="d-flex flex-column align-items-center btn-secondary rounded-pill mx-auto col-4">
         <i class="bi bi-chat-dots"></i>
-        <a class="nav-link text-white" href="listaUsuarios.html">Mensaje<br>Privado</a>
+        <a class="nav-link text-white" href="listaUsuarios">Mensaje<br>Privado</a>
       </button>
     </div>
     <!-- Top autores -->
@@ -140,31 +141,31 @@
         <ul class="nav nav-pills flex-column mb-auto">
           <li class="nav-item text-light">
             1. Autor1 &nbsp
-            <a href="autorView.html" class="text-white">
+            <a href="autorView" class="text-white">
               Ver perfil
             </a>
           </li>
           <li class="nav-item text-light">
             2. Autor2 &nbsp
-            <a href="autorView.html" class="text-white">
+            <a href="autorView" class="text-white">
               Ver perfil
             </a>
           </li>
           <li class="nav-item text-light">
             3. Autor3 &nbsp
-            <a href="autorView.html" class="text-white">
+            <a href="autorView" class="text-white">
               Ver perfil
             </a>
           </li>
           <li class="nav-item text-light">
             4. Autor4 &nbsp
-            <a href="autorView.html" class="text-white">
+            <a href="autorView" class="text-white">
               Ver perfil
             </a>
           </li>
           <li class="nav-item text-light">
             5. Autor5 &nbsp
-            <a href="autorView.html" class="text-white">
+            <a href="autorView" class="text-white">
               Ver perfil
             </a>
           </li>
