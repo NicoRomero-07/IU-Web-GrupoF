@@ -48,4 +48,14 @@ router.get('/',(req,res)=>{
     
 });
 
+
+//Acceso a crear foro
+router.get('/createForo', (req,res)=>{
+    res.render('createForo');
+});
+
+
+const crud = require('./controllers/crud');
+router.post('/crearForo', crud.crearForo);
+
 module.exports = router;
