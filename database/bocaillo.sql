@@ -36,7 +36,7 @@ CREATE TABLE IF NOT EXISTS `bocaillo`.`usuario` (
   `idUsuario` INT NOT NULL AUTO_INCREMENT,
   `nombre` VARCHAR(45) NOT NULL,
   `email` VARCHAR(45) NOT NULL,
-  `contrasenya` VARCHAR(45) NOT NULL,
+  `contrasenya` VARCHAR(100) NOT NULL,
   PRIMARY KEY (`idUsuario`),
   UNIQUE INDEX `nombre_UNIQUE` (`nombre` ASC) VISIBLE,
   UNIQUE INDEX `email_UNIQUE` (`email` ASC) VISIBLE)
