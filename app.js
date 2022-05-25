@@ -35,13 +35,12 @@ const pool = connection.pool;
 
 // Cotrolador del registro
 app.post('/registerform', async (req, res)=>{
-
     const usuario = req.body.usuario;
     const password = req.body.password;
     const password2 = req.body.password2;
     const email = req.body.email;
+    let passwordHash = await bcryptjs.hash(password,8);
     if(password == password2){
-        let passwordHash = await bcryptjs.hash(password,8);
         pool.query('INSERT INTO usuario SET ?',{nombre:usuario,email:email,contrasenya:passwordHash},async(error,results)=>{
             if(error){
                 res.render('register',{
