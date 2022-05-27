@@ -2,6 +2,7 @@ const express = require('express');
 const bcrypt = require('bcryptjs/dist/bcrypt');
 const app = express();
 
+
 app.use('/',require('./router'));
 app.use(express.static( "views" ) );
 app.use(express.urlencoded({extended:false}))
@@ -31,7 +32,10 @@ app.use(session({
 
 //8 - Invocamos a la bd
 const connection = require('./database/db_connection');
+const req = require('express/lib/request');
+const res = require('express/lib/response');
 const pool = connection.pool;
+const mysql = connection.mysql;
 
 // Cotrolador del registro
 app.post('/registerform', async (req, res)=>{
@@ -39,8 +43,8 @@ app.post('/registerform', async (req, res)=>{
     const password = req.body.password;
     const password2 = req.body.password2;
     const email = req.body.email;
-    let passwordHash = await bcryptjs.hash(password,8);
     if(password == password2){
+        let passwordHash = await bcryptjs.hash(password,8);
         pool.query('INSERT INTO usuario SET ?',{nombre:usuario,email:email,contrasenya:passwordHash},async(error,results)=>{
             if(error){
                 res.render('register',{
@@ -103,10 +107,36 @@ app.post('/loginform', async (req, res)=>{
                     ruta:''
                 });
             }else{
-                res.redirect('./index');
+                req.session.loggedin = true;
+                req.session.idUsuario = results[0].idUsuario;
+                res.redirect('index');
             }
         })
 })
+
+app.get('/index',(req,res)=>{
+    if(typeof req.session.loggedin != "undefined"){
+        let selectQuery = 'SELECT * FROM ??';
+        let query = mysql.format(selectQuery,["foro"]);
+        pool.query(query,(err,data) => {
+            if(err){
+                console.error(err);
+                throw error;
+            }else{
+                res.render('index',{
+                    login:true,
+                    id: req.session.idUsuario,
+                    foros:data
+                });
+            }
+    });
+    }else{
+        res.render('index',{
+            login: false,
+            name: 'Debe iniciar sesión'
+        })
+    }
+});
 
 app.listen(5000,()=>{
     console.log('SERVER corriendo en http://localhost:5000');

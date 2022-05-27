@@ -13,6 +13,11 @@
   </head>
   <!-- Container -->
   <body class="container-fluid min-vh-100 d-flex flex-column justify-content-between">
+    <%
+      if(!login){
+        %> <a href="/">Por favor inicie sesion </a>  <%
+      }else{
+    %>
     <header class="row">
         <!-- NavBar -->
       <nav class="col-12 navbar navbar-expand-lg navbar-dark py-2" style="background-color: #664E88;">
@@ -199,5 +204,9 @@
   </footer>
     
     <script src="node_modules/bootstrap/dist/js/bootstrap.min.js"></script>
+    <%
+      } 
+    %>
+  
   </body>
 </html>

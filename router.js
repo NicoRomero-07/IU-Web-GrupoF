@@ -33,19 +33,7 @@ router.get('/foro/:id',(req,res,next)=>{
     
 });
 
-router.get('/index',(req,res)=>{
-    let selectQuery = 'SELECT * FROM ??';
-    let query = mysql.format(selectQuery,["foro"]);
-    pool.query(query,(err,data) => {
-        if(err){
-            console.error(err);
-            throw error;
-        }else{
-            res.render('index',{foros:data});
-        }
-    });
-    
-});
+
 
 router.get('/',(req,res)=>{
     res.render('login');
