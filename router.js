@@ -35,6 +35,14 @@ router.get('/foro/:id',(req,res,next)=>{
 
 
 
+//Acceso a crear foro
+router.get('/createForo', (req,res)=>{
+    res.render('createForo');
+});
+
+
+const crud = require('./controllers/crud');
+router.post('/crearForo', crud.crearForo);
 router.get('/',(req,res)=>{
     res.render('login');
 });
