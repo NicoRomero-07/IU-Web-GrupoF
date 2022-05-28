@@ -30,7 +30,7 @@ app.set('view engine','ejs');
 const bcryptjs = require('bcryptjs');
 
 // 7 - Variable de session
-const session = require('express-session');
+var session = require('express-session');
 app.use(session({
     secret:'secret',
     resave: true,
@@ -112,6 +112,7 @@ app.post('/loginform', async (req, res)=>{
                     ruta:''
                 });
             }else{
+                
                 res.redirect('./index');
             }
         })

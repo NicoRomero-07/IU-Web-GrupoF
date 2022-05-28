@@ -68,10 +68,10 @@
   <main class="row">
 
     <!-- Crear Foro -->
-    <article class="container col-5 p-3 mx-auto">
+    <article class="container col-12 p-3 mx-0">
       <h2 class="text-center" id="labelCrearForo"> Crear foro </h2>
       
-      <form class="text-center" method="POST" action="/crearForo" accept-charset="UTF-8" id="formCrearForo">
+      <form class="text-center col-12" method="POST" action="/crearForo" accept-charset="UTF-8" id="formCrearForo">
         
         <div class="col-12">
           <label for="nombreForo" class="form-label">Nombre foro</label>
@@ -86,20 +86,26 @@
         <div class="col-12">
           <label for="descripcion" class="form-label">Descripción</label>
           <div class="input-group has-validation w-50 mx-auto">
-            <textarea name="descripcion" id="descripcion" rows="10" cols="50"></textarea>
+            <textarea class ="form-control" name="descripcion" id="descripcion"></textarea>
             <div class="invalid-feedback">
               Descripcion requerida.
             </div>
           </div>
         </div>
 
+        <label for="categoria" class="form-label">Categoria</label><br>
+        <select name="categoria" id="categoria">
+          
+          <% categorias.forEach((categoria)=>{ %>
+              <option id="<%= categoria.id %>" name ="<%= categoria.id %>"><%= categoria.nombre %></option>
+          <% })  %>
+        </select><br>
+
          <!-- Button trigger modal -->
         <button type="submit" class="w-50 btn btn-md btn-success mt-3" data-bs-toggle="modal" data-bs-target="#exampleModal">Crear</button>
 
         <button class="w-50 btn btn-secondary btn-md mt-3"><a class="nav-link text-white" href="/">Cancelar</a></button>
       </form>
-
-      <div class="mt-5"></div>
 
     </article>
     
