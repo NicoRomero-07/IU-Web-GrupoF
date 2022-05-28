@@ -79,6 +79,8 @@ router.get('/perfilAutor/:id', (req,res)=>{
 
 const crud = require('../controllers/crud');
 router.post('/crearForo', crud.crearForo);
+const loginController = require('../controllers/loginController');
+router.post('/loginform', loginController.loginform);
 
 router.get('/',(req,res)=>{
     return res.render('login');
@@ -144,6 +146,7 @@ router.post('/registerform', async(req, res)=>{
 })
 
 // Controlador del login
+/*
 router.post('/loginform', async(req, res)=>{
 
     const usuario = req.body.usuario;
@@ -175,7 +178,9 @@ router.post('/loginform', async(req, res)=>{
             }
         })
 })
+*/
 
+//Controlador del index
 router.get('/index',(req,res)=>{
     if(typeof req.session.loggedin != "undefined"){
         let selectQuery = 'SELECT * FROM ??';
