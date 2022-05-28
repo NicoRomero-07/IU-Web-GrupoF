@@ -1,6 +1,6 @@
 const express = require('express');
 
-const { json } = require('express/lib/response');
+const { json, download } = require('express/lib/response');
 const bcrypt = require('bcryptjs/dist/bcrypt');
 const app = express();
 
@@ -8,13 +8,8 @@ app.use('/',require('./router'));
 
 app.set('view engine','ejs');
 app.use(express.static( "views" ) );
-app.use(express.urlencoded({extended:false}))
-app.use(express.json());
-
 app.use(express.urlencoded({extended:false}));
 app.use(express(json));
-
-app.use('/',require('./router'));
 
 // 3 - Invocamos a dotenv
 const dotenv = require('dotenv');
@@ -44,6 +39,7 @@ const req = require('express/lib/request');
 const res = require('express/lib/response');
 const pool = connection.pool;
 const mysql = connection.mysql;
+
 
 // Cotrolador del registro
 app.post('/registerform', async (req, res)=>{
@@ -145,6 +141,36 @@ app.get('/index',(req,res)=>{
         })
     }
 });
+
+app.get('/trending',(req,res)=>{
+    if(typeof req.session.loggedin != "undefined"){
+        let selectQuery = 'SELECT f.idForo,f.propietario,f.nombre,f.descripcion,count(m.idMesaje_foro) mensajes FROM bocaillo.foro f' + 
+        ' join mesaje_foro m ON f.idForo = m.foro group by f.idForo ORDER BY COUNT(m.idMesaje_foro) DESC';
+        let query = mysql.format(selectQuery,["foro"]);
+        pool.query(query,(err,data) => {
+            if(err){
+                console.error(err);
+                throw error;
+            }else{
+                res.render('trending',{
+                    login:true,
+                    id: req.session.idUsuario,
+                    foros:data
+                });
+            }
+    });
+    }else{
+        res.render('index',{
+            login: false,
+            name: 'Debe iniciar sesión'
+        })
+    }
+});
+
+app.get('/listaUsuarios',(req,res)=>{
+    res.render('listaUsuarios');
+});
+
 
 app.listen(5000,()=>{
     console.log('SERVER corriendo en http://localhost:5000');
