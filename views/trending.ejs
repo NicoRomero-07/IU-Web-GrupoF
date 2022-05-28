@@ -60,7 +60,7 @@
     <!-- BreadCrumb -->
           <nav class = "row col-12 px-3 py-2 m-0"  style=" background-color: #63B4B8;" aria-label="breadcrumb">
               <ol class="breadcrumb"> 
-                <li class="breadcrumb-item ps-1 text-light" aria-current="page">Pagina inicial</li>
+                <li class="breadcrumb-item ps-1 text-light" aria-current="page">Trending</li>
               </ol>
           </nav>
 
@@ -74,57 +74,21 @@
         <form action="JavaScriptResultoBuscar" method="post" target="_blank" class="mx-3 d-flex my-4 col-6">
           
             <input class="form-control me-2 border-dark" type="search" name="busqueda" size="4" maxlength="4" title="BarraDeBusqueda">
-            <input class="btn" style=" background-color: #bec0c3;" type="submit" value="Buscar" title="Boton Borrar">
+            <input class="btn" style=" background-color: #bec0c3;" type="submit" type="submit" value="Buscar" title="Boton Borrar">
           
         </form>
       </div>
-      <% for (let i = 0; i< foros.length && i<6; i++){%>
+      <% for (let i = 0; i< foros.length && i<6; i++){ %>
       <article class="card mx-auto my-4 col-12 col-lg-5 border-dark">
         <div class="card-body">
-          <h5 class="card-title"> <a href="foroView" class="nav-link text-black"><%= foros[i].Nombre%></a></h5>
-          <p class="card-text"><%= foros[i].Descripcion%></p>
-          <a href="/foro/<%=foros[i].idForo %>" class="btn btn-primary">Ver contenido</a>
+          <h5 class="card-title"> <a href="foroView" class="nav-link text-black"><%= foros[i].nombre %></a></h5>
+          <p class="card-text"><%=foros[i].descripcion %> <p style="color: #1000f7;">(<%= foros[i].mensajes %> Interacciones)</p>  </p>
+          <a href="/foro/<%= foros[i].idForo %>" class="btn btn-primary">Ver contenido</a>
         </div>
       </article>
       <%};%>
-      <!--
-      <article class="card mx-auto my-4 col-12 col-lg-5 border-dark">
-        <div class="card-body">
-          <h5 class="card-title"> <a href="foroView" class="nav-link text-black">FORO 2</a></h5>
-          <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-          <a href="foroView" class="btn btn-primary">Ver contenido</a>
-        </div>
-      </article>
-      <article class="card mx-auto my-4 col-12 col-lg-5 border-dark">
-        <div class="card-body">
-          <h5 class="card-title"> <a href="foroView" class="nav-link text-black">FORO 3</a></h5>
-          <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-          <a href="foroView" class="btn btn-primary">Ver contenido</a>
-        </div>
-      </article>
-      <article class="card mx-auto my-4 col-12 col-lg-5 border-dark">
-        <div class="card-body">
-          <h5 class="card-title"> <a href="foroView" class="nav-link text-black">FORO 4</a></h5>
-          <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-          <a href="foroView" class="btn btn-primary">Ver contenido</a>
-        </div>
-      </article>
-      <article class="card mx-auto my-4 col-12 col-lg-5 border-dark">
-        <div class="card-body">
-          <h5 class="card-title"> <a href="foroView" class="nav-link text-black">FORO 5</a></h5>
-          <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-          <a href="foroView" class="btn btn-primary">Ver contenido</a>
-        </div>
-      </article>
-      <article class="card mx-auto my-4 col-12 col-lg-5 border-dark">
-        <div class="card-body">
-          <h5 class="card-title"> <a href="foroView" class="nav-link text-black">FORO 6</a></h5>
-          <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-          <a href="foroView" class="btn btn-primary">Ver contenido</a>
-        </div>
-      </article>
-      -->
     </section>
+
    <!-- Barra lateral derecha -->
   <section class = "col-lg-4 m-0 order-lg-last order-first">
     <div class="row p-2 m-2 justify-content-center ">
