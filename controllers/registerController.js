@@ -32,7 +32,7 @@ exports.registerform = async(req, res)=>{
                     alertIcon: 'success',
                     showConfirmButton:false,
                     timer:3000,
-                    ruta:'index'
+                    ruta:''
                 })
             }
         })
