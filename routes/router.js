@@ -97,6 +97,9 @@ router.get('/confirmed',(req,res)=>{
 router.get('/confirmeEmail',(req,res)=>{
     res.render('confirmeEmail');
 });
+router.get('/listaUsuarios',(req,res)=>{
+    res.render('listaUsuarios');
+});
 
 const bcrypt = require('bcryptjs/dist/bcrypt');
 const bcryptjs = require('bcryptjs');
@@ -145,40 +148,32 @@ router.post('/registerform', async(req, res)=>{
     }
 })
 
-// Controlador del login
-/*
-router.post('/loginform', async(req, res)=>{
-
-    const usuario = req.body.usuario;
-    const password = req.body.password;
-    let passwordHash = await bcryptjs.hash(password,8);
-        pool.query('SELECT * FROM usuario WHERE nombre = ?',[usuario],async(error,results)=>{
-            if(results.length == 0){
-                res.render('login',{
-                    alert:true,
-                    alertTitle:"Login",
-                    alertMessage: "¡El nombre de usuario introducido no está disponible!",
-                    alertIcon: 'error',
-                    showConfirmButton:true,
-                    ruta:''
-                });
-            }else if( !(await bcryptjs.compare(password, results[0].contrasenya)) ){
-                res.render('login',{
-                    alert:true,
-                    alertTitle:"Login",
-                    alertMessage: "¡Las contraseña introducida no es correcta, por favor inténtelo de nuevo!",
-                    alertIcon: 'error',
-                    showConfirmButton:true,
-                    ruta:''
-                });
+router.get('/trending',(req,res)=>{
+    if(typeof req.session.loggedin != "undefined"){
+        let selectQuery = 'SELECT f.idForo,f.propietario,f.nombre,f.descripcion,count(m.idMesaje_foro) mensajes FROM bocaillo.foro f' + 
+        ' join mesaje_foro m ON f.idForo = m.foro group by f.idForo ORDER BY COUNT(m.idMesaje_foro) DESC';
+        let query = mysql.format(selectQuery,["foro"]);
+        pool.query(query,(err,data) => {
+            if(err){
+                console.error(err);
+                throw error;
             }else{
-                req.session.loggedin = true;
-                req.session.idUsuario = results[0].idUsuario;
-                res.redirect('index');
+                res.render('trending',{
+                    login:true,
+                    id: req.session.idUsuario,
+                    foros:data
+                });
             }
+    });
+    }else{
+        res.render('index',{
+            login: false,
+            name: 'Debe iniciar sesión'
         })
-})
-*/
+    }
+});
+
+
 
 //Controlador del index
 router.get('/index',(req,res)=>{
