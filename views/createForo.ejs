@@ -72,7 +72,7 @@
       <h2 class="text-center" id="labelCrearForo"> Crear foro </h2>
       
       <form class="text-center col-12" method="POST" action="/crearForo" accept-charset="UTF-8" id="formCrearForo">
-        
+        <input type="hidden" name="idUsuario" id="idUsuario" value="<%= usuario %>"/>
         <div class="col-12">
           <label for="nombreForo" class="form-label">Nombre foro</label>
           <div class="input-group has-validation w-50 mx-auto">
