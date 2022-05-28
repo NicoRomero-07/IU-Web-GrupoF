@@ -37,12 +37,44 @@ router.get('/foro/:id',(req,res,next)=>{
 
 //Acceso a crear foro
 router.get('/createForo', (req,res)=>{
-    res.render('createForo');
+    pool.query('SELECT * FROM categoria', (error, categorias)=>{
+        if(error){
+            throw error;
+        }else{
+            console.log(req.session);
+            res.render('createForo',{categorias:categorias});
+        }
+    })
+});
+//Acceso perfil autor
+router.get('/perfilAutor/:id', (req,res)=>{
+    const id = req.params.id;
+    selectQuery = 'SELECT nombre, email FROM ?? WHERE ?? = ?';
+    query = mysql.format(selectQuery,["usuario","idusuario",id]);
+    let usuarioAutor;
+    pool.query(query,(error, autor)=>{
+        if(error){
+            throw error;
+        }else{
+            usuarioAutor=autor[0];
+        }
+    })
+    selectQuery = 'SELECT idForo FROM ?? WHERE ?? = ?';
+    query = mysql.format(selectQuery,["foro","propietario",id]);
+    pool.query(query,(error, foros)=>{
+        if(error){
+            throw error;
+        }else{
+            res.render('autorView',{autor:usuarioAutor, foros:foros});
+        }
+    })
+    
 });
 
 
 const crud = require('./controllers/crud');
 router.post('/crearForo', crud.crearForo);
+
 router.get('/',(req,res)=>{
     res.render('login');
 });
