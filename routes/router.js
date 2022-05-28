@@ -3,6 +3,8 @@ const router = express.Router();
 const connection = require('../database/db_connection');
 const pool = connection.pool;
 const mysql = connection.mysql;
+const bcrypt = require('bcryptjs/dist/bcrypt');
+const bcryptjs = require('bcryptjs');
 
 router.get('/foro/:id',(req,res,next)=>{
     const id = req.params.id;
@@ -81,6 +83,8 @@ const crud = require('../controllers/crud');
 router.post('/crearForo', crud.crearForo);
 const loginController = require('../controllers/loginController');
 router.post('/loginform', loginController.loginform);
+const registerController = require('../controllers/registerController');
+router.post('/registerform', registerController.registerform);
 
 router.get('/',(req,res)=>{
     return res.render('login');
@@ -101,53 +105,7 @@ router.get('/listaUsuarios',(req,res)=>{
     res.render('listaUsuarios');
 });
 
-const bcrypt = require('bcryptjs/dist/bcrypt');
-const bcryptjs = require('bcryptjs');
-
-// Cotrolador del registro
-router.post('/registerform', async(req, res)=>{
-    const usuario = req.body.usuario;
-    const password = req.body.password;
-    const password2 = req.body.password2;
-    const email = req.body.email;
-    if(password == password2){
-        let passwordHash = await bcryptjs.hash(password,8);
-        pool.query('INSERT INTO usuario SET ?',{nombre:usuario,email:email,contrasenya:passwordHash},async(error,results)=>{
-            if(error){
-                res.render('register',{
-                    usuario:usuario,
-                    alert:true,
-                    alertTitle:"Registro",
-                    alertMessage: "¡El usuario ya ha sido registrado, por favor inténtelo de nuevo!",
-                    alertIcon: 'error',
-                    showConfirmButton:true,
-                    ruta:'register'
-                })
-            }else{
-                res.render('register',{
-                    alert:true,
-                    alertTitle:"Registro",
-                    alertMessage: "¡Registro completado con éxito!",
-                    alertIcon: 'success',
-                    showConfirmButton:false,
-                    timer:3000,
-                    ruta:'index'
-                })
-            }
-        })
-    }else{
-        res.render('register',{
-            usuario:usuario,
-            alert:true,
-            alertTitle:"Registro",
-            alertMessage: "¡Las contraseñas no coinciden, por favor inténtelo de nuevo!",
-            alertIcon: 'error',
-            showConfirmButton:true,
-            ruta:'register'
-        })
-    }
-})
-
+// Controlador del trending
 router.get('/trending',(req,res)=>{
     if(typeof req.session.loggedin != "undefined"){
         let selectQuery = 'SELECT f.idForo,f.propietario,f.nombre,f.descripcion,count(m.idMesaje_foro) mensajes FROM bocaillo.foro f' + 
@@ -172,8 +130,6 @@ router.get('/trending',(req,res)=>{
         })
     }
 });
-
-
 
 //Controlador del index
 router.get('/index',(req,res)=>{
