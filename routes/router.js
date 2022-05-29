@@ -7,6 +7,81 @@ const bcrypt = require('bcryptjs/dist/bcrypt');
 const bcryptjs = require('bcryptjs');
 const buscarForoController = require('../controllers/buscarForoController');
 
+router.get('/foro/:id',async(req,res)=>{
+    if(typeof req.session.loggedin != "undefined"){
+        const id = req.params.id;
+        let selectQuery = 'SELECT * FROM ?? WHERE ?? = ?';
+        let query = mysql.format(selectQuery,["foro","idForo",id]);
+
+        function get_foro(query){
+            return new Promise((resolve, reject) => {
+                pool.query(query,(err,data) => {
+                    if(err){
+                        reject(err);
+                    }else{
+                        resolve(data[0]);
+                    }
+                });
+            });
+        }
+        const foro = await get_foro(query);
+        
+
+        selectQuery = 'SELECT * FROM ?? WHERE ?? = ?';
+        query = mysql.format(selectQuery,["mensaje_foro","foro",id]);
+        function get_mensajes(query){
+            return new Promise((resolve,reject) =>{
+                pool.query(query,(err,data) => {
+                    if(err){
+                        reject(err);
+                    }else{
+                        resolve(data);
+                    }   
+                });
+            })
+        }
+        let mensajes = await get_mensajes(query);
+        
+        
+        selectQuery = 'SELECT idUsuario,nombre FROM ??';
+        query = mysql.format(selectQuery,["usuario"]);
+    
+        function get_usuarios (query){
+            return new Promise((resolve,reject)=>{
+                pool.query(query,(err,data) => {
+                    if(err){
+                        reject(err);
+                    }else{
+                        resolve(data);
+                    }
+                });
+            });
+        }
+        const usuarios = await get_usuarios(query);
+
+        mensajes.map(function (element){
+            let i = 0;
+            let encontrado = false;
+            while (!encontrado && i < usuarios.length){
+                if (usuarios[i].idUsuario == element.emisor){
+                    element.usuario = usuarios[i].nombre;
+                    encontrado = true;
+                }
+                i++;
+            }
+            return element;
+        });
+        let usuario = req.session.nombre;
+        res.render('foroView',{foro:foro, mensajes:mensajes, nombreUsuario : usuario}); 
+
+    }else{
+        res.render('index',{
+            login: false,
+            name: 'Debe iniciar sesión'
+        })
+    }
+})
+
 
 router.get('/foro/:id',(req,res,next)=>{
     const id = req.params.id;
@@ -88,6 +163,9 @@ router.post('/loginform', loginController.loginform);
 const registerController = require('../controllers/registerController');
 router.post('/registerform', registerController.registerform);
 
+//Enviar mensaje foro
+router.post('/enviarMensajeForo',crud.mensajeForo);
+
 router.get('/',(req,res)=>{
     return res.render('login');
 });
@@ -110,8 +188,8 @@ router.get('/listaUsuarios',(req,res)=>{
 // Controlador del trending
 router.get('/trending',(req,res)=>{
     if(typeof req.session.loggedin != "undefined"){
-        let selectQuery = 'SELECT f.idForo,f.propietario,f.nombre,f.descripcion,count(m.idMesaje_foro) mensajes FROM bocaillo.foro f' + 
-        ' join mesaje_foro m ON f.idForo = m.foro group by f.idForo ORDER BY COUNT(m.idMesaje_foro) DESC';
+        let selectQuery = 'SELECT f.idForo,f.propietario,f.nombre,f.descripcion,count(m.idMensaje_foro) mensajes FROM bocaillo.foro f' + 
+        ' join mensaje_foro m ON f.idForo = m.foro group by f.idForo ORDER BY COUNT(m.idMensaje_foro) DESC';
         let query = mysql.format(selectQuery,["foro"]);
         pool.query(query,(err,data) => {
             if(err){
@@ -133,6 +211,40 @@ router.get('/trending',(req,res)=>{
     }
 });
 
+// Controlador del login
+router.post('/loginform', async(req, res)=>{
+
+    const usuario = req.body.usuario;
+    const password = req.body.password;
+    let passwordHash = await bcryptjs.hash(password,8);
+        pool.query('SELECT * FROM usuario WHERE nombre = ?',[usuario],async(error,results)=>{
+            if(results.length == 0){
+                res.render('login',{
+                    alert:true,
+                    alertTitle:"Login",
+                    alertMessage: "¡El nombre de usuario introducido no está disponible!",
+                    alertIcon: 'error',
+                    showConfirmButton:true,
+                    ruta:''
+                });
+            }else if( !(await bcryptjs.compare(password, results[0].contrasenya)) ){
+                res.render('login',{
+                    alert:true,
+                    alertTitle:"Login",
+                    alertMessage: "¡Las contraseña introducida no es correcta, por favor inténtelo de nuevo!",
+                    alertIcon: 'error',
+                    showConfirmButton:true,
+                    ruta:''
+                });
+            }else{
+                req.session.loggedin = true;
+                req.session.idUsuario = results[0].idUsuario;
+                req.session.nombre = results[0].nombre;
+                res.redirect('index');
+            }
+        })
+});
+
 //Controlador del index
 router.get('/index',(req,res)=>{
     if(typeof req.session.loggedin != "undefined"){
@@ -146,6 +258,7 @@ router.get('/index',(req,res)=>{
                 res.render('index',{
                     login:true,
                     id: req.session.idUsuario,
+                    nombreUsuario: req.session.nombre,
                     foros:data
                 });
             }
@@ -159,6 +272,5 @@ router.get('/index',(req,res)=>{
 });
 
 router.post('/buscarForo', buscarForoController.buscarForo);
-
 
 module.exports = router;

@@ -183,7 +183,7 @@ function addRowMensajeForo(contenido,foro,emisor,fechaEmision) {
 
 function queryRowMensajeForo(foroID) {
     let selectQuery = 'SELECT * FROM ?? WHERE ?? = ?';
-    let query = mysql.format(selectQuery,["mesaje_foro","foro",foroID]);
+    let query = mysql.format(selectQuery,["mensaje_foro","foro",foroID]);
     pool.query(query,(err,data) => {
         if(err){
             console.error(err);
