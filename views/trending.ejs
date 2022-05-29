@@ -6,19 +6,24 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     
     <!-- Bootstrap CSS -->
-    <link href="css/style.css" rel="stylesheet"/>
+    <link href="./css/style.css" rel="stylesheet" />
 
     <title>Bocaillo</title>
   </head>
   <!-- Container -->
   <body class="container-fluid min-vh-100 d-flex flex-column justify-content-between">
+    <%
+      if(!login){
+        %> <a href="/">Por favor inicie sesion </a>  <%
+      }else{
+    %>
     <header class="row">
         <!-- NavBar -->
       <nav class="col-12 navbar navbar-expand-lg navbar-dark py-2" style="background-color: #664E88;">
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarTogglerDemo03" aria-controls="navbarTogglerDemo03" aria-expanded="false" aria-label="Toggle navigation">
           <span class="navbar-toggler-icon"></span>
         </button>
-        <a class="navbar-brand" href="index">Bocaillo</a>
+        <h1 class="navbar-brand"><a class="text-decoration-none text-light" href="index">Bocadillo</a></h1>
         <a class="navbar-brand" href="index">
           <img alt="Brand" width="35" height="35"
           src="img/bocaillo.png">
@@ -30,7 +35,7 @@
               <a class="nav-link" href="#">Categorias</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="#">Trending</a>
+              <a class="nav-link" href="trending">Trending</a>
             </li>
           </ul>
           <section class="row col-12 mx-0 col-lg-6 justify-content-end align-items-center">
@@ -43,7 +48,7 @@
               </a>
               <ul class="dropdown-menu text-small shadow" aria-labelledby="dropdownUser2">
                 <li><a class="dropdown-item" href="#">Ajustes</a></li>
-                <li><a class="dropdown-item" href="#">Perfil</a></li>
+                <li><a class="dropdown-item" href="profileView">Perfil</a></li>
                 <li><hr class="dropdown-divider"></li>
                 <li><a class="dropdown-item" href="#">Cerrar sesion</a></li>
               </ul>
@@ -55,38 +60,89 @@
     <!-- BreadCrumb -->
           <nav class = "row col-12 px-3 py-2 m-0"  style=" background-color: #63B4B8;" aria-label="breadcrumb">
               <ol class="breadcrumb"> 
-                <li class="breadcrumb-item ps-1 text-light"><a class = "text-light" href="index">Pagina inicial</a></li>
-                <li class="breadcrumb-item ps-1 text-light">Registro</li>
-                <li class="breadcrumb-item ps-1 text-light" aria-current="page">Confirmación email</li>
+                <li class="breadcrumb-item ps-1 text-light" aria-current="page">Trending</li>
               </ol>
           </nav>
 
     </header>
-   <!-- Contenido-->
-   <main class = "row p-5">
-    <h2>
-      <b>Confirmación Email</b>
-    </h2>
-    <p>
-        Hemos enviado un correo a la dirección xxx@email.com. <br>
-        Por favor compruebe su buzón y encuentra el mensaje que le hemos mandado.<br>
-        Puede que el mensaje tarde como máximo 10 minutos en llegar. <br>
-        
-    </p>
-    <!-- Temporizador-->
-    <div class="row justify-content-center border rounded-pill" id="countdown3"></div>
+    <!-- Main-->
+    <main class="row ">
+      <!-- Foros -->
+    <section class = "row col-12 col-lg-6 mb-auto mx-auto">
+       <!--Buscador-->
+      <div>   
+        <form action="JavaScriptResultoBuscar" method="post" target="_blank" class="mx-3 d-flex my-4 col-6">
+          
+            <input class="form-control me-2 border-dark" type="search" name="busqueda" size="4" maxlength="4" title="BarraDeBusqueda">
+            <input class="btn" style=" background-color: #bec0c3;" type="submit" type="submit" value="Buscar" title="Boton Borrar">
+          
+        </form>
+      </div>
+      <% for (let i = 0; i< foros.length && i<6; i++){ %>
+      <article class="card mx-auto my-4 col-12 col-lg-5 border-dark">
+        <div class="card-body">
+          <h5 class="card-title"> <a href="foroView" class="nav-link text-black"><%= foros[i].nombre %></a></h5>
+          <p class="card-text"><%=foros[i].descripcion %> <p style="color: #1000f7;">(<%= foros[i].mensajes %> Interacciones)</p>  </p>
+          <a href="/foro/<%= foros[i].idForo %>" class="btn btn-primary">Ver contenido</a>
+        </div>
+      </article>
+      <%};%>
+    </section>
 
-    <p>
-        En caso de que transcurrido el período de 10 minutos, tampoco haya recibido el email, pulsa el siguiente botón.
-    </p>
-    <!--Botones-->
-    <div class="d-grid gap-2 col-6 justify-content-md-start">
-      <button type="button" class="btn btn-secondary">Enviar de nuevo</button>
-      <button type="button" class="btn btn-success"><a href="index" class="nav-link text-white">Volver a la página principal</a></button>
-    </div> 
-    
+   <!-- Barra lateral derecha -->
+  <section class = "col-lg-4 m-0 order-lg-last order-first">
+    <div class="row p-2 m-2 justify-content-center ">
+      <button class="d-flex flex-column align-items-center btn-secondary rounded-pill mx-auto col-4">
+        <i class="bi bi-layout-text-sidebar-reverse"></i>
+        <a class="nav-link text-white" href="/createForo">Nuevo<br>Foro</a>
+      </button>
+      <button class="d-flex flex-column align-items-center btn-secondary rounded-pill mx-auto col-4">
+        <i class="bi bi-chat-dots"></i>
+        <a class="nav-link text-white" href="listaUsuarios">Mensaje<br>Privado</a>
+      </button>
+    </div>
+    <!-- Top autores -->
+    <div class="row justify-content-center">
+      <article class="row justify-content-center d-none d-lg-block bg-secondary m-5 p-2 col-8">
+        <h2 class = "text-white">Top Autores</h2>
+        <hr>
+        <ul class="nav nav-pills flex-column mb-auto">
+          <li class="nav-item text-light">
+            1. Autor1 &nbsp
+            <a href="autorView" class="text-white">
+              Ver perfil
+            </a>
+          </li>
+          <li class="nav-item text-light">
+            2. Autor2 &nbsp
+            <a href="autorView" class="text-white">
+              Ver perfil
+            </a>
+          </li>
+          <li class="nav-item text-light">
+            3. Autor3 &nbsp
+            <a href="autorView" class="text-white">
+              Ver perfil
+            </a>
+          </li>
+          <li class="nav-item text-light">
+            4. Autor4 &nbsp
+            <a href="autorView" class="text-white">
+              Ver perfil
+            </a>
+          </li>
+          <li class="nav-item text-light">
+            5. Autor5 &nbsp
+            <a href="autorView" class="text-white">
+              Ver perfil
+            </a>
+          </li>
+        </ul>
+      </article>
+    </div>
+  </section>
 </main>
-    
+
     
     <!-- Pie de pagina-->
 
@@ -111,6 +167,9 @@
   </footer>
     
     <script src="node_modules/bootstrap/dist/js/bootstrap.min.js"></script>
-    <script src="js/timer.js"></script>
+    <%
+      } 
+    %>
+  
   </body>
 </html>

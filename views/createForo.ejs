@@ -21,8 +21,8 @@
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarTogglerDemo03" aria-controls="navbarTogglerDemo03" aria-expanded="false" aria-label="Toggle navigation">
           <span class="navbar-toggler-icon"></span>
         </button>
-        <a class="navbar-brand" href="index.html">Bocaillo</a>
-        <a class="navbar-brand" href="index.html">
+        <a class="navbar-brand" href="index">Bocaillo</a>
+        <a class="navbar-brand" href="index">
           <img alt="Brand" width="35" height="35"
           src="img/bocaillo.png">
         </a>
@@ -58,8 +58,8 @@
     <!-- BreadCrumb -->
           <nav class = "row col-12 px-3 py-2 m-0"  style=" background-color: #63B4B8;" aria-label="breadcrumb">
               <ol class="breadcrumb"> 
-                <li class="breadcrumb-item ps-1 text-light"><a class = "text-light" href="index.html">Pagina inicial</a></li>
-                <li class="breadcrumb-item ps-1 text-light" href="index.html">Crear Foro</li>
+                <li class="breadcrumb-item ps-1 text-light"><a class = "text-light" href="index">Pagina inicial</a></li>
+                <li class="breadcrumb-item ps-1 text-light" href="index">Crear Foro</li>
               </ol>
           </nav>
 
@@ -68,11 +68,11 @@
   <main class="row">
 
     <!-- Crear Foro -->
-    <article class="container col-5 p-3 mx-auto">
+    <article class="container col-12 p-3 mx-0">
       <h2 class="text-center" id="labelCrearForo"> Crear foro </h2>
       
-      <form class="text-center" method="POST" action="/crearForo" accept-charset="UTF-8" id="formCrearForo">
-        
+      <form class="text-center col-12" method="POST" action="/crearForo" accept-charset="UTF-8" id="formCrearForo">
+        <input type="hidden" name="idUsuario" id="idUsuario" value="<%= usuario %>"/>
         <div class="col-12">
           <label for="nombreForo" class="form-label">Nombre foro</label>
           <div class="input-group has-validation w-50 mx-auto">
@@ -86,20 +86,26 @@
         <div class="col-12">
           <label for="descripcion" class="form-label">Descripción</label>
           <div class="input-group has-validation w-50 mx-auto">
-            <textarea name="descripcion" id="descripcion" rows="10" cols="50"></textarea>
+            <textarea class ="form-control" name="descripcion" id="descripcion"></textarea>
             <div class="invalid-feedback">
               Descripcion requerida.
             </div>
           </div>
         </div>
 
+        <label for="categoria" class="form-label">Categoria</label><br>
+        <select name="categoria" id="categoria">
+          
+          <% categorias.forEach((categoria)=>{ %>
+              <option id="<%= categoria.id %>" name ="<%= categoria.id %>"><%= categoria.nombre %></option>
+          <% })  %>
+        </select><br>
+
          <!-- Button trigger modal -->
         <button type="submit" class="w-50 btn btn-md btn-success mt-3" data-bs-toggle="modal" data-bs-target="#exampleModal">Crear</button>
 
         <button class="w-50 btn btn-secondary btn-md mt-3"><a class="nav-link text-white" href="/">Cancelar</a></button>
       </form>
-
-      <div class="mt-5"></div>
 
     </article>
     

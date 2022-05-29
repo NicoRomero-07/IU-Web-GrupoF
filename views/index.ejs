@@ -8,11 +8,15 @@
     <!-- Bootstrap CSS -->
     <link href="./css/style.css" rel="stylesheet" />
 
-
     <title>Bocaillo</title>
   </head>
   <!-- Container -->
   <body class="container-fluid min-vh-100 d-flex flex-column justify-content-between">
+    <%
+      if(!login){
+        %> <a href="/">Por favor inicie sesion </a>  <%
+      }else{
+    %>
     <header class="row">
         <!-- NavBar -->
       <nav class="col-12 navbar navbar-expand-lg navbar-dark py-2" style="background-color: #664E88;">
@@ -31,7 +35,7 @@
               <a class="nav-link" href="#">Categorias</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="#">Trending</a>
+              <a class="nav-link" href="trending">Trending</a>
             </li>
           </ul>
           <section class="row col-12 mx-0 col-lg-6 justify-content-end align-items-center">
@@ -65,15 +69,20 @@
     <main class="row ">
       <!-- Foros -->
     <section class = "row col-12 col-lg-6 mb-auto mx-auto">
-       <!--Buscador-->
-      <div>   
-        <form action="JavaScriptResultoBuscar" method="post" target="_blank" class="mx-3 d-flex my-4 col-6">
-          
-            <input class="form-control me-2 border-dark" type="search" name="busqueda" size="4" maxlength="4" title="BarraDeBusqueda">
-            <input class="btn" style=" background-color: #bec0c3;" type="submit" type="submit" value="Buscar" title="Boton Borrar">
-          
+      <!--Buscador-->
+
+      <div style="display:flex; flex-direction: row; justify-content: space-evenly; ">
+        <h2> Buscador </h2>
+      </div>
+
+      <div style="display:flex; flex-direction: row; justify-content: space-evenly;">
+        <form action="/buscarForo" method="post" class="mx-3 d-flex my-4 col-6">
+          <input class="form-control me-2 border-dark" type="search" name="busquedaClave" size="4" maxlength="4"
+            title="BarraDeBusqueda">
+          <input class="btn" style=" background-color: #bec0c3;" type="submit" value="Buscar" title="Boton Borrar">
         </form>
       </div>
+
       <% for (let i = 0; i< foros.length && i<6; i++){%>
       <article class="card mx-auto my-4 col-12 col-lg-5 border-dark">
         <div class="card-body">
@@ -199,5 +208,9 @@
   </footer>
     
     <script src="node_modules/bootstrap/dist/js/bootstrap.min.js"></script>
+    <%
+      } 
+    %>
+  
   </body>
 </html>
