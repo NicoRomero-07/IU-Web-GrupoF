@@ -3,6 +3,8 @@ const router = express.Router();
 const connection = require('../database/db_connection');
 const pool = connection.pool;
 const mysql = connection.mysql;
+const bcrypt = require('bcryptjs/dist/bcrypt');
+const bcryptjs = require('bcryptjs');
 
 router.get('/foro/:id',async(req,res)=>{
     if(typeof req.session.loggedin != "undefined"){
@@ -126,6 +128,10 @@ router.get('/perfilAutor/:id', (req,res)=>{
 
 const crud = require('../controllers/crud');
 router.post('/crearForo', crud.crearForo);
+const loginController = require('../controllers/loginController');
+router.post('/loginform', loginController.loginform);
+const registerController = require('../controllers/registerController');
+router.post('/registerform', registerController.registerform);
 
 //Enviar mensaje foro
 router.post('/enviarMensajeForo',crud.mesajeForo);
@@ -145,53 +151,35 @@ router.get('/confirmed',(req,res)=>{
 router.get('/confirmeEmail',(req,res)=>{
     res.render('confirmeEmail');
 });
+router.get('/listaUsuarios',(req,res)=>{
+    res.render('listaUsuarios');
+});
 
-const bcrypt = require('bcryptjs/dist/bcrypt');
-const bcryptjs = require('bcryptjs');
-
-// Cotrolador del registro
-router.post('/registerform', async(req, res)=>{
-    const usuario = req.body.usuario;
-    const password = req.body.password;
-    const password2 = req.body.password2;
-    const email = req.body.email;
-    if(password == password2){
-        let passwordHash = await bcryptjs.hash(password,8);
-        pool.query('INSERT INTO usuario SET ?',{nombre:usuario,email:email,contrasenya:passwordHash},async(error,results)=>{
-            if(error){
-                res.render('register',{
-                    usuario:usuario,
-                    alert:true,
-                    alertTitle:"Registro",
-                    alertMessage: "¡El usuario ya ha sido registrado, por favor inténtelo de nuevo!",
-                    alertIcon: 'error',
-                    showConfirmButton:true,
-                    ruta:'register'
-                })
+// Controlador del trending
+router.get('/trending',(req,res)=>{
+    if(typeof req.session.loggedin != "undefined"){
+        let selectQuery = 'SELECT f.idForo,f.propietario,f.nombre,f.descripcion,count(m.idMesaje_foro) mensajes FROM bocaillo.foro f' + 
+        ' join mesaje_foro m ON f.idForo = m.foro group by f.idForo ORDER BY COUNT(m.idMesaje_foro) DESC';
+        let query = mysql.format(selectQuery,["foro"]);
+        pool.query(query,(err,data) => {
+            if(err){
+                console.error(err);
+                throw error;
             }else{
-                res.render('register',{
-                    alert:true,
-                    alertTitle:"Registro",
-                    alertMessage: "¡Registro completado con éxito!",
-                    alertIcon: 'success',
-                    showConfirmButton:false,
-                    timer:3000,
-                    ruta:'index'
-                })
+                res.render('trending',{
+                    login:true,
+                    id: req.session.idUsuario,
+                    foros:data
+                });
             }
-        })
+    });
     }else{
-        res.render('register',{
-            usuario:usuario,
-            alert:true,
-            alertTitle:"Registro",
-            alertMessage: "¡Las contraseñas no coinciden, por favor inténtelo de nuevo!",
-            alertIcon: 'error',
-            showConfirmButton:true,
-            ruta:'register'
+        res.render('index',{
+            login: false,
+            name: 'Debe iniciar sesión'
         })
     }
-})
+});
 
 // Controlador del login
 router.post('/loginform', async(req, res)=>{
@@ -225,8 +213,9 @@ router.post('/loginform', async(req, res)=>{
                 res.redirect('index');
             }
         })
-})
+});
 
+//Controlador del index
 router.get('/index',(req,res)=>{
     if(typeof req.session.loggedin != "undefined"){
         let selectQuery = 'SELECT * FROM ??';

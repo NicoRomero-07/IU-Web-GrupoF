@@ -14,7 +14,6 @@ exports.crearForo = (req, res)=>{
     });
     console.log(nombre + "-" + descripcion);
 }
-
 exports.mesajeForo = (req, res)=>{
     const contenido = req.body.contenido;
     const idForo = req.body.id;
