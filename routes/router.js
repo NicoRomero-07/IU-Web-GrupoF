@@ -4,32 +4,79 @@ const connection = require('../database/db_connection');
 const pool = connection.pool;
 const mysql = connection.mysql;
 
-router.get('/foro/:id',(req,res,next)=>{
-    const id = req.params.id;
-    let selectQuery = 'SELECT * FROM ?? WHERE ?? = ?';
-    let query = mysql.format(selectQuery,["foro","idForo",id]);
-    let foro;
-    let mensajes;
-    pool.query(query,(err,data) => {
-        if(err){
-            console.error(err);
-            throw error;
-        }else{
-            foro = data[0];
+router.get('/foro/:id',async(req,res)=>{
+    if(typeof req.session.loggedin != "undefined"){
+        const id = req.params.id;
+        let selectQuery = 'SELECT * FROM ?? WHERE ?? = ?';
+        let query = mysql.format(selectQuery,["foro","idForo",id]);
+
+        function get_foro(query){
+            return new Promise((resolve, reject) => {
+                pool.query(query,(err,data) => {
+                    if(err){
+                        reject(err);
+                    }else{
+                        resolve(data[0]);
+                    }
+                });
+            });
         }
-    });
-    selectQuery = 'SELECT * FROM ?? WHERE ?? = ?';
-    query = mysql.format(selectQuery,["mensaje_foro","foro",id]);
-    pool.query(query,(err,data) => {
-        if(err){
-            console.error(err);
-            throw error;
-        }else{
-            res.render('foroView',{foro:foro, mensajes:data, pool:pool, mysql:mysql}); 
-        }
+        const foro = await get_foro(query);
         
-    });
+
+        selectQuery = 'SELECT * FROM ?? WHERE ?? = ?';
+        query = mysql.format(selectQuery,["mensaje_foro","foro",id]);
+        function get_mensajes(query){
+            return new Promise((resolve,reject) =>{
+                pool.query(query,(err,data) => {
+                    if(err){
+                        reject(err);
+                    }else{
+                        resolve(data);
+                    }   
+                });
+            })
+        }
+        let mensajes = await get_mensajes(query);
+        
+        
+        selectQuery = 'SELECT idUsuario,nombre FROM ??';
+        query = mysql.format(selectQuery,["usuario"]);
     
+        function get_usuarios (query){
+            return new Promise((resolve,reject)=>{
+                pool.query(query,(err,data) => {
+                    if(err){
+                        reject(err);
+                    }else{
+                        resolve(data);
+                    }
+                });
+            });
+        }
+        const usuarios = await get_usuarios(query);
+
+        mensajes.map(function (element){
+            let i = 0;
+            let encontrado = false;
+            while (!encontrado && i < usuarios.length){
+                if (usuarios[i].idUsuario == element.emisor){
+                    element.usuario = usuarios[i].nombre;
+                    encontrado = true;
+                }
+                i++;
+            }
+            return element;
+        });
+        let usuario = req.session.nombre;
+        res.render('foroView',{foro:foro, mensajes:mensajes, nombreUsuario : usuario}); 
+
+    }else{
+        res.render('index',{
+            login: false,
+            name: 'Debe iniciar sesión'
+        })
+    }
 });
 
 //Acceso a crear foro
@@ -79,6 +126,9 @@ router.get('/perfilAutor/:id', (req,res)=>{
 
 const crud = require('../controllers/crud');
 router.post('/crearForo', crud.crearForo);
+
+//Enviar mensaje foro
+router.post('/enviarMensajeForo',crud.mesajeForo);
 
 router.get('/',(req,res)=>{
     return res.render('login');
@@ -171,6 +221,7 @@ router.post('/loginform', async(req, res)=>{
             }else{
                 req.session.loggedin = true;
                 req.session.idUsuario = results[0].idUsuario;
+                req.session.nombre = results[0].nombre;
                 res.redirect('index');
             }
         })
@@ -188,6 +239,7 @@ router.get('/index',(req,res)=>{
                 res.render('index',{
                     login:true,
                     id: req.session.idUsuario,
+                    nombreUsuario: req.session.nombre,
                     foros:data
                 });
             }
