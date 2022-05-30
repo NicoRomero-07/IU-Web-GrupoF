@@ -23,7 +23,13 @@
     border-radius: 10%;
 }
 
-foro-view-container-comentario-mensajes{
-    width: auto;
+
+.foro-view-container-comentario{
+    margin: 0 auto;
+    max-width: 800px;
 }
 
+
+.foro-view-margin-right-8px {
+    margin-right: 8px;
+}

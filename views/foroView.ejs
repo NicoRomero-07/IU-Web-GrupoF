@@ -11,7 +11,7 @@
     integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
 
   <link rel="stylesheet" href="../css/foro-view.css">
-
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
   <title>Bocaillo</title>
 </head>
 
@@ -73,67 +73,64 @@
   <!-- Main -->
   <main class="row">
     <!-- Foro -->
-    <section class="d-block col-12 d-sm-block col-sm-12 d-lg-block col-lg-12 p-0 m-0 ">
+    <section>
       <h2 class="text-center mt-3 mb-3">
         <%= foro.Nombre %>
       </h2>
       <!--Enviar Mensaje-->
-      <div class="foro-view-container-comentario-mensajes">
+      <div class="row justify-content-center  sticky-top foro-view-container-comentario">
+        <form class="border border-dark " action="/enviarMensajeForo" method="POST">
+          <input type="hidden" name="id" value="<%=foro.idForo %>">
+          <div class="row  bg-light">
+            <br />
+            <p class="">Comenta en el foro</p>
+            <textarea class="" id="forumMessageSubmit" rows="3" cols="120" name="contenido" required></textarea>
 
-        <div class="row justify-content-center m-0 p-0 sticky-top ">
-          <form class="border border-dark col-6" action="/enviarMensajeForo" method="POST">
-            <input type="hidden" name="id" value="<%=foro.idForo %>">
-            <div class="row m-0 p-0 bg-light">
-              <br />
-              <p class="mt-3">Comenta en el foro</p>
-              <textarea class="mx-3 mb-3 col-7 col-sm-9" id="forumMessageSubmit" rows="3" cols="120" name="contenido"
-                required></textarea>
-              <div class="row align-items-center justify-content-end col-3 col-sm-2 mx-auto">
-                <input class="btn btn-primary" id="submitButton" type="submit" value="Publicar">
-              </div>
-            </div>
-          </form>
-        </div>
+            <input class="btn btn-primary" id="submitButton" type="submit" value="Publicar">
+          </div>
+        </form>
+      </div>
 
-        <div class="foro-view-container">
+      <div class="foro-view-container">
 
-          <% mensajes.forEach((mensaje)=>{%>
-            <% let fecha=new Date(mensaje.fechaEmision); year=fecha.getFullYear(); month=fecha.getMonth()+1;
-              dt=fecha.getDate(); h=fecha.getHours(); min=fecha.getMinutes(); s=fecha.getSeconds(); if (dt < 10) {
-              dt='0' + dt; } if (s < 10) { s='0' + s; } if (h < 10) { h='0' + h; } if (min < 10) { min='0' + min; } if
-              (month < 10) { month='0' + month; } let fechaEmision=dt+"/"+month+"/"+year+" "+h+" :"+min+":"+s; %>
+        <% mensajes.forEach((mensaje)=>{%>
+          <% let fecha=new Date(mensaje.fechaEmision); year=fecha.getFullYear(); month=fecha.getMonth()+1;
+            dt=fecha.getDate(); h=fecha.getHours(); min=fecha.getMinutes(); s=fecha.getSeconds(); if (dt < 10) { dt='0'
+            + dt; } if (s < 10) { s='0' + s; } if (h < 10) { h='0' + h; } if (min < 10) { min='0' + min; } if (month <
+            10) { month='0' + month; } let fechaEmision=dt+"/"+month+"/"+year+" "+h+" :"+min+":"+s; %>
 
 
-              <div class="foro-view-outer" role="alert" aria-live="assertive" aria-atomic="true">
-                <div class="foro-view-mensaje">
+            <div class="foro-view-outer" role="alert" aria-live="assertive" aria-atomic="true">
+              <div class="foro-view-mensaje">
 
-                  <div class="toast-header border-dark">
-                    <i class="bi bi-person-circle me-2"></i>
-                    <strong class="me-auto">
-                      <%=mensaje.usuario%>
-                    </strong>
-                    <small class="text-muted">
-                      <%=fechaEmision%>
-                    </small>
-                    <%if (mensaje.emisor==idUsuario ){ %>
+                <div class="toast-header border-dark">
+                  <i class="bi bi-person-circle me-2"></i>
+                  <strong class="me-auto">
+                    <%=mensaje.usuario%>
+                  </strong>
+                  <small class="text-muted foro-view-margin-right-8px ">
+                    <%=fechaEmision%>
+                  </small>
+                  <%if (mensaje.emisor==idUsuario ){ %>
 
-                      <form action="/deleteMensajeForo/<%= mensaje.idMensaje_foro%>" method="POST">
-                        <input type="hidden" name="idForo" value="<%=foro.idForo %>">
-                        <button type="submit" class="btn-close" aria-label="Close"></button>
-                        <% } %>
-                      </form>
+                    <form action="/deleteMensajeForo/<%= mensaje.idMensaje_foro%>" method="POST">
+                      <input type="hidden" name="idForo" value="<%=foro.idForo %>">
+                      <button type="submit" class="btn btn-danger btn-sm  " aria-label="Close">
+                        <i class="fa fa-close"></i>
+                      </button>
+                      <% } %>
+                    </form>
 
-                  </div>
-                  <div class="toast-body">
-                    <%=mensaje.contenido%>
-                  </div>
                 </div>
-
+                <div class="toast-body">
+                  <%=mensaje.contenido%>
+                </div>
               </div>
 
-              <br />
-              <%});%>
-        </div>
+            </div>
+
+            <br />
+            <%});%>
       </div>
 
     </section>
