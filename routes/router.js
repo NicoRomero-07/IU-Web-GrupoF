@@ -174,7 +174,6 @@ router.get('/index',(req,res)=>{
                 console.error(err);
                 throw error;
             }else{
-                console.log(dataAutores)
                 let selectQuery = 'SELECT * FROM ??';
                 let query = mysql.format(selectQuery,["foro"]);
                 pool.query(query,(err,data) => {
