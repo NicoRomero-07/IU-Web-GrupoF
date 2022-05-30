@@ -272,5 +272,6 @@ router.get('/index',(req,res)=>{
 });
 
 router.post('/buscarForo', buscarForoController.buscarForo);
+router.post('/deleteMensajeForo/:mensajeId', crud.deleteMensajeForo);
 
 module.exports = router;
