@@ -113,7 +113,7 @@ router.get('/perfilAutor/:id', (req,res)=>{
             usuarioAutor=autor[0];
         }
     })
-    selectQuery = 'SELECT idForo FROM ?? WHERE ?? = ?';
+    selectQuery = 'SELECT idForo, propietario,nombre,descripcion,categoria FROM ?? WHERE ?? = ?';
     query = mysql.format(selectQuery,["foro","propietario",id]);
     pool.query(query,(error, foros)=>{
         if(error){
@@ -166,21 +166,35 @@ router.get('/listaUsuarios',(req,res)=>{
 //Controlador del index
 router.get('/index',(req,res)=>{
     if(typeof req.session.loggedin != "undefined"){
-        let selectQuery = 'SELECT * FROM ??';
-        let query = mysql.format(selectQuery,["foro"]);
-        pool.query(query,(err,data) => {
+        
+        let selectQueryAutor = 'SELECT u.idUsuario, u.nombre, u.email FROM ?? mf JOIN ?? f ON f.idForo = mf.foro JOIN ?? u ON u.idUsuario = f.propietario GROUP BY u.idUsuario ORDER BY count(mf.idMesaje_foro) DESC';
+        let queryAutor = mysql.format(selectQueryAutor,["mensaje_foro","foro","usuario"]);
+        pool.query(queryAutor,(err,dataAutores) => {
             if(err){
                 console.error(err);
                 throw error;
             }else{
-                res.render('index',{
-                    login:true,
-                    id: req.session.idUsuario,
-                    nombreUsuario: req.session.nombre,
-                    foros:data
+                console.log(dataAutores)
+                let selectQuery = 'SELECT * FROM ??';
+                let query = mysql.format(selectQuery,["foro"]);
+                pool.query(query,(err,data) => {
+                if(err){
+                    console.error(err);
+                    throw error;
+                }else{
+                    res.render('index',{
+                        login:true,
+                        id: req.session.idUsuario,
+                        nombreUsuario: req.session.nombre,
+                        foros:data,
+                        autores:dataAutores
+                    });
+                }
                 });
             }
-    });
+        });
+        
+        
     }else{
         res.render('index',{
             login: false,

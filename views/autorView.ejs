@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     
     <!-- Bootstrap CSS -->
-    <link href="./css/style.css" rel="stylesheet" />
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
 
     <title>Bocaillo</title>
   </head>
@@ -20,19 +20,19 @@
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarTogglerDemo03" aria-controls="navbarTogglerDemo03" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
-    <h1 class="navbar-brand"><a class="text-decoration-none text-light" href="index">Bocadillo</a></h1>
-    <a class="navbar-brand" href="index">
+    <h1 class="navbar-brand"><a class="text-decoration-none text-light" href="../index">Bocaillo</a></h1>
+    <a class="navbar-brand" href="../index">
       <img alt="Brand" width="35" height="35"
-      src="img/bocaillo.png">
+      src="../img/bocaillo.png">
     </a>
-
+    
     <div class="collapse navbar-collapse" id="navbarTogglerDemo03">
       <ul class="navbar-nav me-auto ms-2 mb-2 mb-lg-0">
         <li class="nav-item">
           <a class="nav-link" href="#">Categorias</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="#">Trending</a>
+          <a class="nav-link" href="../trending">Trending</a>
         </li>
       </ul>
       <section class="row col-12 mx-0 col-lg-6 justify-content-end align-items-center">
@@ -57,8 +57,8 @@
     <!-- BreadCrumb -->
     <nav class = "row col-12 px-3 py-2 m-0"  style=" background-color: #63B4B8;" aria-label="breadcrumb">
       <ol class="breadcrumb my-2">
-        <li class="breadcrumb-item"><a href="index.html" class="text-light">Pagina Inicial</a></li>
-        <li class="breadcrumb-item text-light" aria-current="page"><a>Login</a></li>
+        <li class="breadcrumb-item"><a href="../index" class="text-light">Pagina Inicial</a></li>
+        <li class="breadcrumb-item text-light" aria-current="page"><a>Perfil de autor</a></li>
       </ol>
     </nav>
 
@@ -70,8 +70,8 @@
     <div class="container col-10 p-3 mx-auto">
       <div class="row">
         <div class="col-5 text-center">
-          <img width="200" height="200" alt ="imagen de perfil" src="img/profilepicture.png">
-          <h3 class=""><%= autor.nombre %></h3>
+          <img width="200" height="200" alt ="imagen de perfil" src="../img/profilepicture.png">
+          <h3><%= autor.nombre %></h3>
         </div>
         <div class="col-7">
           <p>

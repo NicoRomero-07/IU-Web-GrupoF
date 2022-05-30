@@ -19,10 +19,10 @@
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarTogglerDemo03" aria-controls="navbarTogglerDemo03" aria-expanded="false" aria-label="Toggle navigation">
           <span class="navbar-toggler-icon"></span>
         </button>
-        <a class="navbar-brand" href="index.html">Bocaillo</a>
-        <a class="navbar-brand" href="index.html">
+        <a class="navbar-brand" href="../index">Bocaillo</a>
+        <a class="navbar-brand" href="../index">
           <img alt="Brand" width="35" height="35"
-          src="img/bocaillo.png">
+          src="../img/bocaillo.png">
         </a>
 
         <div class="collapse navbar-collapse" id="navbarTogglerDemo03">
@@ -56,7 +56,7 @@
     <!-- BreadCrumb -->
           <nav class = "row col-12 px-3 py-2 m-0"  style=" background-color: #63B4B8;" aria-label="breadcrumb">
               <ol class="breadcrumb"> 
-                <li class="breadcrumb-item ps-1 text-light"><a class = "text-light" href="index.html">Pagina inicial</a></li>
+                <li class="breadcrumb-item ps-1 text-light"><a class = "text-light" href="../index.html">Pagina inicial</a></li>
                 <li class="breadcrumb-item ps-1 text-light" href="index.html">Crear Foro</li>
               </ol>
           </nav>
@@ -93,9 +93,8 @@
 
         <label for="categoria" class="form-label">Categoria</label><br>
         <select name="categoria" id="categoria">
-          
           <% categorias.forEach((categoria)=>{ %>
-              <option id="<%= categoria.id %>" name ="<%= categoria.id %>"><%= categoria.nombre %></option>
+              <option id="<%= categoria.idCategoria %>" name ="<%= categoria.nombre %>" value="<%= categoria.idCategoria%>"><%= categoria.nombre %></option>
           <% })  %>
         </select><br>
 
