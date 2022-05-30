@@ -17,7 +17,7 @@
 
 <!-- Container -->
 
-<body class="container-fluid min-vh-100 d-flex flex-column justify-content-between">
+<body class="container-fluid min-vh-100 d-flex flex-column justify-content-between" >
   <header class="row">
     <!-- NavBar -->
     <nav class="col-12 navbar navbar-expand-lg navbar-dark py-2" style="background-color: #664E88;">
@@ -78,62 +78,65 @@
         <%= foro.Nombre %>
       </h2>
       <!--Enviar Mensaje-->
-      <div class="row justify-content-center m-0 p-0">
-        <form class="border border-dark col-6" action="/enviarMensajeForo" method="POST">
-          <input type="hidden" name="id" value="<%=foro.idForo %>">
-          <div class="row m-0 p-0 bg-light">
-            <br />
-            <p class="mt-3">Comenta en el foro</p>
-            <textarea class="mx-3 mb-3 col-7 col-sm-9" id="forumMessageSubmit" rows="3" cols="120" name="contenido"
-              required></textarea>
-            <div class="row align-items-center justify-content-end col-3 col-sm-2 mx-auto">
-              <input class="btn btn-primary" id="submitButton" type="submit" value="Publicar">
+      <div class="foro-view-container-comentario-mensajes">
+
+        <div class="row justify-content-center m-0 p-0 sticky-top ">
+          <form class="border border-dark col-6" action="/enviarMensajeForo" method="POST">
+            <input type="hidden" name="id" value="<%=foro.idForo %>">
+            <div class="row m-0 p-0 bg-light">
+              <br />
+              <p class="mt-3">Comenta en el foro</p>
+              <textarea class="mx-3 mb-3 col-7 col-sm-9" id="forumMessageSubmit" rows="3" cols="120" name="contenido"
+                required></textarea>
+              <div class="row align-items-center justify-content-end col-3 col-sm-2 mx-auto">
+                <input class="btn btn-primary" id="submitButton" type="submit" value="Publicar">
+              </div>
             </div>
-          </div>
-        </form>
-      </div>
+          </form>
+        </div>
 
-      <div class="foro-view-container">
+        <div class="foro-view-container">
 
-        <% mensajes.forEach((mensaje)=>{%>
-          <% let fecha=new Date(mensaje.fechaEmision); year=fecha.getFullYear(); month=fecha.getMonth()+1;
-            dt=fecha.getDate(); h=fecha.getHours(); min=fecha.getMinutes(); s=fecha.getSeconds(); if (dt < 10) { dt='0'
-            + dt; } if (s < 10) { s='0' + s; } if (h < 10) { h='0' + h; } if (min < 10) { min='0' + min; } if (month <
-            10) { month='0' + month; } let fechaEmision=dt+"/"+month+"/"+year+" "+h+" :"+min+":"+s; %>
+          <% mensajes.forEach((mensaje)=>{%>
+            <% let fecha=new Date(mensaje.fechaEmision); year=fecha.getFullYear(); month=fecha.getMonth()+1;
+              dt=fecha.getDate(); h=fecha.getHours(); min=fecha.getMinutes(); s=fecha.getSeconds(); if (dt < 10) {
+              dt='0' + dt; } if (s < 10) { s='0' + s; } if (h < 10) { h='0' + h; } if (min < 10) { min='0' + min; } if
+              (month < 10) { month='0' + month; } let fechaEmision=dt+"/"+month+"/"+year+" "+h+" :"+min+":"+s; %>
 
 
-            <div class="foro-view-outer" role="alert" aria-live="assertive" aria-atomic="true">
-              <div class="foro-view-mensaje">
-                <%if (mensaje.emisor==idUsuario ){ %>
-                  <div class="foro-view-mensaje-borrar">
-                    <form action="/deleteMensajeForo/<%= mensaje.idMensaje_foro%>" method="POST">
-                      <input type="hidden" name="idForo" value="<%=foro.idForo %>">
-                      <button type="submit" class="btn-close" aria-label="Close"></button>
-                    </form>
-                  </div>
-                  <% } %>
-
-                    <div class="toast-header border-dark">
-                      <i class="bi bi-person-circle me-2"></i>
-                      <strong class="me-auto">
-                        <%=mensaje.usuario%>
-                      </strong>
-                      <small class="text-muted">
-                        <%=fechaEmision%>
-                      </small>
-                      <%if(mensaje.usuario==nombreUsuario){%>
-                        <button type="button" class="btn-close" aria-label="Close"></button>
-                        <%}%>
+              <div class="foro-view-outer" role="alert" aria-live="assertive" aria-atomic="true">
+                <div class="foro-view-mensaje">
+                  <%if (mensaje.emisor==idUsuario ){ %>
+                    <div class="foro-view-mensaje-borrar">
+                      <form action="/deleteMensajeForo/<%= mensaje.idMensaje_foro%>" method="POST">
+                        <input type="hidden" name="idForo" value="<%=foro.idForo %>">
+                        <button type="submit" class="btn-close" aria-label="Close"></button>
+                      </form>
                     </div>
-                    <div class="toast-body">
-                      <%=mensaje.contenido%>
-                    </div>
+                    <% } %>
+
+                      <div class="toast-header border-dark">
+                        <i class="bi bi-person-circle me-2"></i>
+                        <strong class="me-auto">
+                          <%=mensaje.usuario%>
+                        </strong>
+                        <small class="text-muted">
+                          <%=fechaEmision%>
+                        </small>
+                        <%if(mensaje.usuario==nombreUsuario){%>
+                          <button type="button" class="btn-close" aria-label="Close"></button>
+                          <%}%>
+                      </div>
+                      <div class="toast-body">
+                        <%=mensaje.contenido%>
+                      </div>
+                </div>
+
               </div>
 
-            </div>
-
-            <br />
-            <%});%>
+              <br />
+              <%});%>
+        </div>
       </div>
 
     </section>
@@ -179,8 +182,11 @@
         // Trigger the button element with a click
         document.getElementById("submitButton").click();
       }
-    }); 
-  </script>
+    });
+
+   // window.scrollTo(0,document.body.scrollHeight);
+   window.scrollTo({ left: 0, top: document.body.scrollHeight, behavior: "instant" });
+ </script>
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
     integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
     crossorigin="anonymous"></script>
