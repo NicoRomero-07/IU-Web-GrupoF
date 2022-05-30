@@ -5,11 +5,12 @@ exports.crearForo = (req, res) => {
     const nombre = req.body.nombreForo;
     const descripcion = req.body.descripcion;
     const propietario = req.body.idUsuario;
-    pool.query('INSERT INTO foro SET ?', {nombre:nombre, descripcion:descripcion}, (error,results)=>{
+    const categoria = req.body.categoria;
+    pool.query('INSERT INTO foro SET ?', {propietario: propietario,nombre:nombre, descripcion:descripcion, categoria:categoria}, (error,results)=>{
         if(error){
             console.log(error);
         }else{
-            res.redirect('/')
+            res.redirect('/foro/'+results.insertId);
         }
     });
     console.log(nombre + "-" + descripcion);

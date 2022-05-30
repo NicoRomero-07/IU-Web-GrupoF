@@ -114,7 +114,7 @@ router.get('/perfilAutor/:id', (req,res)=>{
             usuarioAutor=autor[0];
         }
     })
-    selectQuery = 'SELECT idForo FROM ?? WHERE ?? = ?';
+    selectQuery = 'SELECT idForo, propietario,nombre,descripcion,categoria FROM ?? WHERE ?? = ?';
     query = mysql.format(selectQuery,["foro","propietario",id]);
     pool.query(query,(error, foros)=>{
         if(error){
@@ -129,10 +129,18 @@ router.get('/perfilAutor/:id', (req,res)=>{
 
 const crud = require('../controllers/crud');
 router.post('/crearForo', crud.crearForo);
+
 const loginController = require('../controllers/loginController');
 router.post('/loginform', loginController.loginform);
+
 const registerController = require('../controllers/registerController');
 router.post('/registerform', registerController.registerform);
+
+const trendingController = require('../controllers/trendingController');
+router.get('/trending', trendingController.trending);
+
+const listaUsuariosController = require('../controllers/listaUsuariosController');
+router.get('/listaUsuarios', listaUsuariosController.listaUsuarios);
 
 //Enviar mensaje foro
 router.post('/enviarMensajeForo',crud.mesajeForo);
@@ -156,84 +164,37 @@ router.get('/listaUsuarios',(req,res)=>{
     res.render('listaUsuarios');
 });
 
-// Controlador del trending
-router.get('/trending',(req,res)=>{
-    if(typeof req.session.loggedin != "undefined"){
-        let selectQuery = 'SELECT f.idForo,f.propietario,f.nombre,f.descripcion,count(m.idMesaje_foro) mensajes FROM bocaillo.foro f' + 
-        ' join mesaje_foro m ON f.idForo = m.foro group by f.idForo ORDER BY COUNT(m.idMesaje_foro) DESC';
-        let query = mysql.format(selectQuery,["foro"]);
-        pool.query(query,(err,data) => {
-            if(err){
-                console.error(err);
-                throw error;
-            }else{
-                res.render('trending',{
-                    login:true,
-                    id: req.session.idUsuario,
-                    foros:data
-                });
-            }
-    });
-    }else{
-        res.render('index',{
-            login: false,
-            name: 'Debe iniciar sesión'
-        })
-    }
-});
-
-// Controlador del login
-router.post('/loginform', async(req, res)=>{
-
-    const usuario = req.body.usuario;
-    const password = req.body.password;
-    let passwordHash = await bcryptjs.hash(password,8);
-        pool.query('SELECT * FROM usuario WHERE nombre = ?',[usuario],async(error,results)=>{
-            if(results.length == 0){
-                res.render('login',{
-                    alert:true,
-                    alertTitle:"Login",
-                    alertMessage: "¡El nombre de usuario introducido no está disponible!",
-                    alertIcon: 'error',
-                    showConfirmButton:true,
-                    ruta:''
-                });
-            }else if( !(await bcryptjs.compare(password, results[0].contrasenya)) ){
-                res.render('login',{
-                    alert:true,
-                    alertTitle:"Login",
-                    alertMessage: "¡Las contraseña introducida no es correcta, por favor inténtelo de nuevo!",
-                    alertIcon: 'error',
-                    showConfirmButton:true,
-                    ruta:''
-                });
-            }else{
-                req.session.loggedin = true;
-                req.session.idUsuario = results[0].idUsuario;
-                req.session.nombre = results[0].nombre;
-                res.redirect('index');
-            }
-        })
-});
-
 //Controlador del index
 router.get('/index',(req,res)=>{
     if(typeof req.session.loggedin != "undefined"){
-        let selectQuery = 'SELECT * FROM ??';
-        let query = mysql.format(selectQuery,["foro"]);
-        pool.query(query,(err,data) => {
+        
+        let selectQueryAutor = 'SELECT u.idUsuario, u.nombre, u.email FROM ?? mf JOIN ?? f ON f.idForo = mf.foro JOIN ?? u ON u.idUsuario = f.propietario GROUP BY u.idUsuario ORDER BY count(mf.idMensaje_foro) DESC';
+        let queryAutor = mysql.format(selectQueryAutor,["mensaje_foro","foro","usuario"]);
+        pool.query(queryAutor,(err,dataAutores) => {
             if(err){
                 console.error(err);
                 throw error;
             }else{
-                res.render('index',{
-                    login:true,
-                    id: req.session.idUsuario,
-                    nombreUsuario: req.session.nombre,
-                    foros:data
+                let selectQuery = 'SELECT * FROM ??';
+                let query = mysql.format(selectQuery,["foro"]);
+                pool.query(query,(err,data) => {
+                if(err){
+                    console.error(err);
+                    throw error;
+                }else{
+                    res.render('index',{
+                        login:true,
+                        id: req.session.idUsuario,
+                        nombreUsuario: req.session.nombre,
+                        foros:data,
+                        autores:dataAutores
+                    });
+                }
                 });
             }
-    });
+        });
+        
+        
     }else{
         res.render('index',{
             login: false,
@@ -244,5 +205,19 @@ router.get('/index',(req,res)=>{
 
 router.post('/buscarForo', buscarForoController.buscarForo);
 router.post('/deleteMensajeForo/:mensajeId', crud.deleteMensajeForo);
+//Datos login
+router.get('/profileView/:id', (req,res)=>{
+    const id = req.session.idUsuario;
+    selectQuery = 'SELECT nombre, email FROM ?? WHERE ?? = ?';
+    query = mysql.format(selectQuery,["usuario","idusuario",id]);
+    let usuario;
+    pool.query(query,(error, user)=>{
+        if(error){
+            throw error;
+        }else{
+            usuarioLogin=user[0];
+        }
+    })
+});
 
 module.exports = router;
