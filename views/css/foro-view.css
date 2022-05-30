@@ -1,0 +1,24 @@
+.foro-view-container {
+    margin-top: 40px;
+}
+
+.foro-view-outer {
+    margin: 0 auto;
+    max-width: 600px;
+}
+
+.foro-view-mensaje {
+    border: 1px solid #4b4b4b;
+    margin: 8px 16px;
+    position: relative;
+}
+
+.foro-view-mensaje-borrar {
+    position: absolute;
+    right: -10px;
+    top: -12px;
+    height: 26px;
+    background-color: white;
+    border: 1px solid #4b4b4b;
+    border-radius: 10%;
+}
