@@ -92,15 +92,15 @@ COLLATE = utf8mb4_0900_ai_ci;
 
 
 -- -----------------------------------------------------
--- Table `bocaillo`.`mesaje_foro`
+-- Table `bocaillo`.`mensaje_foro`
 -- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `bocaillo`.`mesaje_foro` (
-  `idMesaje_foro` INT NOT NULL AUTO_INCREMENT,
+CREATE TABLE IF NOT EXISTS `bocaillo`.`mensaje_foro` (
+  `idMensaje_foro` INT NOT NULL AUTO_INCREMENT,
   `contenido` VARCHAR(200) NOT NULL,
   `foro` INT NOT NULL,
   `emisor` INT NOT NULL,
   `fechaEmision` DATETIME NOT NULL,
-  PRIMARY KEY (`idMesaje_foro`),
+  PRIMARY KEY (`idMensaje_foro`),
   INDEX `fk_mensaje_foro_idx` (`foro` ASC) VISIBLE,
   INDEX `fk_mensaje_foro_emisor_idx` (`emisor` ASC) VISIBLE,
   CONSTRAINT `fk_mensaje_foro`

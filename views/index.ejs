@@ -70,15 +70,20 @@
     <main class="row ">
       <!-- Foros -->
     <section class = "row col-12 col-lg-6 mb-auto mx-auto">
-       <!--Buscador-->
-      <div>   
-        <form action="JavaScriptResultoBuscar" method="post" target="_blank" class="mx-3 d-flex my-4 col-6">
-          
-            <input class="form-control me-2 border-dark" type="search" name="busqueda" size="4" maxlength="4" title="BarraDeBusqueda">
-            <input class="btn" style=" background-color: #bec0c3;" type="submit" value="Buscar" title="Boton Borrar">
-          
+      <!--Buscador-->
+
+      <div style="display:flex; flex-direction: row; justify-content: space-evenly; ">
+        <h2> Buscador </h2>
+      </div>
+
+      <div style="display:flex; flex-direction: row; justify-content: space-evenly;">
+        <form action="/buscarForo" method="post" class="mx-3 d-flex my-4 col-6">
+          <input class="form-control me-2 border-dark" type="search" name="busquedaClave" size="4" maxlength="4"
+            title="BarraDeBusqueda">
+          <input class="btn" style=" background-color: #bec0c3;" type="submit" value="Buscar" title="Boton Borrar">
         </form>
       </div>
+
       <% for (let i = 0; i< foros.length && i<6; i++){%>
       <article class="card mx-auto my-4 col-12 col-lg-5 border-dark">
         <div class="card-body">

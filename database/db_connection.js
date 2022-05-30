@@ -3,8 +3,8 @@ const mysql = require('mysql');
 const pool  = mysql.createPool({
     connectionLimit : 100,
     host     : 'localhost',
-    user     : 'userbdtaw',
-    password : '1234',
+    user     : 'root',
+    password : '',
     database : 'bocaillo'
 });
 
@@ -183,7 +183,7 @@ function addRowMensajeForo(contenido,foro,emisor,fechaEmision) {
 
 function queryRowMensajeForo(foroID) {
     let selectQuery = 'SELECT * FROM ?? WHERE ?? = ?';
-    let query = mysql.format(selectQuery,["mesaje_foro","foro",foroID]);
+    let query = mysql.format(selectQuery,["mensaje_foro","foro",foroID]);
     pool.query(query,(err,data) => {
         if(err){
             console.error(err);

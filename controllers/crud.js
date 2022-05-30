@@ -1,8 +1,8 @@
 const db = require('../database/db_connection')
 const pool = db.pool;
 
-exports.crearForo = (req, res)=>{
-    const nombre =  req.body.nombreForo; 
+exports.crearForo = (req, res) => {
+    const nombre = req.body.nombreForo;
     const descripcion = req.body.descripcion;
     const propietario = req.body.idUsuario;
     pool.query('INSERT INTO foro SET ?', {nombre:nombre, descripcion:descripcion}, (error,results)=>{
