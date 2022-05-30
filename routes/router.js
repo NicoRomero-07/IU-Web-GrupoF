@@ -189,4 +189,19 @@ router.get('/index',(req,res)=>{
     }
 });
 
+//Datos login
+router.get('/profileView/:id', (req,res)=>{
+    const id = req.session.idUsuario;
+    selectQuery = 'SELECT nombre, email FROM ?? WHERE ?? = ?';
+    query = mysql.format(selectQuery,["usuario","idusuario",id]);
+    let usuario;
+    pool.query(query,(error, user)=>{
+        if(error){
+            throw error;
+        }else{
+            usuarioLogin=user[0];
+        }
+    })
+});
+
 module.exports = router;
