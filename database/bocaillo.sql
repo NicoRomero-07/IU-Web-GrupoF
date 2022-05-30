@@ -92,9 +92,9 @@ COLLATE = utf8mb4_0900_ai_ci;
 
 
 -- -----------------------------------------------------
--- Table `bocaillo`.`mesaje_foro`
+-- Table `bocaillo`.`mensaje_foro`
 -- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `bocaillo`.`mesaje_foro` (
+CREATE TABLE IF NOT EXISTS `bocaillo`.`mensaje_foro` (
   `idMesaje_foro` INT NOT NULL AUTO_INCREMENT,
   `contenido` VARCHAR(200) NOT NULL,
   `foro` INT NOT NULL,
