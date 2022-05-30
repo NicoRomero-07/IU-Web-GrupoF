@@ -6,7 +6,7 @@ const mysql = db.mysql;
 exports.trending = async(req, res)=>{
     if(typeof req.session.loggedin != "undefined"){
         let selectQuery = 'SELECT f.idForo,f.propietario,f.nombre,f.descripcion,count(m.idMensaje_foro) mensajes FROM bocaillo.foro f' + 
-        ' join mensaje_foro m ON f.idForo = m.foro group by f.idForo ORDER BY COUNT(m.idMensaje_foro) DESC';
+        ' left join mensaje_foro m ON f.idForo = m.foro group by f.idForo ORDER BY COUNT(m.idMensaje_foro) DESC';
         let query = mysql.format(selectQuery,["foro"]);
         pool.query(query,(err,data) => {
             if(err){

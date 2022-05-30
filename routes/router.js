@@ -167,14 +167,13 @@ router.get('/listaUsuarios',(req,res)=>{
 router.get('/index',(req,res)=>{
     if(typeof req.session.loggedin != "undefined"){
         
-        let selectQueryAutor = 'SELECT u.idUsuario, u.nombre, u.email FROM ?? mf JOIN ?? f ON f.idForo = mf.foro JOIN ?? u ON u.idUsuario = f.propietario GROUP BY u.idUsuario ORDER BY count(mf.idMesaje_foro) DESC';
+        let selectQueryAutor = 'SELECT u.idUsuario, u.nombre, u.email FROM ?? mf JOIN ?? f ON f.idForo = mf.foro JOIN ?? u ON u.idUsuario = f.propietario GROUP BY u.idUsuario ORDER BY count(mf.idMensaje_foro) DESC';
         let queryAutor = mysql.format(selectQueryAutor,["mensaje_foro","foro","usuario"]);
         pool.query(queryAutor,(err,dataAutores) => {
             if(err){
                 console.error(err);
                 throw error;
             }else{
-                console.log(dataAutores)
                 let selectQuery = 'SELECT * FROM ??';
                 let query = mysql.format(selectQuery,["foro"]);
                 pool.query(query,(err,data) => {
