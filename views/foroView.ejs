@@ -102,14 +102,15 @@
 
             <div style=" margin: 0 auto; max-width: 600px; " role="alert" aria-live="assertive" aria-atomic="true">
               <div style="border: 1px solid #4b4b4b; margin: 8px 16px; position: relative; ">
-                <div
+                <%if (mensaje.emisor == idUsuario ){ %>
+                <div 
                   style="position:absolute;right:-10px; top:-12px; height: 26px; background-color: white; border: 1px solid #4b4b4b; border-radius: 10%;">
                   <form action="/deleteMensajeForo/<%= mensaje.idMensaje_foro%>" method="POST">
                     <input type="hidden" name="idForo" value="<%=foro.idForo %>">
                     <button type="submit" class="btn-close" aria-label="Close"></button>
                   </form>
                 </div>
-
+                <% } %>
 
                 <div class="toast-header border-dark">
                   <i class="bi bi-person-circle me-2"></i>

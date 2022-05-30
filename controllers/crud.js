@@ -32,7 +32,7 @@ exports.deleteMensajeForo = (req, res) => {
     const idForo = req.body.idForo;
     const usuario = req.session.idUsuario;
 
-    pool.query('DELETE FROM mensaje_foro  WHERE idMensaje_foro = ?  ', [Number.parseInt(mensajeId)], (error, results) => {
+    pool.query('DELETE FROM mensaje_foro  WHERE idMensaje_foro = ? and emisor = ? ', [Number.parseInt(mensajeId), Number.parseInt(usuario)], (error, results) => {
         if (error) {
             console.log(error);
         } else {
