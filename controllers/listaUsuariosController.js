@@ -10,12 +10,12 @@ exports.listaUsuarios = async(req, res)=>{
         'LEFT JOIN mensaje_privado m ON m.emisor = u.idUsuario ' +
         'WHERE m.fechaEmision IN (SELECT max(t.fechaEmision) ' +
                                 'FROM mensaje_privado t ' +
-                                'WHERE t.receptor = 65 ' +
+                                'WHERE t.receptor = ? ' +
                                 'GROUP BY t.emisor) ' +
         'OR m.fechaEmision IS NULL ' +
         'GROUP BY u.nombre ' +
         'ORDER BY count(m.idMensaje) DESC;';
-        let query = mysql.format(selectQuery,["usuario","mensaje"]);
+        let query = mysql.format(selectQuery,[req.session.idUsuario]);
         pool.query(query,(err,data) => {
             if(err){
                 console.error(err);
