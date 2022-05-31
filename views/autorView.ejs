@@ -70,7 +70,7 @@
       <div class="row">
         <div class="col-12 col-lg-6 text-center">
           <img width="200" height="200" alt ="imagen de perfil" src="../img/profilepicture.png">
-          <h3><%= autor.nombre %></h3>
+          <h3> <%= autor.nombre %></h3>
         </div>
         <div class="col-12 col-lg-6 text-center">
           <p>
@@ -88,15 +88,15 @@
       <br />
       <div class="row">
         <h3> Foros del autor </h3>
-        <% for (let i = 0; i< foros.length && i<6; i++){%>
+        <% for (let i = 0; i< foros.length && i<6; i++){ %>
         <article class="ms-3 card mx-auto my-4 col-6 col-lg-3 border-dark">
           <div class="card-body">
-            <h5 class="card-title"><%= foros[i].nombre %> </h5>
-            <p class="card-text"><%= foros[i].descripcion %>.</p>
-            <a href="/foro/<%=foros[i].idForo %>" class="btn btn-primary">Ver contenido</a>
+            <h5 class="card-title"> <%= foros[i].nombre %> </h5>
+            <p class="card-text"> <%= foros[i].descripcion %>.</p>
+            <a href="/foro/<%= foros[i].idForo %>" class="btn btn-primary">Ver contenido</a>
           </div>
         </article>
-        <%}  %> 
+        <% }  %> 
       </div>
       <br />
       <br />
