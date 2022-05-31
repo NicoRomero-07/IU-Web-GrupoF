@@ -37,7 +37,7 @@
 
       <div style="display:flex; flex-direction: row; justify-content: space-evenly;">
         <form action="/buscarForo" method="post" class="mx-3 d-flex my-4 col-6">
-          <input class="form-control me-2 border-dark" type="search" name="busquedaClave" size="4" maxlength="4"
+          <input class="form-control me-2 border-dark" type="search" name="busquedaClave" size="4" maxlength="50"
             title="BarraDeBusqueda">
           <input class="btn" style=" background-color: #bec0c3;" type="submit" value="Buscar" title="Buscar">
         </form>
@@ -93,13 +93,9 @@
 
     
   <!-- Pie de pagina-->
-  <footer class="row">
-    <%- include('../views/partials/footer'); %> 
-  </footer>
-    
-    <%
-      } 
-    %>
-    <script src="../node_modules/bootstrap/dist/js/bootstrap.min.js"></script>
+  <%- include('../views/partials/footer'); %>
+  <% } %>
+  <script src="../node_modules/bootstrap/dist/js/bootstrap.min.js"></script>
+  
   </body>
 </html>
