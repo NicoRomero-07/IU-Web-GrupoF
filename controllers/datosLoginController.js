@@ -1,16 +1,16 @@
 const db = require('../database/db_connection');
 const pool = db.pool;
+const mysql = db.mysql;
 
-exports.getLogin = (req,res) =>{
+exports.getLogin = async(req,res) =>{
     const id = req.session.idUsuario;
-    selectQuery = 'SELECT nombre, email FROM ?? WHERE ?? = ?';
-    query = mysql.format(selectQuery,["usuario","idusuario",id]);
-    let usuarioLogin;
-    pool.query(query,(error, user)=>{
+    selectQuery = 'SELECT usuario, email FROM usuario WHERE idUsuario = ?';
+    query = mysql.format(selectQuery,[id]);
+    pool.query(query, async (error, user)=>{
         if(error){
-            throw error;
+            console.log(error);
         } else {
-            usuarioLogin=user[0];
+            res.render("profileView", {usuario:user});
         }
     })
 }
