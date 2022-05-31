@@ -107,7 +107,7 @@ router.post('/enviarMensajeForo',crud.mesajeForo);
 router.post('/listaUsuarios/filtro',crud.filtrarUsuario)
 
 router.get('/',(req,res)=>{
-    return res.render('login');
+    return res.render('login',{nombreUsuario:undefined, id: undefined});
 });
 
 router.get('/register',(req,res)=>{

@@ -23,10 +23,10 @@
                 <a href="#" class="d-flex align-items-center link-light text-decoration-none dropdown-toggle fs-5" id="dropdownUser2" data-bs-toggle="dropdown" aria-expanded="false">
                   <i class="bi bi-person-circle"></i>
                   <!--<img src="" alt="" width="32" height="32" class="rounded-circle me-2">-->
-                  <strong class="text-light">&ensp;<%= nombreUsuario%> </strong>
+                  <strong class="text-light">&ensp;<% if(nombreUsuario!=undefined){ %> <%=nombreUsuario %> <%}%></strong>
                 </a>
                 <ul class="dropdown-menu text-small shadow" aria-labelledby="dropdownUser2">
-                  <li><a class="dropdown-item" href="profileView/<%= id %>">Perfil</a></li>
+                  <li><a class="dropdown-item" href="profileView/<% if(id!=undefined){ %> <%=id %> <%}%>">Perfil</a></li>
                   <li><hr class="dropdown-divider"></li>
                   <li><a class="dropdown-item" href="#">Cerrar sesion</a></li>
                 </ul>
