@@ -28,6 +28,7 @@ exports.loginform = async(req, res)=>{
                 });
             }else{
                 req.session.loggedin = true;
+                req.session.usuario = results[0].nombre;
                 req.session.idUsuario = results[0].idUsuario;
                 res.redirect('index');
             }

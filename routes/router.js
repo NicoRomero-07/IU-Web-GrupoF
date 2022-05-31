@@ -5,19 +5,20 @@ const pool = connection.pool;
 const mysql = connection.mysql;
 const bcrypt = require('bcryptjs/dist/bcrypt');
 const bcryptjs = require('bcryptjs');
+const buscarForoController = require('../controllers/buscarForoController');
 
-router.get('/foro/:id',async(req,res)=>{
-    if(typeof req.session.loggedin != "undefined"){
+router.get('/foro/:id', async (req, res) => {
+    if (typeof req.session.loggedin != "undefined") {
         const id = req.params.id;
         let selectQuery = 'SELECT * FROM ?? WHERE ?? = ?';
-        let query = mysql.format(selectQuery,["foro","idForo",id]);
+        let query = mysql.format(selectQuery, ["foro", "idForo", id]);
 
-        function get_foro(query){
+        function get_foro(query) {
             return new Promise((resolve, reject) => {
-                pool.query(query,(err,data) => {
-                    if(err){
+                pool.query(query, (err, data) => {
+                    if (err) {
                         reject(err);
-                    }else{
+                    } else {
                         resolve(data[0]);
                     }
                 });
@@ -70,8 +71,9 @@ router.get('/foro/:id',async(req,res)=>{
             }
             return element;
         });
-        let usuario = req.session.nombre;
-        res.render('foroView',{foro:foro, mensajes:mensajes, nombreUsuario : usuario}); 
+        let usuario = req.session.usuario;
+        let idUsuario = req.session.idUsuario;
+        res.render('foroView',{foro:foro, mensajes:mensajes, nombreUsuario:usuario,idUsuario:idUsuario}); 
 
     }else{
         res.render('index',{
@@ -144,6 +146,9 @@ router.get('/listaUsuarios', listaUsuariosController.listaUsuarios);
 //Enviar mensaje foro
 router.post('/enviarMensajeForo',crud.mesajeForo);
 
+//Filtrar lista usuarios
+router.post('/listaUsuarios/filtro',crud.filtrarUsuario)
+
 router.get('/',(req,res)=>{
     return res.render('login');
 });
@@ -202,6 +207,8 @@ router.get('/index',(req,res)=>{
     }
 });
 
+router.post('/buscarForo', buscarForoController.buscarForo);
+router.post('/deleteMensajeForo/:mensajeId', crud.deleteMensajeForo);
 //Datos login
 router.get('/profileView/:id', (req,res)=>{
     const id = req.session.idUsuario;

@@ -100,7 +100,7 @@ CREATE TABLE IF NOT EXISTS `bocaillo`.`mensaje_foro` (
   `foro` INT NOT NULL,
   `emisor` INT NOT NULL,
   `fechaEmision` DATETIME NOT NULL,
-  PRIMARY KEY (`idMesaje_foro`),
+  PRIMARY KEY (`idMensaje_foro`),
   INDEX `fk_mensaje_foro_idx` (`foro` ASC) VISIBLE,
   INDEX `fk_mensaje_foro_emisor_idx` (`emisor` ASC) VISIBLE,
   CONSTRAINT `fk_mensaje_foro`
