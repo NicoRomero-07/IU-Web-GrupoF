@@ -22,9 +22,10 @@ exports.trending = async(req, res)=>{
                     }else{
                         res.render('trending',{
                             login:true,
-                            id: req.session.idUsuario,
+                            idUsuario: req.session.idUsuario,
                             foros:data,
-                            autores:dataAutores
+                            autores:dataAutores,
+                            nombreUsuario: req.session.nombreUsuario
                         });
                     }
                 });

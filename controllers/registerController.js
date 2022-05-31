@@ -22,7 +22,9 @@ exports.registerform = async(req, res)=>{
                     alertMessage: "¡El usuario ya ha sido registrado, por favor inténtelo de nuevo!",
                     alertIcon: 'error',
                     showConfirmButton:true,
-                    ruta:'register'
+                    ruta:'register',
+                    nombreUsuario: req.session.nombreUsuario,
+                    idUsuario:req.session.idUsuario
                 })
             }else{
                 res.render('register',{
@@ -32,7 +34,9 @@ exports.registerform = async(req, res)=>{
                     alertIcon: 'success',
                     showConfirmButton:false,
                     timer:3000,
-                    ruta:''
+                    ruta:'',
+                    nombreUsuario: req.session.nombreUsuario,
+                    idUsuario:req.session.idUsuario
                 })
             }
         })
@@ -44,7 +48,9 @@ exports.registerform = async(req, res)=>{
             alertMessage: "¡Las contraseñas no coinciden, por favor inténtelo de nuevo!",
             alertIcon: 'error',
             showConfirmButton:true,
-            ruta:'register'
+            ruta:'register',
+            nombreUsuario: req.session.nombreUsuario,
+            idUsuario:req.session.idUsuario
         })
     }
 }
