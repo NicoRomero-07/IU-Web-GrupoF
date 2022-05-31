@@ -124,11 +124,11 @@ router.get('/register',(req,res)=>{
 });
 
 router.get('/confirmed',(req,res)=>{
-    res.render('confirmed');
+    res.render('confirmed', {nombreUsuario:req.session.usuario});
 });
 
 router.get('/confirmeEmail',(req,res)=>{
-    res.render('confirmeEmail');
+    res.render('confirmeEmail', {nombreUsuario:req.session.usuario});
 });
 
 //Controlador del index
