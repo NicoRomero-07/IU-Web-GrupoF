@@ -174,8 +174,8 @@ router.get('/index',(req,res)=>{
                 console.error(err);
                 throw error;
             }else{
-                let selectQuery = 'SELECT * FROM ??';
-                let query = mysql.format(selectQuery,["foro"]);
+                let selectQuery = 'SELECT f.idForo, f.propietario, f.nombre AS nombreForo, c.nombre AS nombreCategoria FROM ?? f JOIN ?? c ON c.idCategoria=f.categoria';
+                let query = mysql.format(selectQuery,["foro","categoria"]);
                 pool.query(query,(err,data) => {
                 if(err){
                     console.error(err);

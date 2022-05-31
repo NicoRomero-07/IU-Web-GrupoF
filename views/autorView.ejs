@@ -69,11 +69,11 @@
     <!-- Informacion de perfil -->
     <div class="container col-10 p-3 mx-auto">
       <div class="row">
-        <div class="col-5 text-center">
+        <div class="col-12 col-lg-6 text-center">
           <img width="200" height="200" alt ="imagen de perfil" src="../img/profilepicture.png">
           <h3><%= autor.nombre %></h3>
         </div>
-        <div class="col-7">
+        <div class="col-12 col-lg-6 text-center">
           <p>
             <label for="username">Username:</label>
             <input type="text" id="username" value=" <%= autor.nombre %>" readonly/>
@@ -90,7 +90,7 @@
       <div class="row">
         <h3> Foros del autor </h3>
         <% for (let i = 0; i< foros.length && i<6; i++){%>
-        <article class="ms-3 card col-3 border-dark">
+        <article class="ms-3 card mx-auto my-4 col-6 col-lg-3 border-dark">
           <div class="card-body">
             <h5 class="card-title"><%= foros[i].nombre %> </h5>
             <p class="card-text"><%= foros[i].descripcion %>.</p>
