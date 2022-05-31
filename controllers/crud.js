@@ -36,7 +36,7 @@ exports.vistaAutor = (req,res)=>{
         if(error){
             throw error;
         }else{
-            res.render('autorView',{autor:usuarioAutor, foros:foros, nombreUsuario:req.session.usuario, idUsuario: req.session.idUsuario});
+            res.render('autorView',{autor:usuarioAutor, foros:foros, nombreUsuario:req.session.usuario, id: req.session.idUsuario});
         }
     })
     
@@ -61,6 +61,11 @@ exports.createForoLoadView = (req,res)=>{
         })
     }
 }
+//Borrar cuenta
+exports.borrarCuenta = (req, res)=>{
+    
+}
+
 
 exports.mesajeForo = (req, res)=>{
     const contenido = req.body.contenido;
@@ -87,9 +92,9 @@ exports.filtrarUsuario = async(req, res) => {
             }else{
                 res.render('listaUsuarios',{
                     login:true,
-                    id: req.session.idUsuario,
-                    usuarios:results,
-                    idUsuario: req.session.idUsuario
+                    idUsuario: req.session.idUsuario,
+                    nombreUsuario: req.session.usuario,
+                    usuarios:results
                 });
             }  
         });

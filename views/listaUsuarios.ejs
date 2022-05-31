@@ -33,32 +33,31 @@
         </form>
       </div>
         <div class="list-group">
-
-          <% for(let i= 0; i < 10 && i < usuarios.length ;i++){
-            %>
-              <a href="vistaChat/<%=usuarios[i].idUsuario%>" class="list-group-item list-group-item-action d-flex gap-3 py-3 mx-2 " style="width:40%;" aria-current="true">
-                <img src="https://github.com/mdo.png" alt="twbs" width="32" height="32" class="rounded-circle flex-shrink-0">
-                <div class="d-flex gap-2 w-100 justify-content-between">
-                  <div>
-                    <h6 class="mb-0"><%= usuarios[i].nombre%></h6>
-                    <p class="mb-0" style="opacity: 60%;"><%= usuarios[i].contenido != null ? usuarios[i].contenido : ""  %> &nbsp &nbsp &nbsp;
-                      <%= usuarios[i].fechaEmision != null ? usuarios[i].fechaEmision.toLocaleString() : "" %></p>
-                    
+          <%if(usuarios.length > 0){%>
+            <% for(let i= 0; i < 10 && i < usuarios.length ;i++){
+              %>
+                <a href="vistaChat/<%=usuarios[i].idUsuario%>" class="list-group-item list-group-item-action d-flex gap-3 py-3 mx-2 " style="width:40%;" aria-current="true">
+                  <img src="https://github.com/mdo.png" alt="twbs" width="32" height="32" class="rounded-circle flex-shrink-0">
+                  <div class="d-flex gap-2 w-100 justify-content-between">
+                    <div>
+                      <h6 class="mb-0"><%= usuarios[i].nombre%></h6>
+                      <p class="mb-0" style="opacity: 60%;"><%= usuarios[i].contenido != null ? usuarios[i].contenido : ""  %> &nbsp &nbsp &nbsp;
+                        <%= usuarios[i].fechaEmision != null ? usuarios[i].fechaEmision.toLocaleString() : "" %></p>
+                      
+                    </div>
                   </div>
-                </div>
-              </a>
-            <% }; %>
+                </a>
+              <% }; %>
+          <%}else{%>
+            <h2 class="mx-3">No hay usuarios</h3>
+          <%}%>          
 
           </div>
     </main>
 
     
     <!-- Pie de pagina-->
-
-    
-  <footer class="row mt-3">
     <%- include('../views/partials/footer'); %> 
-  </footer>
     
     <script src="../node_modules/bootstrap/dist/js/bootstrap.min.js"></script>
     <%
