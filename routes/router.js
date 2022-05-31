@@ -92,7 +92,7 @@ router.get('/createForo', (req,res)=>{
             if(error){
                 throw error;
             }else{
-                res.render('createForo',{categorias:categorias, usuario:req.session.idUsuario});
+                res.render('createForo',{categorias:categorias, usuario:req.session.idUsuario, nombreUsuario:req.session.usuario});
             }
         })
     }else{
