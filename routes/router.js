@@ -166,8 +166,9 @@ router.get('/index',(req,res)=>{
 
 router.post('/buscarForo', buscarForoController.buscarForo);
 router.post('/deleteMensajeForo/:mensajeId', crud.deleteMensajeForo);
+
 //Datos login
-router.get('/profileView/:id', (req,res)=>{
+router.get('/vistaPerfil', (req,res)=>{
     const id = req.session.idUsuario;
     selectQuery = 'SELECT nombre, email FROM ?? WHERE ?? = ?';
     query = mysql.format(selectQuery,["usuario","idusuario",id]);
@@ -176,9 +177,12 @@ router.get('/profileView/:id', (req,res)=>{
         if(error){
             throw error;
         }else{
-            usuarioLogin=user[0];
+            usuario=user[0];
         }
     })
+    res.render("profileView", {
+        usuario:usuario
+    });
 });
 
 module.exports = router;

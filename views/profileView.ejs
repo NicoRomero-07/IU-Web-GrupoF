@@ -16,7 +16,7 @@
     <main class="row">
 
       <!-- NavBar -->
-      <nav class="col-12 navbar navbar-expand-lg navbar-dark py-2" style="background-color: #664E88;">
+      <nav class="col-12 navbar navbar-expand-lg navbar-dark py-2" style="background-color: #202124;">
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarTogglerDemo03" aria-controls="navbarTogglerDemo03" aria-expanded="false" aria-label="Toggle navigation">
           <span class="navbar-toggler-icon"></span>
         </button>
@@ -29,22 +29,23 @@
         <div class="collapse navbar-collapse" id="navbarTogglerDemo03">
           <ul class="navbar-nav me-auto ms-2 mb-2 mb-lg-0">
             <li class="nav-item">
-              <a class="nav-link" href="#">Categorias</a>
+              <a class="nav-link" href="#" id="categorias">Categorias</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="#">Trending</a>
+              <a class="nav-link" href="#" id="trending">Trending</a>
             </li>
           </ul>
+          <script src="../js/boldOnHover.js"></script>
           <section class="row col-12 mx-0 col-lg-6 justify-content-end align-items-center">
             <!--Perfil-->
             <div class="dropdown ms-3 col-4">
               <a href="#" class="d-flex align-items-center link-light text-decoration-none dropdown-toggle fs-5" id="dropdownUser2" data-bs-toggle="dropdown" aria-expanded="false">
                 <i class="bi bi-person-circle"></i>
-                <!--<img src="" alt="" width="32" height="32" class="rounded-circle me-2">-->
+                <img src="" alt="" width="32" height="32" class="rounded-circle me-2">
                 <strong class="text-light">&ensp;Username</strong>
               </a>
               <ul class="dropdown-menu text-small shadow" aria-labelledby="dropdownUser2">
-                <li><a class="dropdown-item" href="#">Perfil</a></li>
+                <li><a class="dropdown-item" href="profileView.ejs">Perfil</a></li>
                 <li><hr class="dropdown-divider"></li>
                 <li><a class="dropdown-item" href="#">Cerrar sesion</a></li>
               </ul>
@@ -56,7 +57,7 @@
     </main>
 
     <!-- BreadCrumb -->
-    <nav class="row p-1" style="background-color:#63B4B8;">
+    <nav class="row p-1" style="background-color:#0d6efd;">
       <ol class="breadcrumb my-2">
         <li class="breadcrumb-item"><a href="index" class="text-light">Pagina Inicial</a></li>
         <li class="breadcrumb-item text-light" aria-current="page">Perfil</a></li>
@@ -70,7 +71,7 @@
             <div class="col-5 text-center">
               <img width="200" height="200" src="img/profilepicture.png">
               <h3 class="">Usuario</h3>
-              <button class="w-40 btn btn-md btn-primary" type="submit"> <a href="editProfile.html" class="nav-link text-white">Editar perfil</a> </button>
+              <button class="w-40 btn btn-md btn-primary" type="submit"> <a href="editProfile.ejs" class="nav-link text-white">Editar perfil</a> </button>
             </div>
             <div class="col-7">
               <style>
@@ -81,13 +82,13 @@
               </style>
               <section id="section">
                 <p class="pt-4 px-3">
-                  <label for="usuario">Usuario: <%=usuarioLogin.nombre%></label>
+                  <label for="usuario">Usuario: <%=usuario.nombre%></label>
                 </p>
                 <p class="px-3">
-                    <label for="email">Email: <%=usuarioLogin.email%> </label>
+                    <label for="email">Email: <%=usuario.email%> </label>
                 </p>
                 <p class="pb-4 px-3">
-                    <label for="password">Contraseña: <%=usuarioLogin.contrasenya%></label>
+                    <label for="password">Contraseña: <%=usuario.contrasenya%></label>
                 </p>  
               </section>
               <button class="w-40 btn btn-md btn-secondary" type="submit"> <a href="login.html" class="nav-link text-white">Cerrar Sesión</a> </button>
@@ -100,7 +101,7 @@
 
     <!-- Pie de pagina-->
     <div class="row mt-auto ">
-      <footer class="py-4 d-flex" style="background-color: #664E88;">
+      <footer class="py-4 d-flex" style="background-color: #202124;">
         <!-- d-flex fixed-bottom flex-wrap justify-content-between align-items-center py-3 border-top -->
         <a
           class="col-md-4 d-flex align-items-center justify-content-center mb-3 mb-md-0 me-md-auto link-dark text-decoration-none">

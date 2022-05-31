@@ -7,9 +7,9 @@
   <!-- Container -->
   <body class="container-fluid min-vh-100 d-flex flex-column justify-content-between">
     <header class="row">
-      <%- include('../views/partials/header'); %>
+      <%- include('../views/partials/navbar'); %>
     <!-- BreadCrumb -->
-          <nav class = "row col-12 px-3 py-2 m-0"  style=" background-color: #63B4B8;" aria-label="breadcrumb">
+          <nav class = "row col-12 px-3 py-2 m-0"  style=" background-color: #0d6efd;" aria-label="breadcrumb">
               <ol class="breadcrumb"> 
                 <li class="breadcrumb-item ps-1 text-light"><a class = "text-light" href="../index">Pagina inicial</a></li>
                 <li class="breadcrumb-item ps-1 text-light" href="index">Crear Foro</li>
@@ -28,7 +28,7 @@
         <input type="hidden" name="idUsuario" id="idUsuario" value="<%= usuario %>"/>
         <div class="col-12">
           <label for="nombreForo" class="form-label">Nombre foro</label>
-          <div class="input-group has-validation w-50 mx-auto">
+          <div class="input-group has-validation w-25 mx-auto">
             <input type="text" class="form-control" id="nombreForo" name="nombreForo" required>
             <div class="invalid-feedback">
               Nombre de foro requerido
@@ -38,7 +38,7 @@
 
         <div class="col-12">
           <label for="descripcion" class="form-label">Descripción</label>
-          <div class="input-group has-validation w-50 mx-auto">
+          <div class="input-group has-validation w-25 mx-auto">
             <textarea class ="form-control" name="descripcion" id="descripcion"></textarea>
             <div class="invalid-feedback">
               Descripcion requerida.
@@ -47,7 +47,7 @@
         </div>
 
         <label for="categoria" class="form-label">Categoria</label><br>
-        <select name="categoria" id="categoria">
+        <select name="categoria" id="categoria" style="background-color: #fff;">
           <% categorias.forEach((categoria)=>{ %>
               <option id="<%= categoria.idCategoria %>" name ="<%= categoria.nombre %>" value="<%= categoria.idCategoria%>"><%= categoria.nombre %></option>
           <% })  %>
@@ -55,8 +55,7 @@
 
          <!-- Button trigger modal -->
         <button type="submit" class="w-50 btn btn-md btn-success mt-3" data-bs-toggle="modal" data-bs-target="#exampleModal">Crear</button>
-
-        <button class="w-50 btn btn-secondary btn-md mt-3"><a class="nav-link text-white" href="../index">Cancelar</a></button>
+        <button class="w-50 btn btn-secondary btn-md mt-3"><a class="text-white" href="../index" style="text-decoration: none;">Cancelar</a></button>
       </form>
 
     </article>
