@@ -89,7 +89,7 @@ const crud = require('../controllers/crud');
 router.post('/crearForo', crud.crearForo);
 router.get('/perfilAutor/:id', crud.vistaAutor);
 router.get('/createForo', crud.createForoLoadView);
-//router.get('/borrarUsuario/:id', crud.borrarUsuario);
+router.get('/borrarUsuario', crud.borrarUsuario);
 
 const loginController = require('../controllers/loginController');
 router.post('/loginform', loginController.loginform);
@@ -103,8 +103,11 @@ router.get('/trending', trendingController.trending);
 const listaUsuariosController = require('../controllers/listaUsuariosController');
 router.get('/listaUsuarios', listaUsuariosController.listaUsuarios);
 
-//const categoriasController = require('../controllers/categoriasController');
-//router.get('/categorias', categoriasController.lista);
+const categoriasController = require('../controllers/categoriasController');
+router.get('/categorias', categoriasController.lista);
+
+const sesionController = require('../controllers/sesionController');
+router.get('/cerrarSesion', sesionController.cerrarSesion);
 
 //Enviar mensaje foro
 router.post('/enviarMensajeForo',crud.mesajeForo);
@@ -126,10 +129,6 @@ router.get('/confirmed',(req,res)=>{
 
 router.get('/confirmeEmail',(req,res)=>{
     res.render('confirmeEmail');
-});
-
-router.get('/categorias',(req,res)=>{
-    res.render('categorias');
 });
 
 //Controlador del index

@@ -1,3 +1,4 @@
+const { query } = require('express');
 const db = require('../database/db_connection')
 const pool = db.pool;
 const mysql = db.mysql;
@@ -62,8 +63,17 @@ exports.createForoLoadView = (req,res)=>{
     }
 }
 //Borrar cuenta
-exports.borrarCuenta = (req, res)=>{
-    
+exports.borrarUsuario = (req, res)=>{
+    const idUsuario = req.session.idUsuario;
+    var selectQuery = "DELETE FROM ?? WHERE ?? = ? ";
+    var query = mysql.format(selectQuery,["usuario","idUsuario",idUsuario]);
+    pool.query(query, (error, categorias)=>{
+        if(error){
+            throw error;
+        }else{
+            res.redirect('/');
+        }
+    })
 }
 
 
