@@ -16,8 +16,8 @@
     <!-- BreadCrumb -->
     <nav class="row p-1" style="background-color:#0d6efd;">
       <ol class="breadcrumb my-2">
-        <li class="breadcrumb-item"><a href="index" class="text-light">Pagina Inicial</a></li>
-        <li class="breadcrumb-item text-light" aria-current="page">Perfil</a></li>
+        <li class="breadcrumb-item"><a href="index" class="text-white">Pagina Inicial</a></li>
+        <li class="breadcrumb-item text-white" aria-current="page">Perfil</a></li>
       </ol>
     </nav>
 
@@ -26,7 +26,7 @@
       <div class="container col-10 p-3 mx-auto">
         <div class="row">
             <div class="col-5 text-center">
-              <img width="200" height="200" src="../img/profilepicture.png">
+              <img width="200" height="200" src="../img/profilepicture.png" alt="Foto de perfil">
               <h3 class=""><%=nombreUsuario%></h3>
               <button class="w-40 btn btn-md btn-primary" type="submit"> <a href="editProfile.ejs" class="nav-link text-white">Editar perfil</a> </button>
             </div>
@@ -54,11 +54,7 @@
   </main>
 
     <!-- Pie de pagina-->
-    <%- include('../views/partials/footer'); %> 
-
-    <script src="../node_modules/bootstrap/dist/js/bootstrap.min.js"></script>
-    <script src="../js/deleteAccount.js"></script>
-  </body>
+  <%- include('../views/partials/footer'); %>
   
   <!-- Modal -->
   <div class="modal fade" id="deleteAccount" tabindex="-1" aria-labelledby="deleteAccountLabel" aria-hidden="true">
