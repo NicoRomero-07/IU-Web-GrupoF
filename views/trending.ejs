@@ -12,11 +12,10 @@
   </head>
   <!-- Container -->
   <body class="container-fluid min-vh-100 d-flex flex-column justify-content-between">
-    <%
-      if(!login){
-        %> <a href="/">Por favor inicie sesion </a>  <%
-      }else{
-    %>
+    <%if(!login){%> 
+        <a href="/">Por favor inicie sesion </a>
+        
+    <% }else{ %>
 
     <!--Header-->
     <header class="row">
@@ -27,7 +26,7 @@
       <!-- BreadCrumb -->
         <nav class = "row col-12 px-3 py-2 m-0"  style=" background-color: #0d6efd;" aria-label="breadcrumb">
             <ol class="breadcrumb"> 
-              <li class="breadcrumb-item ps-1 text-light" aria-current="page">Trending</li>
+              <li class="breadcrumb-item ps-1 text-white" aria-current="page">Trending</li>
             </ol>
         </nav>
 
@@ -38,11 +37,10 @@
     <section class = "row col-12 col-lg-6 mb-auto mx-auto">
        <!--Buscador-->
       <div>   
+        <label class="form-label my-4" for="buscador" style="font-size: 200%;"> Buscador</label>
         <form action="JavaScriptResultoBuscar" method="post" target="_blank" class="mx-3 d-flex my-4 col-6">
-          
-            <input class="form-control me-2 border-dark" type="search" name="busqueda" size="4" maxlength="4" title="BarraDeBusqueda">
+            <input class="form-control me-2 border-dark" id="buscador" type="search" name="busqueda" size="4" maxlength="4" title="BarraDeBusqueda">
             <input class="btn" style=" background-color: #bec0c3;" type="submit" type="submit" value="Buscar" title="Boton Borrar">
-          
         </form>
       </div>
       <% for (let i = 0; i< foros.length && i<6; i++){ %>
@@ -57,17 +55,18 @@
     </section>
 
    <!-- Barra lateral derecha -->
-  <section class = "col-lg-4 m-0 order-lg-last order-first">
+   <section class = "col-lg-4 m-0 order-lg-last order-first">
     <div class="row p-2 m-2 justify-content-center ">
-      <button class="d-flex flex-column align-items-center btn-secondary rounded-pill mx-auto col-4">
-        <i class="bi bi-layout-text-sidebar-reverse"></i>
+      
+      <button class="d-flex flex-column align-items-center btn-secondary rounded-pill mx-auto col-4 border-0" style="width:22%;">
+        <a class="text-white" href="/createForo"><i class="bi bi-layout-text-sidebar-reverse"></i></a>
         <a class="nav-link text-white" href="/createForo">Nuevo<br>Foro</a>
       </button>
-      <button class="d-flex flex-column align-items-center btn-secondary rounded-pill mx-auto col-4">
-        <i class="bi bi-chat-dots"></i>
+  
+      <button class="d-flex flex-column align-items-center btn-secondary rounded-pill mx-auto col-4 border-0" style="width:22%;">
+        <a class="text-white" href="listaUsuarios"><i class="bi bi-chat-dots"></i></a>
         <a class="nav-link text-white" href="listaUsuarios">Mensaje<br>Privado</a>
       </button>
-    </div>
     <!-- Top autores -->
     <div class="row justify-content-center">
       <article class="row justify-content-center d-none d-lg-block bg-secondary m-5 p-2 col-8">
@@ -76,7 +75,7 @@
         <ul class="nav nav-pills flex-column mb-auto">
           <% for(let i = 0; i<autores.length && i<6;i++){ %>
 
-            <li class="nav-item text-light">
+            <li class="nav-item text-white">
               <%= i+1%>. <%= autores[i].nombre %> &nbsp
               <a href="/perfilAutor/<%= autores[i].idUsuario %>" class="text-white">
                 Ver perfil
