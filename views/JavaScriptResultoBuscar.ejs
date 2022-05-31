@@ -8,12 +8,12 @@
 
 <body class="container-fluid">
   <header class="row">
-    <%- include('../views/partials/header'); %>
+    <%- include('../views/partials/navbar'); %>
 
     <!-- BreadCrumb -->
-    <nav class="row col-12 px-3 py-2 m-0" style=" background-color: #63B4B8;" aria-label="breadcrumb">
+    <nav class="row col-12 px-3 py-2 m-0" style=" background-color: #0d6efd;" aria-label="breadcrumb">
       <ol class="breadcrumb">
-        <li class="breadcrumb-item"><a href="index" class="text-light">Pagina Inicial</a></li>
+        <li class="breadcrumb-item"><a href="/index" class="text-light">Pagina Inicial</a></li>
         <li class="breadcrumb-item ps-1 text-light" aria-current="page">Resultados de Busqueda</li>
       </ol>
     </nav>
@@ -42,15 +42,17 @@
           <h4>Resultados</h4>
           <% } else { %>
             <div style="display:flex; flex-direction: row; justify-content: space-evenly; margin-top: 80px;">
-              <h5 style="color:#cd2910"> No se han encontrado nada. </h5>
+              <h5 style="color:#cd2910"> No se ha encontrado nada. </h5>
             </div>
             <% } %>
               <% results.forEach( async function(result){ %>
                 <article class="card mx-auto my-4 col-11 border border-dark">
                   <div class="card-body">
-                    <h5 class="card-title">
-                      <%= result.Nombre %>
-                    </h5>
+                    <a class = "nav-link text-dark" href="/foro/<%= result.idForo %>">
+                        <h5 class="card-title">
+                        <%= result.Nombre %>
+                        </h5>
+                    </a>
                     <p class="card-text">
                       <%= result.Descripcion %>
                         <br>
@@ -70,45 +72,25 @@
         </button>
         <button class="d-flex flex-column align-items-center btn-secondary rounded-pill mx-auto col-4 border-0" style="width:22%;">
           <i class="bi bi-chat-dots"></i>
-          <a class="nav-link text-white" href="listaUsuarios">Mensaje<br>Privado</a>
+          <a class="nav-link text-white" href="/listaUsuarios">Mensaje<br>Privado</a>
         </button>
       </div>
       <!-- Top autores -->
       <div class="row justify-content-center">
-        <article class="row justify-content-center d-none d-lg-block bg-secondary m-5 p-2 col-8">
-          <h2 class="text-white">Top Autores</h2>
+        <article class="row justify-content-center d-none d-lg-block bg-secondary m-2 p-2 col-8">
+          <h2 class = "text-white">Top Autores</h2>
           <hr>
           <ul class="nav nav-pills flex-column mb-auto">
-            <li class="nav-item text-light">
-              1. Autor1 &nbsp
-              <a href="autorView" class="text-white">
-                Ver perfil
-              </a>
-            </li>
-            <li class="nav-item text-light">
-              2. Autor2 &nbsp
-              <a href="autorView" class="text-white">
-                Ver perfil
-              </a>
-            </li>
-            <li class="nav-item text-light">
-              3. Autor3 &nbsp
-              <a href="autorView" class="text-white">
-                Ver perfil
-              </a>
-            </li>
-            <li class="nav-item text-light">
-              4. Autor4 &nbsp
-              <a href="autorView" class="text-white">
-                Ver perfil
-              </a>
-            </li>
-            <li class="nav-item text-light">
-              5. Autor5 &nbsp
-              <a href="autorView" class="text-white">
-                Ver perfil
-              </a>
-            </li>
+            <% for(let i = 0; i<autores.length && i<6;i++){ %>
+  
+              <li class="nav-item text-white">
+                <%= i+1%>. <%= autores[i].nombre %> &nbsp
+                <a href="/perfilAutor/<%= autores[i].idUsuario %>" class="text-white">
+                  Ver perfil
+                </a>
+              </li>
+  
+            <% } %> 
           </ul>
         </article>
       </div>
@@ -119,9 +101,7 @@
   <!-- Pie de pagina-->
 
 
-  <footer class="row">
     <%- include('../views/partials/footer'); %>
-  </footer>
 </body>
 
 </html>
