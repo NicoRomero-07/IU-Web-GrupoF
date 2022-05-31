@@ -89,6 +89,7 @@ const crud = require('../controllers/crud');
 router.post('/crearForo', crud.crearForo);
 router.get('/perfilAutor/:id', crud.vistaAutor);
 router.get('/createForo', crud.createForoLoadView);
+//router.get('/borrarUsuario/:id', crud.borrarUsuario);
 
 const loginController = require('../controllers/loginController');
 router.post('/loginform', loginController.loginform);

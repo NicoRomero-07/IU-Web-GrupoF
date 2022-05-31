@@ -61,6 +61,11 @@ exports.createForoLoadView = (req,res)=>{
         })
     }
 }
+//Borrar cuenta
+exports.borrarCuenta = (req, res)=>{
+    
+}
+
 
 exports.mesajeForo = (req, res)=>{
     const contenido = req.body.contenido;
