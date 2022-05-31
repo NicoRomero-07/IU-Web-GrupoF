@@ -83,53 +83,10 @@ router.get('/foro/:id', async (req, res) => {
     }
 });
 
-//Acceso a crear foro
-router.get('/createForo', (req,res)=>{
-
-    if(typeof req.session.loggedin != "undefined"){
-
-        pool.query('SELECT * FROM categoria', (error, categorias)=>{
-            if(error){
-                throw error;
-            }else{
-                res.render('createForo',{categorias:categorias, usuario:req.session.idUsuario, nombreUsuario:req.session.usuario});
-            }
-        })
-    }else{
-        res.render('index',{
-            login: false,
-            name: 'Debe iniciar sesión'
-        })
-    }
-});
-//Acceso perfil autor
-router.get('/perfilAutor/:id', (req,res)=>{
-    const id = req.params.id;
-    selectQuery = 'SELECT nombre, email FROM ?? WHERE ?? = ?';
-    query = mysql.format(selectQuery,["usuario","idusuario",id]);
-    let usuarioAutor;
-    pool.query(query,(error, autor)=>{
-        if(error){
-            throw error;
-        }else{
-            usuarioAutor=autor[0];
-        }
-    })
-    selectQuery = 'SELECT idForo, propietario,nombre,descripcion,categoria FROM ?? WHERE ?? = ?';
-    query = mysql.format(selectQuery,["foro","propietario",id]);
-    pool.query(query,(error, foros)=>{
-        if(error){
-            throw error;
-        }else{
-            res.render('autorView',{autor:usuarioAutor, foros:foros, nombreUsuario:req.session.usuario});
-        }
-    })
-    
-});
-
-
 const crud = require('../controllers/crud');
 router.post('/crearForo', crud.crearForo);
+router.get('/perfilAutor/:id', crud.vistaAutor);
+router.get('/createForo', crud.createForoLoadView);
 
 const loginController = require('../controllers/loginController');
 router.post('/loginform', loginController.loginform);
@@ -189,7 +146,7 @@ router.get('/index',(req,res)=>{
                     res.render('index',{
                         login:true,
                         id: req.session.idUsuario,
-                        nombreUsuario: req.session.nombre,
+                        nombreUsuario: req.session.usuario,
                         foros:data,
                         autores:dataAutores
                     });
