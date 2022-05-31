@@ -103,8 +103,8 @@ router.get('/trending', trendingController.trending);
 const listaUsuariosController = require('../controllers/listaUsuariosController');
 router.get('/listaUsuarios', listaUsuariosController.listaUsuarios);
 
-const categoriasController = require('../controllers/categoriasController');
-router.get('/categorias', categoriasController.lista);
+//const categoriasController = require('../controllers/categoriasController');
+//router.get('/categorias', categoriasController.lista);
 
 //Enviar mensaje foro
 router.post('/enviarMensajeForo',crud.mesajeForo);
