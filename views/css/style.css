@@ -10651,3 +10651,10 @@ fieldset:disabled .btn {
 }
 /*# sourceMappingURL=style.css.map */
 
+#categorias:hover {
+  font-weight: bold;
+}
+
+#trending:hover {
+  font-weight: bold;
+}
