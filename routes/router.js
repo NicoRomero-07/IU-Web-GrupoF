@@ -71,8 +71,9 @@ router.get('/foro/:id', async (req, res) => {
             }
             return element;
         });
-        let usuario = req.session.nombre;
-        res.render('foroView',{foro:foro, mensajes:mensajes, nombreUsuario : usuario}); 
+        let usuario = req.session.usuario;
+        let idUsuario = req.session.idUsuario;
+        res.render('foroView',{foro:foro, mensajes:mensajes, nombreUsuario:usuario,idUsuario:idUsuario}); 
 
     }else{
         res.render('index',{
@@ -144,6 +145,9 @@ router.get('/listaUsuarios', listaUsuariosController.listaUsuarios);
 
 //Enviar mensaje foro
 router.post('/enviarMensajeForo',crud.mesajeForo);
+
+//Filtrar lista usuarios
+router.post('/listaUsuarios/filtro',crud.filtrarUsuario)
 
 router.get('/',(req,res)=>{
     return res.render('login');
