@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <%- include('../views/partials/head'); %>
+  </head>
+  <!-- Container -->
+  <body class="container-fluid min-vh-100 d-flex flex-column justify-content-between">
+    
+    
+    <% if(!login){%>
+       <a href="/">Por favor inicie sesion </a>  
+    <% }else{ %>
+ 
+    <!--Header-->
+    <header class="row">
+
+      <!--Navbar-->
+      <%- include('../views/partials/navbar'); %>
+    
+    <!-- BreadCrumb -->
+          <nav class = "row col-12 px-3 py-2 m-0"  style=" background-color: #0d6efd;" aria-label="breadcrumb">
+              <ol class="breadcrumb"> 
+                <li class="breadcrumb-item ps-1 text-white" aria-current="page"><a class="text-light" href="/index">Pagina inicial</a></li>
+              <li class="breadcrumb-item ps-1 text-white" aria-current="page">Categorias</li>
+              </ol>
+          </nav>
+
+    </header>
+    <!-- Main-->
+    <main class="row p-0 m-0">
+        <h2 class="my-3" >Lista de categorias</h2>
+        <div style="display:flex; flex-direction: row; justify-content: left;">
+          <form action="/categorias/filtro" method="post" class="mx-3 d-flex my-4 col-6">
+            <label for="filtroPorCategoria">Nombre categoria  &ensp;</label>
+            <input class="form-control me-2 border-dark" id="filtroPorCategoria" type="search" name="filtroPorCategoria" style="width: 40%;"
+              title="Filtro por nombre">
+            <input class="btn btn-primary" type="submit" value="Filtrar" title="Filtrar">
+          </form>
+        </div>
+          <div class="list-group">        
+            <%if(categorias.length > 0){%>
+              <% for(let i= 0; i < 10 && i < categorias.length ;i++){
+                %>
+                  <a href="" class="list-group-item list-group-item-action d-flex gap-3 py-3 mx-2 " style="width:40%;" aria-current="true">
+                    <div class="d-flex gap-2 w-100 justify-content-between">
+                      <div>
+                        <h6 class="mb-0"><%= categorias[i].nombre%></h6>
+                      </div>
+                    </div>
+                  </a>
+                <% }; %>
+            <%}else{%>
+              <h2 class="mx-3">No hay usuarios</h3>
+            <%}%>          
+          </div>
+    </main>
+
+    
+  <!-- Pie de pagina-->
+  <%- include('../views/partials/footer'); %>
+  <% } %>
+  <script src="../node_modules/bootstrap/dist/js/bootstrap.min.js"></script>
+  
+  </body>
+</html>
