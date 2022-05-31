@@ -16,7 +16,8 @@
   "main": "db_connection.js",
   "scripts": {
     "dev": "node app.js",
-    "debug": "nodemon --inspect app.js"
+    "debug": "nodemon --inspect app.js",
+    "start": "node app"
   },
   "repository": {
     "type": "git",

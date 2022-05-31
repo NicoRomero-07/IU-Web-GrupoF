@@ -32,8 +32,9 @@ app.use('/',indexRouter);
 var dotenv = require('dotenv');
 dotenv.config({path:'.env/.env'});
 
+const PORT = process.env.PORT || 5000
 
-app.listen(5000,()=>{
+app.listen(PORT,()=>{
     console.log('SERVER corriendo en http://localhost:5000');
 });
 
