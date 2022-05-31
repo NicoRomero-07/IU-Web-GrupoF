@@ -23,6 +23,7 @@ exports.trending = async(req, res)=>{
                         res.render('trending',{
                             login:true,
                             id: req.session.idUsuario,
+                            nombreUsuario: req.session.usuario,
                             foros:data,
                             autores:dataAutores
                         });

@@ -189,7 +189,7 @@ router.get('/index',(req,res)=>{
                     res.render('index',{
                         login:true,
                         id: req.session.idUsuario,
-                        nombreUsuario: req.session.nombre,
+                        nombreUsuario: req.session.usuario,
                         foros:data,
                         autores:dataAutores
                     });
