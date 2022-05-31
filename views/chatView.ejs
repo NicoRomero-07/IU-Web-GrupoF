@@ -1,38 +1,50 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
-
-<head>
+  <head>
     <%- include('../views/partials/head'); %>
-</head>
-<!-- Container -->
-
-<body class="container-fluid d-flex flex-column  min-vh-100">
+  </head>
+  <!-- Container -->
+  <body class="container-fluid min-vh-100 d-flex flex-column justify-content-between">
     
+    
+    <% if(!login){%>
+       <a href="/">Por favor inicie sesion </a>  
+    <% }else{ %>
+ 
     <!--Header-->
     <header class="row">
 
-        <!--Navbar-->
-        <%- include('../views/partials/navbar'); %>
-
-        <!-- BreadCrumb -->
-        <nav class="row col-12 px-3 py-2 m-0" style=" background-color: #0d6efd;" aria-label="breadcrumb">
-            <ol class="breadcrumb">
+      <!--Navbar-->
+      <%- include('../views/partials/navbar'); %>
+    
+    <!-- BreadCrumb -->
+          <nav class = "row col-12 px-3 py-2 m-0"  style=" background-color: #0d6efd;" aria-label="breadcrumb">
+              <ol class="breadcrumb"> 
                 <li class="breadcrumb-item ps-1 text-light" aria-current="page"><a class="text-light" href="index">Pagina inicial</a></li>
                 <li class="breadcrumb-item ps-1 text-light" aria-current="page"><a class="text-light" href="listaUsuarios.ejs">Lista de usuarios</a></li>
                 <li class="breadcrumb-item ps-1 text-light" aria-current="page">Envío de mensaje</li>
-            </ol>
-        </nav>
+              </ol>
+          </nav>
 
     </header>
-    <!-- Main -->
+    <!-- Main-->
     <main class="row">
         <!-- Chat -->
         <section class="d-none d-sm-block col-sm-12 d-lg-block col-lg-12 p-0 m-0">
-            <nav class="navbar navbar-expand-lg py-2 justify-content-start" style="background-color: #202124;">
-                <img src="https://github.com/mdo.png" alt="" class="rounded-circle ms-4 border border-white" width="32"
-                    height="32">
-                <label class="ms-3" style="color: white;"><%=nombreReceptor[0].nombre%></label>
-            </nav>
+            <div id="userBar">
+                <nav class="navbar navbar-expand-lg py-2 justify-content-start" style="background-color: #202124;" id="userName">
+                    <img src="https://github.com/mdo.png" alt="" class="rounded-circle ms-4 border border-white" width="32"
+                        height="32">
+                    <label class="ms-3" style="color: white;"><%=nombreReceptor[0].nombre%></label>
+                </nav>
+            </div>
+            <style>
+                #userBar {
+                    position:absolute;
+                    top:115px;
+                    width:100%;
+                }
+            </style>
             <br />
             <%for(let i = 0; i < mensajes.length; i++) {
                 if(mensajes[i].idUsuario != idUsuario) {
@@ -71,21 +83,21 @@
                 <div class="col-7 m-0 p-0">
                     <input class="form-control mx-4 border-dark" type="text" size="90%" name="mensaje" id="mensaje">
                 </div>
-                 <div class="col-1 m-0 p-0">
+                <div class="col-1 m-0 p-0">
                 </div>
                 <div class="col-1 m-0 p-0">
                     <button class="form-control ms-6 btn btn-primary"><i class="bi bi-send"><i>Enviar</i></button>
                 </div>
                 <input type="hidden" name="idReceptor" value="<%=idReceptor%>">
             </form>
-
         </section>
     </main>
 
-    <!-- Pie de pagina-->
-    <%- include('../views/partials/footer'); %> 
-
-    <script src="node_modules/bootstrap/dist/js/bootstrap.min.js"></script>
-</body>
-
+    
+  <!-- Pie de pagina-->
+  <%- include('../views/partials/footer'); %>
+  <% } %>
+  <script src="../node_modules/bootstrap/dist/js/bootstrap.min.js"></script>
+  
+  </body>
 </html>

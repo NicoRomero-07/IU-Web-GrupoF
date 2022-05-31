@@ -22,7 +22,8 @@ exports.getMensajes = async(req,res) =>{
                         idUsuario:req.session.idUsuario,
                         idReceptor:idReceptor,
                         nombreUsuario:req.session.usuario,
-                        nombreReceptor:nombreReceptor
+                        nombreReceptor:nombreReceptor,
+                        login:req.session.loggedin
                     });
                 }
             })
