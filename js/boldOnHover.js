@@ -1,15 +1,13 @@
-const button = document.getElementById("deleteaccountbtn");
+const button = document.getElementById("categorias");
 
 button.addEventListener("mouseenter", function(event) {
 
-    button.classList.remove('text-danger');
-    button.classList.add('text-white');
+    button.style.fontWeight("bold");
 
 }, false);
 
 button.addEventListener("mouseout", function(event) {
 
-    button.classList.remove('text-white');
-    button.classList.add('text-danger');
-
+    button.style.fontWeight("normal");
+    
 }, false);

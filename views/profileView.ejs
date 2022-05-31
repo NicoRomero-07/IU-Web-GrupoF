@@ -29,22 +29,23 @@
         <div class="collapse navbar-collapse" id="navbarTogglerDemo03">
           <ul class="navbar-nav me-auto ms-2 mb-2 mb-lg-0">
             <li class="nav-item">
-              <a class="nav-link" href="#">Categorias</a>
+              <a class="nav-link" href="#" id="categorias">Categorias</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="#">Trending</a>
+              <a class="nav-link" href="#" id="trending">Trending</a>
             </li>
           </ul>
+          <script src="../js/boldOnHover.js"></script>
           <section class="row col-12 mx-0 col-lg-6 justify-content-end align-items-center">
             <!--Perfil-->
             <div class="dropdown ms-3 col-4">
               <a href="#" class="d-flex align-items-center link-light text-decoration-none dropdown-toggle fs-5" id="dropdownUser2" data-bs-toggle="dropdown" aria-expanded="false">
                 <i class="bi bi-person-circle"></i>
-                <!--<img src="" alt="" width="32" height="32" class="rounded-circle me-2">-->
+                <img src="" alt="" width="32" height="32" class="rounded-circle me-2">
                 <strong class="text-light">&ensp;Username</strong>
               </a>
               <ul class="dropdown-menu text-small shadow" aria-labelledby="dropdownUser2">
-                <li><a class="dropdown-item" href="#">Perfil</a></li>
+                <li><a class="dropdown-item" href="profileView.ejs">Perfil</a></li>
                 <li><hr class="dropdown-divider"></li>
                 <li><a class="dropdown-item" href="#">Cerrar sesion</a></li>
               </ul>
@@ -70,7 +71,7 @@
             <div class="col-5 text-center">
               <img width="200" height="200" src="img/profilepicture.png">
               <h3 class="">Usuario</h3>
-              <button class="w-40 btn btn-md btn-primary" type="submit"> <a href="editProfile.html" class="nav-link text-white">Editar perfil</a> </button>
+              <button class="w-40 btn btn-md btn-primary" type="submit"> <a href="editProfile.ejs" class="nav-link text-white">Editar perfil</a> </button>
             </div>
             <div class="col-7">
               <style>
@@ -81,13 +82,13 @@
               </style>
               <section id="section">
                 <p class="pt-4 px-3">
-                  <label for="usuario">Usuario: <%=usuarioLogin.nombre%></label>
+                  <label for="usuario">Usuario: <%=usuario.nombre%></label>
                 </p>
                 <p class="px-3">
-                    <label for="email">Email: <%=usuarioLogin.email%> </label>
+                    <label for="email">Email: <%=usuario.email%> </label>
                 </p>
                 <p class="pb-4 px-3">
-                    <label for="password">Contraseña: <%=usuarioLogin.contrasenya%></label>
+                    <label for="password">Contraseña: <%=usuario.contrasenya%></label>
                 </p>  
               </section>
               <button class="w-40 btn btn-md btn-secondary" type="submit"> <a href="login.html" class="nav-link text-white">Cerrar Sesión</a> </button>
