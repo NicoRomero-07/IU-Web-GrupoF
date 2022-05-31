@@ -5,7 +5,7 @@ const mysql = db.mysql;
 // Controlador del apartado trending
 exports.listaUsuarios = async(req, res)=>{
     if(typeof req.session.loggedin != "undefined"){
-        let selectQuery = 'SELECT u.nombre,m.contenido,min(m.fechaEmision) fechaEmision ' +
+        let selectQuery = 'SELECT u.nombre, u.idUsuario, m.contenido,min(m.fechaEmision) fechaEmision ' +
         'FROM usuario u ' +
         'LEFT JOIN mensaje_privado m ON m.emisor = u.idUsuario ' +
         'WHERE m.fechaEmision IN (SELECT max(t.fechaEmision) ' +
