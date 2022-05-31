@@ -24,7 +24,8 @@ exports.listaUsuarios = async(req, res)=>{
                 res.render('listaUsuarios',{
                     login:true,
                     id: req.session.idUsuario,
-                    usuarios:data
+                    usuarios:data,
+                    nombreUsuario:req.session.usuario
                 });
             }
     });

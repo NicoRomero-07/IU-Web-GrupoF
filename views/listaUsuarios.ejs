@@ -1,59 +1,16 @@
 <!doctype html>
 <html lang="en">
   <head>
-    <!-- Required meta tags -->
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    
-    <!-- Bootstrap CSS -->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
-
-    <title>Bocaillo</title>
+    <%- include('../views/partials/head'); %>
   </head>
   <!-- Container -->
   <body class="container-fluid min-vh-100 d-flex flex-column justify-content-between">
-
+    <header class="row">
     <% if(!login){%>
       <a href="/">Por favor inicie sesion </a>  
    <% }else{ %>
-    <header class="row">
-        <!-- NavBar -->
-      <nav class="col-12 navbar navbar-expand-lg navbar-dark py-2" style="background-color: #664E88;">
-        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarTogglerDemo03" aria-controls="navbarTogglerDemo03" aria-expanded="false" aria-label="Toggle navigation">
-          <span class="navbar-toggler-icon"></span>
-        </button>
-        <a class="navbar-brand" href="index">Bocaillo</a>
-        <a class="navbar-brand" href="index">
-          <img alt="Brand" width="35" height="35"
-          src="img/bocaillo.png">
-        </a>
-
-        <div class="collapse navbar-collapse" id="navbarTogglerDemo03">
-          <ul class="navbar-nav me-auto ms-2 mb-2 mb-lg-0">
-            <li class="nav-item">
-              <a class="nav-link" href="#">Categorias</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="#">Trending</a>
-            </li>
-          </ul>
-          <section class="row col-12 mx-0 col-lg-6 justify-content-end align-items-center">
-            <!--Perfil-->
-            <div class="dropdown ms-3 col-4">
-              <a href="#" class="d-flex align-items-center link-light text-decoration-none dropdown-toggle fs-5" id="dropdownUser2" data-bs-toggle="dropdown" aria-expanded="false">
-                <i class="bi bi-person-circle"></i>
-                <!--<img src="" alt="" width="32" height="32" class="rounded-circle me-2">-->
-                <strong class="text-light">&ensp;Username</strong>
-              </a>
-              <ul class="dropdown-menu text-small shadow" aria-labelledby="dropdownUser2">
-                <li><a class="dropdown-item" href="#">Ajustes</a></li>
-                <li><hr class="dropdown-divider"></li>
-                <li><a class="dropdown-item" href="#">Cerrar sesion</a></li>
-              </ul>
-            </div>
-          </section>
-        </div>
-      </nav>
+    
+    <%- include('../views/partials/header'); %>
     
     <!-- BreadCrumb -->
           <nav class = "row col-12 px-3 py-2 m-0"  style=" background-color: #63B4B8;" aria-label="breadcrumb">
@@ -65,7 +22,7 @@
 
     </header>
     <!-- Main-->
-    <main class="row ">
+    <main class="row p-0 m-0">
       <h2 class="my-3" >Lista de usuarios</h2>
       <div style="display:flex; flex-direction: row; justify-content: left;">
         <form action="/listaUsuarios/filtro" method="post" class="mx-3 d-flex my-4 col-6">
@@ -79,7 +36,7 @@
 
           <% for(let i= 0; i < 10 && i < usuarios.length ;i++){
             %>
-              <a href="chatView.html" class="list-group-item list-group-item-action d-flex gap-3 py-3 mx-2" style="width:40%;" aria-current="true">
+              <a href="chatView.html" class="list-group-item list-group-item-action d-flex gap-3 py-3 mx-2 " style="width:40%;" aria-current="true">
                 <img src="https://github.com/mdo.png" alt="twbs" width="32" height="32" class="rounded-circle flex-shrink-0">
                 <div class="d-flex gap-2 w-100 justify-content-between">
                   <div>
@@ -99,25 +56,11 @@
     <!-- Pie de pagina-->
 
     
-  <footer class="row">
-    <div class="py-4 d-flex" style="background-color: #664E88;">
-    <ul class="nav justify-content-start col-6 col-md-4">
-        <li class="nav-item"><a href="#" class="nav-link px-2 text-light">Español</a></li>
-        <li class="nav-item"><a href="#" class="nav-link px-2 text-light">English</a></li>
-        <li class="nav-item"><a href="#" class="nav-link px-2 text-light">中文</a></li>
-    </ul>
-
-      <a class="col-md-4 d-flex align-items-center justify-content-center mb-3 mb-md-0 me-md-auto link-dark text-decoration-none"></a>
-
-      <ul class="nav justify-content-end col-6 col-md-4">
-        <li class="nav-item"><a href="#" class="nav-link px-2 text-light">Acerca de nosotros <i class="bi bi-people"></i></a></li>
-        <li class="nav-item"><a href="#" class="nav-link px-2 text-light">Ayuda <i class="bi bi-patch-question"></i></a></i></li>
-        <li class="p-2 text-light">© 2022, bocaillo.com</li>
-      </ul>
-    </div>
+  <footer class="row mt-3">
+    <%- include('../views/partials/footer'); %> 
   </footer>
     
-    <script src="node_modules/bootstrap/dist/js/bootstrap.min.js"></script>
+    <script src="../node_modules/bootstrap/dist/js/bootstrap.min.js"></script>
     <%
       } 
     %>
