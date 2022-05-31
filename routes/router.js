@@ -6,6 +6,8 @@ const mysql = connection.mysql;
 const bcrypt = require('bcryptjs/dist/bcrypt');
 const bcryptjs = require('bcryptjs');
 const buscarForoController = require('../controllers/buscarForoController');
+const datosLoginController = require('../controllers/datosLoginController');
+const chatController = require('../controllers/chatController');
 
 router.get('/foro/:id', async (req, res) => {
     if (typeof req.session.loggedin != "undefined") {
@@ -166,23 +168,7 @@ router.get('/index',(req,res)=>{
 
 router.post('/buscarForo', buscarForoController.buscarForo);
 router.post('/deleteMensajeForo/:mensajeId', crud.deleteMensajeForo);
-
-//Datos login
-router.get('/vistaPerfil', (req,res)=>{
-    const id = req.session.idUsuario;
-    selectQuery = 'SELECT nombre, email FROM ?? WHERE ?? = ?';
-    query = mysql.format(selectQuery,["usuario","idusuario",id]);
-    let usuario;
-    pool.query(query,(error, user)=>{
-        if(error){
-            throw error;
-        }else{
-            usuario=user[0];
-        }
-    })
-    res.render("profileView", {
-        usuario:usuario
-    });
-});
+router.get('/vistaPerfil', datosLoginController.getLogin);
+router.get('/vistaChat/:usuarioId', chatController.getMensajes);
 
 module.exports = router;
