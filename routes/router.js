@@ -169,6 +169,7 @@ router.get('/index',(req,res)=>{
 
 router.post('/buscarForo', buscarForoController.buscarForo);
 router.post('/deleteMensajeForo/:mensajeId', crud.deleteMensajeForo);
+router.post('/enviarMensajePrivado/:usuarioId', chatController.enviarMensaje);
 router.get('/vistaPerfil', datosLoginController.getLogin);
 router.get('/vistaChat/:usuarioId', chatController.getMensajes);
 
