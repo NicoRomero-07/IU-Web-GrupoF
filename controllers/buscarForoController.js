@@ -5,12 +5,12 @@ exports.buscarForo = async (req, res) => {
     
     const clave = `%${req.body.busquedaClave}%`;
 
-    pool.query('SELECT * FROM foro WHERE descripcion like ?', [clave], async (error, results) => {
+    pool.query('SELECT * FROM foro WHERE Nombre like ?', '%'+[clave]+'%', async (error, results) => {
 
         if (error) {
             console.log(error);
         } else {
-            res.render('JavaScriptResultoBuscar', { results });
+            res.render('JavaScriptResultoBuscar', { results:results,nombreUsuario:req.session.usuario, id:req.session.idUsuario});
         }
     })
 }

@@ -61,7 +61,7 @@
                   <small class="text-muted foro-view-margin-right-8px ">
                     <%=fechaEmision%>
                   </small>
-                  <%if (mensaje.emisor==idUsuario){ %>
+                  <%if (mensaje.emisor==id){ %>
 
                     <form action="/deleteMensajeForo/<%= mensaje.idMensaje_foro%>" method="POST">
                       <input type="hidden" name="idForo" value="<%=foro.idForo %>">

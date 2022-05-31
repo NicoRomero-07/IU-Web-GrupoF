@@ -73,7 +73,7 @@ router.get('/foro/:id', async (req, res) => {
         });
         let usuario = req.session.usuario;
         let idUsuario = req.session.idUsuario;
-        res.render('foroView',{foro:foro, mensajes:mensajes, nombreUsuario:usuario,idUsuario:idUsuario}); 
+        res.render('foroView',{foro:foro, mensajes:mensajes, nombreUsuario:usuario,id:idUsuario}); 
 
     }else{
         res.render('index',{

@@ -36,7 +36,7 @@ exports.vistaAutor = (req,res)=>{
         if(error){
             throw error;
         }else{
-            res.render('autorView',{autor:usuarioAutor, foros:foros, nombreUsuario:req.session.usuario});
+            res.render('autorView',{autor:usuarioAutor, foros:foros, nombreUsuario:req.session.usuario, id: req.session.idUsuario});
         }
     })
     
@@ -88,6 +88,7 @@ exports.filtrarUsuario = async(req, res) => {
                 res.render('listaUsuarios',{
                     login:true,
                     id: req.session.idUsuario,
+                    nombreUsuario: req.session.Usuario,
                     usuarios:results
                 });
             }  

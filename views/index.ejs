@@ -30,15 +30,10 @@
       <!-- Foros -->
     <section class = "row col-12 col-lg-6 mb-auto mx-auto">
       <!--Buscador-->
-
-      <div style="display:flex; flex-direction: row; justify-content: space-evenly; ">
-        <h2> Buscador </h2>
-      </div>
-
-      <div style="display:flex; flex-direction: row; justify-content: space-evenly;">
+      <div>
         <form action="/buscarForo" method="post" class="mx-3 d-flex my-4 col-6">
-          <input class="form-control me-2 border-dark" type="search" name="busquedaClave" size="4" maxlength="4"
-            title="BarraDeBusqueda">
+          <input class="form-control me-2 border-dark" type="search" name="busquedaClave" size="4" maxlength="40"
+            title="BarraDeBusqueda" required>
           <input class="btn" style=" background-color: #bec0c3;" type="submit" value="Buscar" title="Buscar">
         </form>
       </div>
@@ -46,9 +41,10 @@
       <% for (let i = 0; i< foros.length && i<6; i++){%>
       <article class="card mx-auto my-4 col-12 col-lg-5 border-dark">
         <div class="card-body">
-          <h5 class="card-title"> <a href="/foro/<%=foros[i].idForo %>" class="nav-link text-black"><%= foros[i].nombreForo%></a></h5>
+          <h5 class="card-title"> <a href="/foro/<%=foros[i].idForo %>" class="nav-link text-dark"><%= foros[i].nombreForo%></a></h5>
           <h6 class="card-subtitle mx-3 text-muted">Categoria: <%= foros[i].nombreCategoria %></h6>
-          <a class="nav-link card-text text-black" href="/foro/<%=foros[i].idForo %>"><p><%= foros[i].Descripcion%></p></a>
+          <%console.log(foros[i].Descripcion);%>
+          <a class="nav-link card-text" href="/foro/<%=foros[i].idForo %>"><p  style="color: #1000f7;"><%= foros[i].Descripcion%></p></a>
           <a href="/foro/<%=foros[i].idForo %>" class="btn btn-primary">Ver contenido</a>
         </div>
       </article>
@@ -100,6 +96,6 @@
     <%
       } 
     %>
-    <script src="../node_modules/bootstrap/dist/js/bootstrap.min.js"></script>
+
   </body>
 </html>

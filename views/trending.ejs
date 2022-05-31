@@ -1,14 +1,7 @@
 <!doctype html>
 <html lang="en">
   <head>
-    <!-- Required meta tags -->
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    
-    <!-- Bootstrap CSS -->
-    <link href="./css/style.css" rel="stylesheet" />
-
-    <title>Bocaillo</title>
+    <%- include('../views/partials/head'); %>
   </head>
   <!-- Container -->
   <body class="container-fluid min-vh-100 d-flex flex-column justify-content-between">
@@ -37,18 +30,17 @@
       <!-- Foros -->
     <section class = "row col-12 col-lg-6 mb-auto mx-auto">
        <!--Buscador-->
-      <div>   
-        <form action="JavaScriptResultoBuscar" method="post" target="_blank" class="mx-3 d-flex my-4 col-6">
-          
-            <input class="form-control me-2 border-dark" type="search" name="busqueda" size="4" maxlength="4" title="BarraDeBusqueda">
-            <input class="btn" style=" background-color: #bec0c3;" type="submit" type="submit" value="Buscar" title="Boton Borrar">
-          
+       <div>
+        <form action="/buscarForo" method="post" class="mx-3 d-flex my-4 col-6">
+          <input class="form-control me-2 border-dark" type="search" name="busquedaClave" size="4" maxlength="40"
+            title="BarraDeBusqueda" required>
+          <input class="btn" style=" background-color: #bec0c3;" type="submit" value="Buscar" title="Buscar">
         </form>
       </div>
       <% for (let i = 0; i< foros.length && i<6; i++){ %>
       <article class="card mx-auto my-4 col-12 col-lg-5 border-dark">
         <div class="card-body">
-          <h5 class="card-title"> <a href="foroView" class="nav-link text-black"><%= foros[i].nombre %></a></h5>
+          <h5 class="card-title"> <a href="foroView" class="nav-link text-dark"><%= foros[i].nombre %></a></h5>
           <p class="card-text"><%=foros[i].descripcion %> <p style="color: #1000f7;">(<%= foros[i].mensajes %> Interacciones)</p>  </p>
           <a href="/foro/<%= foros[i].idForo %>" class="btn btn-primary">Ver contenido</a>
         </div>
@@ -59,11 +51,11 @@
    <!-- Barra lateral derecha -->
   <section class = "col-lg-4 m-0 order-lg-last order-first">
     <div class="row p-2 m-2 justify-content-center ">
-      <button class="d-flex flex-column align-items-center btn-secondary rounded-pill mx-auto col-4">
+      <button class="d-flex flex-column align-items-center btn-secondary rounded-pill mx-auto col-4 border-0" style="width:22%;">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
         <a class="nav-link text-white" href="/createForo">Nuevo<br>Foro</a>
       </button>
-      <button class="d-flex flex-column align-items-center btn-secondary rounded-pill mx-auto col-4">
+      <button class="d-flex flex-column align-items-center btn-secondary rounded-pill mx-auto col-4 border-0" style="width:22%;">
         <i class="bi bi-chat-dots"></i>
         <a class="nav-link text-white" href="listaUsuarios">Mensaje<br>Privado</a>
       </button>
