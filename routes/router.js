@@ -121,7 +121,7 @@ router.get('/perfilAutor/:id', (req,res)=>{
         if(error){
             throw error;
         }else{
-            res.render('autorView',{autor:usuarioAutor, foros:foros});
+            res.render('autorView',{autor:usuarioAutor, foros:foros, nombreUsuario:req.session.usuario});
         }
     })
     

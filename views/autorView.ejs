@@ -1,60 +1,16 @@
 <!doctype html>
 <html lang="en">
   <head>
-    <!-- Required meta tags -->
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    
-    <!-- Bootstrap CSS -->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
-
-    <title>Bocaillo</title>
+    <%- include('../views/partials/head'); %>
   </head>
 <!-- Container -->
 
 <body class="container-fluid min-vh-100 d-flex flex-column justify-content-between">
   
   <header class="row">
-    <!-- NavBar -->
-  <nav class="col-12 navbar navbar-expand-lg navbar-dark py-2" style="background-color: #664E88;">
-    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarTogglerDemo03" aria-controls="navbarTogglerDemo03" aria-expanded="false" aria-label="Toggle navigation">
-      <span class="navbar-toggler-icon"></span>
-    </button>
-    <h1 class="navbar-brand"><a class="text-decoration-none text-light" href="../index">Bocaillo</a></h1>
-    <a class="navbar-brand" href="../index">
-      <img alt="Brand" width="35" height="35"
-      src="../img/bocaillo.png">
-    </a>
-    
-    <div class="collapse navbar-collapse" id="navbarTogglerDemo03">
-      <ul class="navbar-nav me-auto ms-2 mb-2 mb-lg-0">
-        <li class="nav-item">
-          <a class="nav-link" href="#">Categorias</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="../trending">Trending</a>
-        </li>
-      </ul>
-      <section class="row col-12 mx-0 col-lg-6 justify-content-end align-items-center">
-        <!--Perfil-->
-        <div class="dropdown ms-3 col-4">
-          <a href="#" class="d-flex align-items-center link-light text-decoration-none dropdown-toggle fs-5" id="dropdownUser2" data-bs-toggle="dropdown" aria-expanded="false">
-            <i class="bi bi-person-circle"></i>
-            <!--<img src="" alt="" width="32" height="32" class="rounded-circle me-2">-->
-            <strong class="text-light">&ensp;Username</strong>
-          </a>
-          <ul class="dropdown-menu text-small shadow" aria-labelledby="dropdownUser2">
-            <li><a class="dropdown-item" href="profileView">Perfil</a></li>
-            <li><hr class="dropdown-divider"></li>
-            <li><a class="dropdown-item" href="#">Cerrar sesion</a></li>
-          </ul>
-        </div>
-      </section>
-    </div>
-  </nav>
-
+    <%- include('../views/partials/navbar'); %>
     <!-- BreadCrumb -->
-    <nav class = "row col-12 px-3 py-2 m-0"  style=" background-color: #63B4B8;" aria-label="breadcrumb">
+    <nav class = "row col-12 px-3 py-2 m-0"  style=" background-color: #0d6efd;" aria-label="breadcrumb">
       <ol class="breadcrumb my-2">
         <li class="breadcrumb-item"><a href="../index" class="text-light">Pagina Inicial</a></li>
         <li class="breadcrumb-item text-light" aria-current="page"><a>Perfil de autor</a></li>
@@ -68,18 +24,18 @@
     <!-- Informacion de perfil -->
     <div class="container col-10 p-3 mx-auto">
       <div class="row">
-        <div class="col-12 col-lg-6 text-center">
+        <div class="col-12 text-center">
           <img width="200" height="200" alt ="imagen de perfil" src="../img/profilepicture.png">
           <h3> <%= autor.nombre %></h3>
         </div>
-        <div class="col-12 col-lg-6 text-center">
-          <p>
-            <label for="username">Username:</label>
-            <input type="text" id="username" value=" <%= autor.nombre %>" readonly/>
-          </p>
-          <p>
-            <label for="email">Email:</label>
-            <input type="text" id="email" value=" <%= autor.email %>" readonly/>
+        <br>
+        <div class="col-12 text-center" >
+          <div>
+            <br>
+            <label class="fw-bold"> Email:</label>
+            <label name="email" id ="email"> <%= autor.email %> </label>
+          </div>
+            
           </p>
         </div>
       </div>
@@ -88,7 +44,7 @@
       <br />
       <div class="row">
         <h3> Foros del autor </h3>
-        <% for (let i = 0; i< foros.length && i<6; i++){ %>
+        <% for(let i = 0; i< foros.length && i<6; i++){ %>
         <article class="ms-3 card mx-auto my-4 col-6 col-lg-3 border-dark">
           <div class="card-body">
             <h5 class="card-title"> <%= foros[i].nombre %> </h5>
@@ -108,22 +64,11 @@
   </main>
 
   <!-- Pie de pagina-->
-  <div class="row mt-auto ">
-    <footer class="py-4 d-flex" style="background-color: #664E88;">
-      <!-- d-flex fixed-bottom flex-wrap justify-content-between align-items-center py-3 border-top -->
-      <a
-        class="col-md-4 d-flex align-items-center justify-content-center mb-3 mb-md-0 me-md-auto link-dark text-decoration-none">
-      </a>
-
-      <ul class="nav col-md-4 justify-content-end">
-        <li class="nav-item"><a href="#" class="nav-link px-2 text-light">Acerca de nosotros <i
-              class="bi bi-people-fill"></i></a></li>
-        <li class="nav-item"><a href="#" class="nav-link px-2 text-light">Ayuda <i class="bi bi-patch-question"></i></a>
-        </li>
-        <li class="nav-item"><a href="#" class="nav-link px-2 text-light">© 2021 Company, Inc</a></li>
-      </ul>
-    </footer>
-  </div>
+  
+  <footer class="row">
+      <%- include('../views/partials/footer'); %> 
+  </footer>
+  
   <script src="../node_modules/bootstrap/dist/js/bootstrap.min.js"></script>
 
 </body>
