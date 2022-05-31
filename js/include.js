@@ -2,7 +2,7 @@ document.write(`
 
 <header class="row">
 <!-- NavBar -->
-    <nav class="col-12 navbar navbar-expand-lg navbar-dark py-2" style="background-color: #664E88;">
+    <nav class="col-12 navbar navbar-expand-lg navbar-dark py-2" style="background-color: #202124;">
         <div class="container-fluid">
           <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarTogglerDemo03" aria-controls="navbarTogglerDemo03" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
@@ -49,7 +49,7 @@ document.write(`
       </nav>
 
 <!-- BreadCrumb -->
-  <nav class = "row col-12 px-3 py-2 m-0"  style=" background-color: #63B4B8;" aria-label="breadcrumb">
+  <nav class = "row col-12 px-3 py-2 m-0"  style=" background-color: #0d6efd;" aria-label="breadcrumb">
       <ol class="breadcrumb"> 
         <li class="breadcrumb-item ps-1 text-light" aria-current="page">Pagina inicial</li>
       </ol>

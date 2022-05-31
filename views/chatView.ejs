@@ -14,52 +14,15 @@
 <!-- Container -->
 
 <body class="container-fluid d-flex flex-column  min-vh-100">
+    
+    <!--Header-->
     <header class="row">
-        <!-- NavBar -->
-        <nav class="col-12 navbar navbar-expand-lg navbar-dark py-2" style="background-color: #664E88;">
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarTogglerDemo03"
-                aria-controls="navbarTogglerDemo03" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-            <a class="navbar-brand" href="index">Bocaillo</a>
-            <a class="navbar-brand" href="index">
-                <img alt="Brand" width="35" height="35" src="img/bocaillo.png">
-            </a>
 
-            <div class="collapse navbar-collapse" id="navbarTogglerDemo03">
-                <ul class="navbar-nav me-auto ms-2 mb-2 mb-lg-0">
-                    
-                    <li class="nav-item">
-                        <a class="nav-link" href="#">Categorias</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#">Trending</a>
-                    </li>
-                </ul>
-                <section class="row col-12 mx-0 col-lg-6 justify-content-end align-items-center">
-                    <!--Perfil-->
-                    <div class="dropdown ms-3 col-4">
-                        <a href="#"
-                            class="d-flex align-items-center link-light text-decoration-none dropdown-toggle fs-5"
-                            id="dropdownUser2" data-bs-toggle="dropdown" aria-expanded="false">
-                            <i class="bi bi-person-circle"></i>
-                            <!--<img src="" alt="" width="32" height="32" class="rounded-circle me-2">-->
-                            <strong class="text-light">&ensp;Username</strong>
-                        </a>
-                        <ul class="dropdown-menu text-small shadow" aria-labelledby="dropdownUser2">
-                            <li><a class="dropdown-item" href="#">Perfil</a></li>
-                            <li>
-                                <hr class="dropdown-divider">
-                            </li>
-                            <li><a class="dropdown-item" href="#">Cerrar sesion</a></li>
-                        </ul>
-                    </div>
-                </section>
-            </div>
-        </nav>
+        <!--Navbar-->
+        <%- include('../views/partials/navbar'); %>
 
         <!-- BreadCrumb -->
-        <nav class="row col-12 px-3 py-2 m-0" style=" background-color: #63B4B8;" aria-label="breadcrumb">
+        <nav class="row col-12 px-3 py-2 m-0" style=" background-color: #0d6efd;" aria-label="breadcrumb">
             <ol class="breadcrumb">
                 <li class="breadcrumb-item ps-1 text-light" aria-current="page"><a class="text-light" href="index">Pagina inicial</a></li>
                 <li class="breadcrumb-item ps-1 text-light" aria-current="page"><a class="text-light" href="listaUsuarios.html">Lista de usuarios</a></li>
@@ -72,7 +35,7 @@
     <main class="row">
         <!-- Chat -->
         <section class="d-none d-sm-block col-sm-12 d-lg-block col-lg-12 p-0 m-0">
-            <nav class="navbar navbar-expand-lg py-2 justify-content-start" style="background-color: #664E88;">
+            <nav class="navbar navbar-expand-lg py-2 justify-content-start" style="background-color: #202124;">
                 <img src="https://github.com/mdo.png" alt="" class="rounded-circle ms-4 border border-white" width="32"
                     height="32">
                 <label class="ms-3" style="color: white;">Jesús Pérez Olmedo</label>
@@ -152,7 +115,7 @@
     <!-- Pie de pagina-->
 
     <footer class="row">
-        <div class="py-4 d-flex" style="background-color: #664E88;">
+        <div class="py-4 d-flex" style="background-color: #202124;">
             <!-- d-flex fixed-bottom flex-wrap justify-content-between align-items-center py-3 border-top -->
             <ul class="nav justify-content-start col-6 col-md-4">
                 <li class="nav-item"><a href="#" class="nav-link px-2 text-light">Español</a></li>
