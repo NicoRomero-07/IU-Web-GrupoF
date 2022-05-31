@@ -17,7 +17,6 @@ exports.getMensajes = async(req,res) =>{
                 if(error) {
                     console.log(error);
                 } else {
-                    console.log(nombreReceptor);
                     res.render("chatView", {
                         mensajes:data,
                         idUsuario:req.session.idUsuario,
