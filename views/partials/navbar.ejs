@@ -5,7 +5,7 @@
           <h1 class="navbar-brand"><a class="text-decoration-none text-light" href="index">Bocadillo</a></h1>
           <a class="navbar-brand" href="index">
             <img alt="Brand" width="35" height="35"
-            src="img/bocaillo.png">
+            src="../img/bocaillo.png">
           </a>
   
           <div class="collapse navbar-collapse" id="navbarTogglerDemo03">
@@ -26,7 +26,7 @@
                   <strong class="text-light">&ensp;<% if(nombreUsuario!=undefined){ %> <%=nombreUsuario %> <%}%></strong>
                 </a>
                 <ul class="dropdown-menu text-small shadow" aria-labelledby="dropdownUser2">
-                  <li><a class="dropdown-item" href="profileView/<% if(idUsuario!=undefined){ %> <%=idUsuario %> <%}%>">Perfil</a></li>
+                  <li><a class="dropdown-item" href="/vistaPerfil">Perfil</a></li>
                   <li><hr class="dropdown-divider"></li>
                   <li><a class="dropdown-item" href="#">Cerrar sesion</a></li>
                 </ul>

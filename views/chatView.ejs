@@ -2,14 +2,7 @@
 <html lang="en">
 
 <head>
-    <!-- Required meta tags -->
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-
-    <!-- Bootstrap CSS -->
-    <link href="css/style.css" rel="stylesheet" />
-
-    <title>Bocaillo</title>
+    <%- include('../views/partials/head'); %>
 </head>
 <!-- Container -->
 
@@ -25,7 +18,7 @@
         <nav class="row col-12 px-3 py-2 m-0" style=" background-color: #0d6efd;" aria-label="breadcrumb">
             <ol class="breadcrumb">
                 <li class="breadcrumb-item ps-1 text-light" aria-current="page"><a class="text-light" href="index">Pagina inicial</a></li>
-                <li class="breadcrumb-item ps-1 text-light" aria-current="page"><a class="text-light" href="listaUsuarios.html">Lista de usuarios</a></li>
+                <li class="breadcrumb-item ps-1 text-light" aria-current="page"><a class="text-light" href="listaUsuarios.ejs">Lista de usuarios</a></li>
                 <li class="breadcrumb-item ps-1 text-light" aria-current="page">Envío de mensaje</li>
             </ol>
         </nav>
@@ -38,16 +31,17 @@
             <nav class="navbar navbar-expand-lg py-2 justify-content-start" style="background-color: #202124;">
                 <img src="https://github.com/mdo.png" alt="" class="rounded-circle ms-4 border border-white" width="32"
                     height="32">
-                <label class="ms-3" style="color: white;">Jesús Pérez Olmedo</label>
+                <label class="ms-3" style="color: white;"><%=nombreReceptor[0].nombre%></label>
             </nav>
             <br />
             <%for(let i = 0; i < mensajes.length; i++) {
-                if(mensajes[i].emisor = usuario[0]) {  
+                if(mensajes[i].idUsuario != idUsuario) {
+
             %>
             <div class="toast show ms-3 border-dark" role="alert" aria-live="assertive" aria-atomic="true">
                 <div class="toast-header border-dark">
                     <strong class="me-auto"><%=mensajes[i].nombre%></strong>
-                    <small class="text-muted"><%=mensajes[i].fechaEmision%>></small>
+                    <small class="text-muted"><%=mensajes[i].fechaEmision.toLocaleString()%></small>
                 </div>
                 <div class="toast-body">
                     <%=mensajes[i].contenido%>
@@ -60,16 +54,16 @@
                         style="background: #abfdab;">
                         <div class="toast-header border-dark" style="background: #abfdab;">
                             <strong class="me-auto"><%=mensajes[i].nombre%></strong>
-                            <small class="text-muted"><%=mensajes[i].fechaEmision%></small>
+                            <small class="text-muted"><%=mensajes[i].fechaEmision.toLocaleString()%></small>
                         </div>
                         <div class="toast-body">
                             <%=mensajes[i].contenido%>
                         </div>
                     </div>
                 </div>
+                <br />
             <% } %>
             <% }; %>
-            <br />
             <br />
 
             <!--Enviar Mensaje-->
