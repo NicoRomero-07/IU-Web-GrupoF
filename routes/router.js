@@ -106,6 +106,9 @@ router.get('/listaUsuarios', listaUsuariosController.listaUsuarios);
 const categoriasController = require('../controllers/categoriasController');
 router.get('/categorias', categoriasController.lista);
 
+const sesionController = require('../controllers/sesionController');
+router.get('/cerrarSesion', sesionController.cerrarSesion);
+
 //Enviar mensaje foro
 router.post('/enviarMensajeForo',crud.mesajeForo);
 
