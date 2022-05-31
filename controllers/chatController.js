@@ -21,8 +21,9 @@ exports.getMensajes = async(req,res) =>{
                         mensajes:data,
                         idUsuario:req.session.idUsuario,
                         idReceptor:idReceptor,
-                        nombreUsuario:req.session.nombreUsuario,
-                        nombreReceptor:nombreReceptor
+                        nombreUsuario:req.session.usuario,
+                        nombreReceptor:nombreReceptor,
+                        login:req.session.loggedin
                     });
                 }
             })

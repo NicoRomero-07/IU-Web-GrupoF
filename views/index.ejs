@@ -13,7 +13,6 @@
  
     <!--Header-->
     <header class="row">
-
       <!--Navbar-->
       <%- include('../views/partials/navbar'); %>
     
@@ -23,27 +22,26 @@
                 <li class="breadcrumb-item ps-1" aria-current="page" style="color:#fff;">Pagina inicial</li>
               </ol>
           </nav>
-
     </header>
     <!-- Main-->
     <main class="row ">
       <!-- Foros -->
     <section class = "row col-12 col-lg-6 mb-auto mx-auto">
       <!--Buscador-->
-      <div>
+      <div style="display:flex; flex-direction: row; justify-content: space-evenly;">
+        <label class="form-label my-4" for="busquedaClave" style="font-size: 200%;"> Buscador</label>
         <form action="/buscarForo" method="post" class="mx-3 d-flex my-4 col-6">
-          <input class="form-control me-2 border-dark" type="search" name="busquedaClave" size="4" maxlength="40"
-            title="BarraDeBusqueda" required>
+          <input class="form-control me-2 border-dark" type="search" id="busquedaClave" name="busquedaClave" size="4" maxlength="50"
+            title="BarraDeBusqueda">
           <input class="btn" style=" background-color: #bec0c3;" type="submit" value="Buscar" title="Buscar">
         </form>
       </div>
-
       <% for (let i = 0; i< foros.length && i<6; i++){%>
       <article class="card mx-auto my-4 col-12 col-lg-5 border-dark">
         <div class="card-body">
-          <h5 class="card-title"> <a href="/foro/<%=foros[i].idForo %>" class="nav-link text-dark"><%= foros[i].nombreForo%></a></h5>
+          <h5 class="card-title"> <a href="/foro/<%=foros[i].idForo %>" class="nav-link text-black"><%= foros[i].nombreForo%></a></h5>
           <h6 class="card-subtitle mx-3 text-muted">Categoria: <%= foros[i].nombreCategoria %></h6>
-          <a class="nav-link card-text text-dark" href="/foro/<%=foros[i].idForo %>"><p><%= foros[i].descripcion%></p></a>
+          <a class="nav-link card-text text-black" href="/foro/<%=foros[i].idForo %>"><p><%= foros[i].descripcion%></p></a>
           <a href="/foro/<%=foros[i].idForo %>" class="btn btn-primary">Ver contenido</a>
         </div>
       </article>
@@ -54,15 +52,14 @@
     <div class="row p-2 m-2 justify-content-center ">
       
       <button class="d-flex flex-column align-items-center btn-secondary rounded-pill mx-auto col-4 border-0" style="width:22%;">
-        <a class="text-white" href="/createForo"><i class="bi bi-layout-text-sidebar-reverse"></i></a>
-        <a class="nav-link text-white" href="/createForo">Nuevo<br>Foro</a>
+        <a class="text-white nav-link" href="/createForo"><i class="bi bi-layout-text-sidebar-reverse"></i>
+          Nuevo<br>Foro</a>
       </button>
   
       <button class="d-flex flex-column align-items-center btn-secondary rounded-pill mx-auto col-4 border-0" style="width:22%;">
-        <a class="text-white" href="listaUsuarios"><i class="bi bi-chat-dots"></i></a>
-        <a class="nav-link text-white" href="listaUsuarios">Mensaje<br>Privado</a>
+        <a class="text-white nav-link" href="listaUsuarios"><i class="bi bi-chat-dots"></i>
+        Mensaje<br>Privado</a>
       </button>
-
     </div>
     <!-- Top autores -->
     <div class="row justify-content-center">
@@ -71,21 +68,18 @@
         <hr>
         <ul class="nav nav-pills flex-column mb-auto">
           <% for(let i = 0; i<autores.length && i<6;i++){ %>
-
             <li class="nav-item text-white">
               <%= i+1%>. <%= autores[i].nombre %> &nbsp
               <a href="/perfilAutor/<%= autores[i].idUsuario %>" class="text-white">
                 Ver perfil
               </a>
             </li>
-
           <% } %> 
         </ul>
       </article>
     </div>
   </section>
 </main>
-
     
   <!-- Pie de pagina-->
   <%- include('../views/partials/footer'); %>

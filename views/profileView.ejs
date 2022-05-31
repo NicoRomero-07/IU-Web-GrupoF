@@ -5,7 +5,7 @@
   </head>
   <!-- Container -->
 
-  <body class="container-fluid border border-primary">
+  <body class="container-fluid d-flex flex-column  min-vh-100">
     <main class="row">
 
       <!--Navbar-->
@@ -27,7 +27,7 @@
         <div class="row">
             <div class="col-5 text-center">
               <img width="200" height="200" src="../img/profilepicture.png">
-              <h3 class="">Usuario</h3>
+              <h3 class=""><%=nombreUsuario%></h3>
               <button class="w-40 btn btn-md btn-primary" type="submit"> <a href="editProfile.ejs" class="nav-link text-white">Editar perfil</a> </button>
             </div>
             <div class="col-7">
@@ -45,7 +45,7 @@
                     <label for="email">Email: <%=usuario[0].email%> </label>
                 </p> 
               </section>
-              <button class="w-40 btn btn-md btn-secondary" type="submit"> <a href="login.html" class="nav-link text-white">Cerrar Sesión</a> </button>
+              <button class="w-40 btn btn-md btn-secondary" type="submit"> <a href="/" class="nav-link text-white">Cerrar Sesión</a> </button>
               <button class="w-40 btn btn-md btn-outline-danger" data-bs-toggle="modal" data-bs-target="#deleteAccount" type="submit" > <label class="nav-link text-danger" id="deleteaccountbtn">Borrar Cuenta</label> </button>
             </div>
         </div>

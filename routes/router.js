@@ -103,6 +103,9 @@ router.get('/trending', trendingController.trending);
 const listaUsuariosController = require('../controllers/listaUsuariosController');
 router.get('/listaUsuarios', listaUsuariosController.listaUsuarios);
 
+const categoriasController = require('../controllers/categoriasController');
+router.get('/categorias', categoriasController.lista);
+
 //Enviar mensaje foro
 router.post('/enviarMensajeForo',crud.mesajeForo);
 
@@ -124,8 +127,9 @@ router.get('/confirmed',(req,res)=>{
 router.get('/confirmeEmail',(req,res)=>{
     res.render('confirmeEmail');
 });
-router.get('/listaUsuarios',(req,res)=>{
-    res.render('listaUsuarios');
+
+router.get('/categorias',(req,res)=>{
+    res.render('categorias');
 });
 
 //Controlador del index
@@ -172,5 +176,6 @@ router.post('/deleteMensajeForo/:mensajeId', crud.deleteMensajeForo);
 router.post('/enviarMensajePrivado', chatController.enviarMensaje);
 router.get('/vistaPerfil', datosLoginController.getLogin);
 router.get('/vistaChat/:usuarioId', chatController.getMensajes);
+
 
 module.exports = router;
