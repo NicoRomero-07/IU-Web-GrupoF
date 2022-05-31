@@ -67,15 +67,16 @@
             <br />
 
             <!--Enviar Mensaje-->
-            <form class="row mb-3 m-0 p-0" action="/enviarMensajePrivado/<%=idReceptor%>" method="POST">
+            <form class="row mb-3 m-0 p-0" action="/enviarMensajePrivado" method="POST">
                 <div class="col-7 m-0 p-0">
                     <input class="form-control mx-4 border-dark" type="text" size="90%" name="mensaje" id="mensaje">
                 </div>
                  <div class="col-1 m-0 p-0">
                 </div>
                 <div class="col-1 m-0 p-0">
-                    <button class="form-control ms-6 btn btn-primary"><i class="bi bi-send"></i></button>
+                    <button class="form-control ms-6 btn btn-primary"><i class="bi bi-send"><i>Enviar</i></button>
                 </div>
+                <input type="hidden" name="idReceptor" value="<%=idReceptor%>">
             </form>
 
         </section>
