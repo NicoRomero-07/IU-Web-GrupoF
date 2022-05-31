@@ -12,7 +12,8 @@ exports.getLogin = async(req,res) =>{
         } else {
             res.render("profileView", {
                 usuario:user,
-                nombreUsuario:req.session.usuario
+                nombreUsuario:req.session.usuario,
+                login:req.session.loggedin
             });
         }
     })

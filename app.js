@@ -35,7 +35,7 @@ dotenv.config({path:'.env/.env'});
 const PORT = process.env.PORT || 5000
 
 app.listen(PORT,()=>{
-    console.log('SERVER corriendo en el puerto ',PORT);
+    console.log('SERVER http://localhost:5000 corriendo en el puerto',PORT);
 });
 
 module.exports = app;
