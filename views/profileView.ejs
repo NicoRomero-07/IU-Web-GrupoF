@@ -1,77 +1,70 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
   <head>
     <%- include('../views/partials/head'); %>
   </head>
   <!-- Container -->
-
-  <body class="container-fluid d-flex flex-column  min-vh-100">
-    <main class="row">
+  <body class="container-fluid min-vh-100 d-flex flex-column justify-content-between">
+    
+    
+    <% if(!login){%>
+       <a href="/">Por favor inicie sesion </a>  
+    <% }else{ %>
+ 
+    <!--Header-->
+    <header class="row">
 
       <!--Navbar-->
       <%- include('../views/partials/navbar'); %>
+    
+    <!-- BreadCrumb -->
+          <nav class = "row col-12 px-3 py-2 m-0"  style=" background-color: #0d6efd;" aria-label="breadcrumb">
+              <ol class="breadcrumb"> 
+                <li class="breadcrumb-item ps-1 text-white" aria-current="page"><a class="text-white" href="index">Pagina inicial</a></li>
+                <li class="breadcrumb-item ps-1 text-white" aria-current="page"><a class="text-white" href="listaUsuarios.ejs">Lista de usuarios</a></li>
+                <li class="breadcrumb-item ps-1 text-white" aria-current="page">Envío de mensaje</li>
+              </ol>
+          </nav>
 
+    </header>
+    <!-- Main-->
+    <main class="row">
+        <!-- Informacion de perfil -->
+        <div class="container col-10 p-3 mx-auto">
+          <div class="row">
+              <div class="col-5 text-center">
+                <img width="200" height="200" src="../img/profilepicture.png" alt="Foto de perfil">
+                <h3 class=""><%=nombreUsuario%></h3>
+                <button class="w-40 btn btn-md btn-primary" type="submit"> <a href="editProfile.ejs" class="nav-link text-white">Editar perfil</a> </button>
+              </div>
+              <div class="col-7">
+                <style>
+                  #section {
+                      background-color: rgb(225, 225, 225);
+                      border-radius: 25px;
+                  }
+                </style>
+                <section id="section">
+                  <p class="pt-4 px-3">
+                    <label for="usuario">Usuario: <%=usuario[0].nombre%></label>
+                  </p>
+                  <p class="pb-4 px-3">
+                      <label for="email">Email: <%=usuario[0].email%> </label>
+                  </p> 
+                </section>
+                <button class="w-40 btn btn-md btn-secondary" type="submit"> <a href="/" class="nav-link text-white">Cerrar Sesión</a> </button>
+                <button class="w-40 btn btn-md btn-outline-danger" data-bs-toggle="modal" data-bs-target="#deleteAccount" type="submit" > <label class="nav-link text-danger" id="deleteaccountbtn">Borrar Cuenta</label> </button>
+              </div>
+          </div>
+        </div>
+      </section>
     </main>
 
-    <!-- BreadCrumb -->
-    <nav class="row p-1" style="background-color:#0d6efd;">
-      <ol class="breadcrumb my-2">
-        <li class="breadcrumb-item"><a href="index" class="text-light">Pagina Inicial</a></li>
-        <li class="breadcrumb-item text-light" aria-current="page">Perfil</a></li>
-      </ol>
-    </nav>
-
-    <main class="row">
-      <!-- Informacion de perfil -->
-      <div class="container col-10 p-3 mx-auto">
-        <div class="row">
-            <div class="col-5 text-center">
-              <img width="200" height="200" src="../img/profilepicture.png">
-              <h3 class=""><%=nombreUsuario%></h3>
-              <button class="w-40 btn btn-md btn-primary" type="submit"> <a href="editProfile.ejs" class="nav-link text-white">Editar perfil</a> </button>
-            </div>
-            <div class="col-7">
-              <style>
-                #section {
-                    background-color: rgb(225, 225, 225);
-                    border-radius: 25px;
-                }
-              </style>
-              <section id="section">
-                <p class="pt-4 px-3">
-                  <label for="usuario">Usuario: <%=usuario[0].nombre%></label>
-                </p>
-                <p class="pb-4 px-3">
-                    <label for="email">Email: <%=usuario[0].email%> </label>
-                </p> 
-              </section>
-              <button class="w-40 btn btn-md btn-secondary" type="submit"> <a href="/" class="nav-link text-white">Cerrar Sesión</a> </button>
-              <button class="w-40 btn btn-md btn-outline-danger" data-bs-toggle="modal" data-bs-target="#deleteAccount" type="submit" > <label class="nav-link text-danger" id="deleteaccountbtn">Borrar Cuenta</label> </button>
-            </div>
-        </div>
-      </div>
-    </section>
-  </main>
-
-    <!-- Pie de pagina-->
-    <div class="row mt-auto ">
-      <footer class="py-4 d-flex" style="background-color: #202124;">
-        <!-- d-flex fixed-bottom flex-wrap justify-content-between align-items-center py-3 border-top -->
-        <a
-          class="col-md-4 d-flex align-items-center justify-content-center mb-3 mb-md-0 me-md-auto link-dark text-decoration-none">
-        </a>
-
-        <ul class="nav col-md-4 justify-content-end">
-          <li class="nav-item"><a href="#" class="nav-link px-2 text-light">Acerca de nosotros <i class="bi bi-people-fill"></i></a></li>
-          <li class="nav-item"><a href="#" class="nav-link px-2 text-light">Ayuda <i class="bi bi-patch-question"></i></a></li>
-          <li class="p-2 text-light">© 2022, bocaillo.com</li>
-        </ul>
-      </footer>
-    </div>
-
-    <script src="../node_modules/bootstrap/dist/js/bootstrap.min.js"></script>
-    <script src="../js/deleteAccount.js"></script>
-  </body>
+    
+  <!-- Pie de pagina-->
+  <%- include('../views/partials/footer'); %>
+  <% } %>
+  <script src="../node_modules/bootstrap/dist/js/bootstrap.min.js"></script>
   
   <!-- Modal -->
   <div class="modal fade" id="deleteAccount" tabindex="-1" aria-labelledby="deleteAccountLabel" aria-hidden="true">
@@ -96,4 +89,5 @@
       </div>
     </div>
   </div>
+  </body>
 </html>
