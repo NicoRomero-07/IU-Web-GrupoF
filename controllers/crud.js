@@ -36,7 +36,7 @@ exports.vistaAutor = (req,res)=>{
         if(error){
             throw error;
         }else{
-            res.render('autorView',{autor:usuarioAutor, foros:foros, nombreUsuario:req.session.usuario});
+            res.render('autorView',{autor:usuarioAutor, foros:foros, nombreUsuario:req.session.usuario, idUsuario: req.session.idUsuario});
         }
     })
     
@@ -51,7 +51,7 @@ exports.createForoLoadView = (req,res)=>{
             if(error){
                 throw error;
             }else{
-                res.render('createForo',{categorias:categorias, usuario:req.session.idUsuario, nombreUsuario:req.session.usuario});
+                res.render('createForo',{categorias:categorias, usuario:req.session.idUsuario, nombreUsuario:req.session.usuario, idUsuario: req.session.idUsuario});
             }
         })
     }else{
@@ -88,7 +88,8 @@ exports.filtrarUsuario = async(req, res) => {
                 res.render('listaUsuarios',{
                     login:true,
                     id: req.session.idUsuario,
-                    usuarios:results
+                    usuarios:results,
+                    idUsuario: req.session.idUsuario
                 });
             }  
         });

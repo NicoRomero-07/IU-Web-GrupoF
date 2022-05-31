@@ -107,11 +107,11 @@ router.post('/enviarMensajeForo',crud.mesajeForo);
 router.post('/listaUsuarios/filtro',crud.filtrarUsuario)
 
 router.get('/',(req,res)=>{
-    return res.render('login',{nombreUsuario:undefined, id: undefined});
+    return res.render('login',{nombreUsuario:undefined, idUsuario: undefined});
 });
 
 router.get('/register',(req,res)=>{
-    res.render('register');
+    res.render('register', {nombreUsuario:undefined, idUsuario: undefined});
 });
 
 router.get('/confirmed',(req,res)=>{
@@ -145,7 +145,7 @@ router.get('/index',(req,res)=>{
                 }else{
                     res.render('index',{
                         login:true,
-                        id: req.session.idUsuario,
+                        idUsuario: req.session.idUsuario,
                         nombreUsuario: req.session.usuario,
                         foros:data,
                         autores:dataAutores
