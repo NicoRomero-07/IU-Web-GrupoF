@@ -1,3 +1,87 @@
+<!doctype html>
+<html lang="en">
+
+  <head>
+    <%- include('../views/partials/head'); %>
+  </head>
+  <!-- Container -->
+
+  <body class="container-fluid">
+    <main class="row">
+
+      <!-- NavBar -->
+      <%- include('../views/partials/navbar'); %>
+    </main>
+
+    <!-- BreadCrumb -->
+    <nav class="row p-1" style="background-color:#0d6efd;">
+      <ol class="breadcrumb my-2">
+        <li class="breadcrumb-item"><a href="index" class="text-white">Pagina Inicial</a></li>
+        <li class="breadcrumb-item text-white" aria-current="page">Perfil</a></li>
+      </ol>
+    </nav>
+
+    <main class="row">
+      <!-- Editar Perfil -->
+      <div class="container col-3 mx-auto">
+
+      </div>
+      <div class="container col-6 pt-3 mx-auto">
+        <style>
+            #section {
+                background-color: rgb(225, 225, 225);
+                border-radius: 25px;
+            }
+            h1 {
+              text-align: center;
+            }
+        </style>
+        <h1>Editar Perfil</h1>
+        <form class="row mb-3 m-0 p-0"  action="/perfilEditado" method="POST">
+          <section id="section">
+            <p class="pt-4 px-3">
+              <label for="nombre">Usuario: </label>
+              <input type="text" class="form-control" id="nombre" name="nombre" value="<%=usuario[0].nombre%>">
+            </p>
+            <p class="pb-4 px-3">
+              <label for="email">Email: </label>
+              <input type="text" class="form-control" id="email" name="email" value="<%=usuario[0].email%>">
+            </p>
+            <input type="hidden" name="contrasenya" value="<%=usuario[0].contrasenya%>">
+          </section>
+          <style>
+            #buttons {
+                float:right;
+            }
+          </style>
+          <table>
+            <tr>
+              <th class="col-4">
+                <button class="w-40 btn btn-md mb-3 mt-3 btn-secondary"><a href="/vistaPerfil" class="text-white" style="text-decoration: none;">Cancelar</a></button>
+              </th>
+              <th>
+                <div id="buttons">
+                  <button class="form-control btn btn-md mt-1 btn-primary"><i class="bi bi-send">Actualizar</i></button>
+                </div>
+              </th>
+            </tr>
+          </table>
+        </form>
+        
+      </div>
+      <div class="container col-3 mx-auto">
+
+      </div>
+    </main>
+
+    <!-- Pie de pagina-->
+    <%- include('../views/partials/footer'); %> 
+
+    <script src="../node_modules/bootstrap/dist/js/bootstrap.min.js"></script>
+  </body>
+</html>
+
+
 <!DOCTYPE html>
 <html lang="en">
   <head>
