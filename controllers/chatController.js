@@ -31,14 +31,18 @@ exports.getMensajes = async(req,res) =>{
 }
 
 exports.enviarMensaje = (req, res) => {
-    const idUsuario = req.session.idUsuario;
-    const idReceptor = req.params.receptorId;
+    const idUsuarioP = req.session.idUsuario;
+    const idReceptorP = req.body.idReceptor;
     const contenido = req.body.mensaje;
-    pool.query('INSERT INTO mensaje_privado SET ?', {contenido:contenido, emisor:idUsuario, receptor:idReceptor, fechaEmision:new Date()}, (error,results)=>{
-        if(error){
-            console.log(error);
-        }else{
-            res.redirect('/vistaChat/' + idReceptor);
-        }
-    });
+    if(contenido != "") {
+        pool.query('INSERT INTO mensaje_privado SET ?', {contenido:contenido, emisor:idUsuarioP, receptor:idReceptorP, fechaEmision:new Date()}, (error,results)=>{
+            if(error){
+                console.log(error);
+            }else{
+                res.redirect('/vistaChat/' + idReceptorP);
+            }
+        });
+    } else {
+        res.redirect('/vistaChat/' + idReceptorP);
+    }
 }

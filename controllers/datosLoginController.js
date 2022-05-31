@@ -4,13 +4,16 @@ const mysql = db.mysql;
 
 exports.getLogin = async(req,res) =>{
     const id = req.session.idUsuario;
-    selectQuery = 'SELECT usuario, email FROM usuario WHERE idUsuario = ?';
+    selectQuery = 'SELECT nombre, email FROM usuario WHERE idUsuario = ?';
     query = mysql.format(selectQuery,[id]);
     pool.query(query, async (error, user)=>{
         if(error){
             console.log(error);
         } else {
-            res.render("profileView", {usuario:user});
+            res.render("profileView", {
+                usuario:user,
+                nombreUsuario:req.session.usuario
+            });
         }
     })
 }
