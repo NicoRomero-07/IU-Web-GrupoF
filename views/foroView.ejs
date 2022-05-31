@@ -15,7 +15,7 @@
         <nav class = "row col-12 px-3 py-2 m-0"  style=" background-color: #0d6efd;" aria-label="breadcrumb">
             <ol class="breadcrumb"> 
               <li class="breadcrumb-item ps-1 text-light"><a class = "text-light" href="../index">Pagina inicial</a></li>
-              <li class="breadcrumb-item ps-1 text-light"><%= foro.Nombre %></li>
+              <li class="breadcrumb-item ps-1 text-light">Foro "<%= foro.Nombre %>"</li>
             </ol>
         </nav>
     </header>
@@ -61,7 +61,7 @@
                   <small class="text-muted foro-view-margin-right-8px ">
                     <%=fechaEmision%>
                   </small>
-                  <%if (mensaje.emisor==id){ %>
+                  <%if (mensaje.emisor==idUsuario){ %>
 
                     <form action="/deleteMensajeForo/<%= mensaje.idMensaje_foro%>" method="POST">
                       <input type="hidden" name="idForo" value="<%=foro.idForo %>">
@@ -87,12 +87,8 @@
   </main>
 
   <!-- Pie de pagina-->
-
-
-  <div class="row">
-      <%- include('../views/partials/footer'); %> 
-    </footer>
-  </div>
+  <%- include('../views/partials/footer'); %> 
+  
   <script>
         // Get the input field
     var input = document.getElementById("forumMessageSubmit");

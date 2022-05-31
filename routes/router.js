@@ -6,6 +6,8 @@ const mysql = connection.mysql;
 const bcrypt = require('bcryptjs/dist/bcrypt');
 const bcryptjs = require('bcryptjs');
 const buscarForoController = require('../controllers/buscarForoController');
+const datosLoginController = require('../controllers/datosLoginController');
+const chatController = require('../controllers/chatController');
 
 router.get('/foro/:id', async (req, res) => {
     if (typeof req.session.loggedin != "undefined") {
@@ -73,7 +75,7 @@ router.get('/foro/:id', async (req, res) => {
         });
         let usuario = req.session.usuario;
         let idUsuario = req.session.idUsuario;
-        res.render('foroView',{foro:foro, mensajes:mensajes, nombreUsuario:usuario,id:idUsuario}); 
+        res.render('foroView',{foro:foro, mensajes:mensajes, nombreUsuario:usuario,idUsuario:idUsuario}); 
 
     }else{
         res.render('index',{
@@ -107,11 +109,11 @@ router.post('/enviarMensajeForo',crud.mesajeForo);
 router.post('/listaUsuarios/filtro',crud.filtrarUsuario)
 
 router.get('/',(req,res)=>{
-    return res.render('login',{nombreUsuario:undefined, id: undefined});
+    return res.render('login',{nombreUsuario:undefined, idUsuario: undefined});
 });
 
 router.get('/register',(req,res)=>{
-    res.render('register');
+    res.render('register', {nombreUsuario:undefined, idUsuario: undefined});
 });
 
 router.get('/confirmed',(req,res)=>{
@@ -136,7 +138,7 @@ router.get('/index',(req,res)=>{
                 console.error(err);
                 throw error;
             }else{
-                let selectQuery = 'SELECT f.idForo, f.propietario, f.nombre AS nombreForo, c.nombre AS nombreCategoria FROM ?? f JOIN ?? c ON c.idCategoria=f.categoria';
+                let selectQuery = 'SELECT f.idForo, f.propietario,f.descripcion, f.nombre AS nombreForo, c.nombre AS nombreCategoria FROM ?? f JOIN ?? c ON c.idCategoria=f.categoria';
                 let query = mysql.format(selectQuery,["foro","categoria"]);
                 pool.query(query,(err,data) => {
                 if(err){
@@ -145,7 +147,7 @@ router.get('/index',(req,res)=>{
                 }else{
                     res.render('index',{
                         login:true,
-                        id: req.session.idUsuario,
+                        idUsuario: req.session.idUsuario,
                         nombreUsuario: req.session.usuario,
                         foros:data,
                         autores:dataAutores
@@ -166,23 +168,7 @@ router.get('/index',(req,res)=>{
 
 router.post('/buscarForo', buscarForoController.buscarForo);
 router.post('/deleteMensajeForo/:mensajeId', crud.deleteMensajeForo);
-
-//Datos login
-router.get('/vistaPerfil', (req,res)=>{
-    const id = req.session.idUsuario;
-    selectQuery = 'SELECT nombre, email FROM ?? WHERE ?? = ?';
-    query = mysql.format(selectQuery,["usuario","idusuario",id]);
-    let usuario;
-    pool.query(query,(error, user)=>{
-        if(error){
-            throw error;
-        }else{
-            usuario=user[0];
-        }
-    })
-    res.render("profileView", {
-        usuario:usuario
-    });
-});
+router.get('/vistaPerfil', datosLoginController.getLogin);
+router.get('/vistaChat/:usuarioId', chatController.getMensajes);
 
 module.exports = router;

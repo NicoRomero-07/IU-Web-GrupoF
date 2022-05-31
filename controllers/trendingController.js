@@ -25,7 +25,8 @@ exports.trending = async(req, res)=>{
                             id: req.session.idUsuario,
                             nombreUsuario: req.session.usuario,
                             foros:data,
-                            autores:dataAutores
+                            autores:dataAutores,
+                            nombreUsuario: req.session.nombreUsuario
                         });
                     }
                 });

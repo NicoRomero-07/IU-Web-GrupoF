@@ -43,8 +43,7 @@
         <div class="card-body">
           <h5 class="card-title"> <a href="/foro/<%=foros[i].idForo %>" class="nav-link text-dark"><%= foros[i].nombreForo%></a></h5>
           <h6 class="card-subtitle mx-3 text-muted">Categoria: <%= foros[i].nombreCategoria %></h6>
-          <%console.log(foros[i].Descripcion);%>
-          <a class="nav-link card-text" href="/foro/<%=foros[i].idForo %>"><p  style="color: #1000f7;"><%= foros[i].Descripcion%></p></a>
+          <a class="nav-link card-text text-dark" href="/foro/<%=foros[i].idForo %>"><p><%= foros[i].descripcion%></p></a>
           <a href="/foro/<%=foros[i].idForo %>" class="btn btn-primary">Ver contenido</a>
         </div>
       </article>
@@ -89,13 +88,9 @@
 
     
   <!-- Pie de pagina-->
-  <footer class="row">
-    <%- include('../views/partials/footer'); %> 
-  </footer>
-    
-    <%
-      } 
-    %>
-
+  <%- include('../views/partials/footer'); %>
+  <% } %>
+  <script src="../node_modules/bootstrap/dist/js/bootstrap.min.js"></script>
+  
   </body>
 </html>

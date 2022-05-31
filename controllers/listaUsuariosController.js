@@ -23,7 +23,7 @@ exports.listaUsuarios = async(req, res)=>{
             }else{
                 res.render('listaUsuarios',{
                     login:true,
-                    id: req.session.idUsuario,
+                    idUsuario: req.session.idUsuario,
                     usuarios:data,
                     nombreUsuario:req.session.usuario
                 });

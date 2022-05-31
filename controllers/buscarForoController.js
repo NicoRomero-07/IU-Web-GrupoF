@@ -10,7 +10,7 @@ exports.buscarForo = async (req, res) => {
         if (error) {
             console.log(error);
         } else {
-            res.render('JavaScriptResultoBuscar', { results:results,nombreUsuario:req.session.usuario, id:req.session.idUsuario});
+            res.render('JavaScriptResultoBuscar', { results:results,nombreUsuario:req.session.usuario, idUsuario:req.session.idUsuario});
         }
     })
 }

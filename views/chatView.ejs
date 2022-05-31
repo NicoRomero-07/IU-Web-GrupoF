@@ -41,59 +41,34 @@
                 <label class="ms-3" style="color: white;">Jesús Pérez Olmedo</label>
             </nav>
             <br />
+            <%for(let i = 0; i < mensajes.length; i++) {
+                if(mensajes[i].emisor = usuario[0]) {  
+            %>
             <div class="toast show ms-3 border-dark" role="alert" aria-live="assertive" aria-atomic="true">
                 <div class="toast-header border-dark">
-                    <i class="bi bi-person-circle me-2"></i>
-                    <strong class="me-auto">Usuario1</strong>
-                    <small class="text-muted">15 mins ago</small>
+                    <strong class="me-auto"><%=mensajes[i].nombre%></strong>
+                    <small class="text-muted"><%=mensajes[i].fechaEmision%>></small>
                 </div>
                 <div class="toast-body">
-                    Hello, world! This is a toast message.
+                    <%=mensajes[i].contenido%>
                 </div>
             </div>
-            <br />
-
-            <div class="toast show ms-3 border-dark" role="alert" aria-live="assertive" aria-atomic="true">
-                <div class="toast-header border-dark">
-                    <i class="bi bi-person-circle me-2"></i>
-                    <strong class="me-auto">Usuario2</strong>
-                    <small class="text-muted">10 mins ago</small>
-                </div>
-                <div class="toast-body">
-                    <i>respondiendo a @Usuario1</i><br />
-                    Hello, world! This is a toast message.
-                </div>
-            </div>
-            <br />
-
-            <div class="toast show ms-3 border-dark" role="alert" aria-live="assertive" aria-atomic="true">
-                <div class="toast-header border-dark">
-                    <i class="bi bi-person-circle me-2"></i>
-                    <strong class="me-auto">Usuario3</strong>
-                    <small class="text-muted">5 mins ago</small>
-                </div>
-                <div class="toast-body">
-                    <i>respondiendo a @Usuario1</i><br />
-                    Hello, world! This is a toast message.
-                </div>
-            </div>
-            <br />
-
-            <div class="row justify-content-end m-0 me-3">
-                <div class="toast show border-dark" role="alert" aria-live="assertive" aria-atomic="true"
-                    style="background: #abfdab;">
-                    <div class="toast-header border-dark" style="background: #abfdab;">
-                        <i class="bi bi-person-circle me-2"></i>
-                        <strong class="me-auto">Usuario3</strong>
-                        <small class="text-muted">3 mins ago</small>
-                        <button type="button" class="btn-close" data-bs-dismiss="toast" aria-label="Close"></button>
-                    </div>
-                    <div class="toast-body">
-                        <i>respondiendo a @Usuario1</i><br />
-                        Hello, world! This is a toast message.
+            <br/>
+            <% } else {%>
+                <div class="row justify-content-end m-0 me-3">
+                    <div class="toast show border-dark" role="alert" aria-live="assertive" aria-atomic="true"
+                        style="background: #abfdab;">
+                        <div class="toast-header border-dark" style="background: #abfdab;">
+                            <strong class="me-auto"><%=mensajes[i].nombre%></strong>
+                            <small class="text-muted"><%=mensajes[i].fechaEmision%></small>
+                        </div>
+                        <div class="toast-body">
+                            <%=mensajes[i].contenido%>
+                        </div>
                     </div>
                 </div>
-            </div>
+            <% } %>
+            <% }; %>
             <br />
             <br />
 
@@ -113,28 +88,7 @@
     </main>
 
     <!-- Pie de pagina-->
-
-    <footer class="row">
-        <div class="py-4 d-flex" style="background-color: #202124;">
-            <!-- d-flex fixed-bottom flex-wrap justify-content-between align-items-center py-3 border-top -->
-            <ul class="nav justify-content-start col-6 col-md-4">
-                <li class="nav-item"><a href="#" class="nav-link px-2 text-light">Español</a></li>
-                <li class="nav-item"><a href="#" class="nav-link px-2 text-light">English</a></li>
-                <li class="nav-item"><a href="#" class="nav-link px-2 text-light">中文</a></li>
-            </ul>
-
-            <a
-                class="col-md-4 d-flex align-items-center justify-content-center mb-3 mb-md-0 me-md-auto link-dark text-decoration-none"></a>
-
-            <ul class="nav justify-content-end col-6 col-md-4">
-                <li class="nav-item"><a href="#" class="nav-link px-2 text-light">Acerca de nosotros <i
-                            class="bi bi-people"></i></a></li>
-                <li class="nav-item"><a href="#" class="nav-link px-2 text-light">Ayuda <i
-                            class="bi bi-patch-question"></i></a></i></li>
-                <li class="p-2 text-light">© 2022, bocaillo.com</li>
-            </ul>
-        </div>
-    </footer>
+    <%- include('../views/partials/footer'); %> 
 
     <script src="node_modules/bootstrap/dist/js/bootstrap.min.js"></script>
 </body>
