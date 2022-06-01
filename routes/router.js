@@ -8,6 +8,7 @@ const bcryptjs = require('bcryptjs');
 const buscarForoController = require('../controllers/buscarForoController');
 const datosLoginController = require('../controllers/datosLoginController');
 const chatController = require('../controllers/chatController');
+const editarPerfilController = require('../controllers/editarPerfilController');
 
 router.get('/foro/:id', async (req, res) => {
     if (typeof req.session.loggedin != "undefined") {
@@ -124,11 +125,11 @@ router.get('/register',(req,res)=>{
 });
 
 router.get('/confirmed',(req,res)=>{
-    res.render('confirmed');
+    res.render('confirmed', {nombreUsuario:req.session.usuario});
 });
 
 router.get('/confirmeEmail',(req,res)=>{
-    res.render('confirmeEmail');
+    res.render('confirmeEmail', {nombreUsuario:req.session.usuario});
 });
 
 //Controlador del index
@@ -173,8 +174,10 @@ router.get('/index',(req,res)=>{
 router.post('/buscarForo', buscarForoController.buscarForo);
 router.post('/deleteMensajeForo/:mensajeId', crud.deleteMensajeForo);
 router.post('/enviarMensajePrivado', chatController.enviarMensaje);
+router.post('/perfilEditado', editarPerfilController.modificarDatos);
 router.get('/vistaPerfil', datosLoginController.getLogin);
 router.get('/vistaChat/:usuarioId', chatController.getMensajes);
+router.get('/editarPerfil', editarPerfilController.getDatos);
 
 
 module.exports = router;
