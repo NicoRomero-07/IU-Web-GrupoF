@@ -22,7 +22,7 @@ exports.crearForo = (req, res) => {
 exports.vistaAutor = (req,res)=>{
     const id = req.params.id;
     selectQuery = 'SELECT nombre, email FROM ?? WHERE ?? = ?';
-    query = mysql.format(selectQuery,["usuario","idusuario",id]);
+    let query = mysql.format(selectQuery,["usuario","idusuario",id]);
     let usuarioAutor;
     pool.query(query,(error, autor)=>{
         if(error){
@@ -31,6 +31,8 @@ exports.vistaAutor = (req,res)=>{
             usuarioAutor=autor[0];
         }
     })
+
+
     selectQuery = 'SELECT idForo, propietario,nombre,descripcion,categoria FROM ?? WHERE ?? = ?';
     query = mysql.format(selectQuery,["foro","propietario",id]);
     pool.query(query,(error, foros)=>{
