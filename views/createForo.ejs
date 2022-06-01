@@ -28,7 +28,7 @@
       <form class="text-center col-12" method="POST" action="/crearForo" accept-charset="UTF-8" id="formCrearForo">
         <input type="hidden" name="idUsuario" id="idUsuario" value="<%= usuario %>"/>
         <div class="col-12">
-          <label for="nombreForo" class="form-label">Nombre foro</label>
+          <label for="nombreForo" class="form-label">Nombre foro (*)</label>
           <div class="input-group has-validation w-25 mx-auto">
             <input type="text" class="form-control" id="nombreForo" name="nombreForo" required>
             <div class="invalid-feedback">
@@ -47,7 +47,7 @@
           </div>
         </div>
 
-        <label for="categoria" class="form-label">Categoria</label><br>
+        <label for="categoria" class="form-label">Categoria (*)</label><br>
         <select name="categoria" id="categoria" style="background-color: #fff;">
           <% categorias.forEach((categoria)=>{ %>
               <option id="<%= categoria.idCategoria %>" name ="<%= categoria.nombre %>" value="<%= categoria.idCategoria%>"><%= categoria.nombre %></option>
