@@ -30,11 +30,12 @@
       <!-- Foros -->
     <section class = "row col-12 col-lg-6 mb-auto mx-auto">
        <!--Buscador-->
-      <div>   
-        <label class="form-label my-4" for="buscador" style="font-size: 200%;"> Buscador</label>
-        <form action="JavaScriptResultoBuscar" method="post" target="_blank" class="mx-3 d-flex my-4 col-6">
-            <input class="form-control me-2 border-dark" id="buscador" type="search" name="busqueda" size="4" maxlength="50" title="BarraDeBusqueda">
-            <input class="btn" style=" background-color: #bec0c3;" type="submit" type="submit" value="Buscar" title="Boton Borrar">
+      <div style="display:flex; flex-direction: row; justify-content: space-evenly;">
+        <label class="form-label my-4" for="busquedaClave" style="font-size: 200%;"> Buscador</label>
+        <form action="/buscarForo" method="post" class="mx-3 d-flex my-4 col-6">
+          <input class="form-control me-2 border-dark" type="search" id="busquedaClave" name="busquedaClave" size="4" maxlength="50"
+            title="BarraDeBusqueda">
+          <input class="btn" style=" background-color: #bec0c3;" type="submit" value="Buscar" title="Buscar">
         </form>
       </div>
       <% for (let i = 0; i< foros.length && i<6; i++){ %>
