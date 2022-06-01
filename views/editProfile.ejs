@@ -1,138 +1,90 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
-
   <head>
-    <!-- Required meta tags -->
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-
-    <link href="css/style.css" rel="stylesheet" />
-
-    <title>Bocaillo</title>
+    <%- include('../views/partials/head'); %>
   </head>
   <!-- Container -->
+  <body class="container-fluid min-vh-100 d-flex flex-column justify-content-between">
+    
+    
+    <% if(!login){%>
+       <a href="/">Por favor inicie sesion </a>  
+    <% }else{ %>
+ 
+    <!--Header-->
+    <header class="row">
 
-  <body class="container-fluid border border-primary">
-    <main class="row">
-
-      <!-- NavBar -->
-      <nav class="col-12 navbar navbar-expand-lg navbar-dark py-2" style="background-color: #202124;">
-        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarTogglerDemo03" aria-controls="navbarTogglerDemo03" aria-expanded="false" aria-label="Toggle navigation">
-          <span class="navbar-toggler-icon"></span>
-        </button>
-        <a class="navbar-brand" href="index">Bocaillo</a>
-        <a class="navbar-brand" href="index">
-          <img alt="Brand" width="35" height="35"
-          src="img/bocaillo.png">
-        </a>
-
-        <div class="collapse navbar-collapse" id="navbarTogglerDemo03">
-          <ul class="navbar-nav me-auto ms-2 mb-2 mb-lg-0">
-            <li class="nav-item">
-              <a class="nav-link" href="#">Categorias</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="#">Trending</a>
-            </li>
-          </ul>
-          <section class="row col-12 mx-0 col-lg-6 justify-content-end align-items-center">
-            <!--Perfil-->
-            <div class="dropdown ms-3 col-4">
-              <a href="#" class="d-flex align-items-center link-light text-decoration-none dropdown-toggle fs-5" id="dropdownUser2" data-bs-toggle="dropdown" aria-expanded="false">
-                <i class="bi bi-person-circle"></i>
-                <!--<img src="" alt="" width="32" height="32" class="rounded-circle me-2">-->
-                <strong class="text-light">&ensp;Username</strong>
-              </a>
-              <ul class="dropdown-menu text-small shadow" aria-labelledby="dropdownUser2">
-                <li><a class="dropdown-item" href="#">Ajustes</a></li>
-                <li><hr class="dropdown-divider"></li>
-                <li><a class="dropdown-item" href="#">Cerrar sesion</a></li>
-              </ul>
-            </div>
-          </section>
-        </div>
-      </nav>
-
-    </main>
-
+      <!--Navbar-->
+      <%- include('../views/partials/navbar'); %>
+    
     <!-- BreadCrumb -->
-    <nav class="row p-1" style="background-color:#0d6efd;">
-      <ol class="breadcrumb my-2">
-        <li class="breadcrumb-item"><a href="index" class="text-light">Pagina Inicial</a></li>
-        <li class="breadcrumb-item text-light" aria-current="page">Perfil</a></li>
-      </ol>
-    </nav>
+          <nav class = "row col-12 px-3 py-2 m-0"  style=" background-color: #0d6efd;" aria-label="breadcrumb">
+              <ol class="breadcrumb"> 
+                <li class="breadcrumb-item ps-1 text-white" aria-current="page"><a class="text-white" href="index">Pagina inicial</a></li>
+                <li class="breadcrumb-item ps-1 text-white" aria-current="page"><a class="text-white" href="/vistaPerfil">Perfil</a></li>
+                <li class="breadcrumb-item ps-1 text-white" aria-current="page">Editar perfil</li>
+              </ol>
+          </nav>
 
+    </header>
+    <!-- Main-->
     <main class="row">
-      <!-- Editar Perfil -->
-      <div class="container col-3 mx-auto">
-
-      </div>
-      <div class="container col-6 pt-3 mx-auto">
-        <style>
-            #section {
-                background-color: rgb(225, 225, 225);
-                border-radius: 25px;
-            }
-            h1 {
-              text-align: center;
-            }
-        </style>
-        <h1>Editar Perfil</h1>
-        <section id="section">
-            <form>
-                <p class="pt-4 px-3">
-                    <label for="usuario">Usuario: </label>
-                    <input type="text" class="form-control" id="username">
-                </p>
-                <p class="px-3">
-                    <label for="email">Email: </label>
-                    <input type="text" class="form-control" id="email">
-                </p>
-                <p class="pb-4 px-3">
-                    <label for="password">Contraseña: </label>
-                    <input type="text" class="form-control" id="password">
-                </p>
-            </form> 
-        </section>
-        <style>
-            #buttons {
-                float:right;
-            }
-        </style>
-        <div id="buttons">
-            <button class="w-40 btn btn-md btn-secondary" type="submit"> <a href="profileView.html" class="nav-link text-white">Cancelar</a> </button>
-            <button class="w-40 btn btn-md btn-primary" type="submit"> <a href="profileView.html" class="nav-link text-white">Actualizar</a> </button>
-        </div>
-      </div>
-      <div class="container col-3 mx-auto">
-
-      </div>
-    </main>
-
-    <!-- Pie de pagina-->
-    <%- include('../views/partials/footer'); %> 
-
-    <script src="node_modules/bootstrap/dist/js/bootstrap.min.js"></script>
-    <script src="js/deleteAccount.js"></script>
-  </body>
+        <!-- Editar Perfil -->
+        <div class="container col-3 mx-auto">
   
-  <!-- Modal -->
-  <div class="modal fade" id="deleteAccount" tabindex="-1" aria-labelledby="deleteAccountLabel" aria-hidden="true">
-    <div class="modal-dialog">
-      <div class="modal-content">
-        <div class="modal-header">
-          <h5 class="modal-title" id="deleteAccountLabel">Información</h5>
-          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
         </div>
-        <div class="modal-body">
-          ¿Seguro que quieres borrar tu cuenta?
+        <div class="container col-6 pt-3 mx-auto">
+          <style>
+              #section {
+                  background-color: rgb(225, 225, 225);
+                  border-radius: 25px;
+              }
+              h1 {
+                text-align: center;
+              }
+          </style>
+          <h1>Editar Perfil</h1>
+          <form class="row mb-3 m-0 p-0"  action="/perfilEditado" method="POST">
+            <section id="section">
+              <p class="pt-4 px-3">
+                <label for="nombre">Usuario: </label>
+                <input type="text" class="form-control" id="nombre" name="nombre" value="<%=usuario[0].nombre%>">
+              </p>
+              <p class="pb-4 px-3">
+                <label for="email">Email: </label>
+                <input type="text" class="form-control" id="email" name="email" value="<%=usuario[0].email%>">
+              </p>
+              <input type="hidden" name="contrasenya" value="<%=usuario[0].contrasenya%>">
+            </section>
+            <style>
+              #buttons {
+                  float:right;
+              }
+            </style>
+            <table>
+              <tr>
+                <th class="col-4">
+                  <button class="w-40 btn btn-md mb-3 mt-3 btn-secondary"><a href="/vistaPerfil" class="text-white" style="text-decoration: none;">Cancelar</a></button>
+                </th>
+                <th>
+                  <div id="buttons">
+                    <button class="form-control btn btn-md mt-1 btn-primary"><i class="bi bi-send">Actualizar</i></button>
+                  </div>
+                </th>
+              </tr>
+            </table>
+          </form>
+          
         </div>
-        <div class="modal-footer">
-          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
-          <button type="button" class="btn btn-danger">Borrar Cuenta</button>
+        <div class="container col-3 mx-auto">
+  
         </div>
-      </div>
-    </div>
-  </div>
+      </main>
+
+    
+  <!-- Pie de pagina-->
+  <%- include('../views/partials/footer'); %>
+  <% } %>
+  <script src="../node_modules/bootstrap/dist/js/bootstrap.min.js"></script>
+  </body>
 </html>

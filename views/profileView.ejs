@@ -21,8 +21,7 @@
           <nav class = "row col-12 px-3 py-2 m-0"  style=" background-color: #0d6efd;" aria-label="breadcrumb">
               <ol class="breadcrumb"> 
                 <li class="breadcrumb-item ps-1 text-white" aria-current="page"><a class="text-white" href="index">Pagina inicial</a></li>
-                <li class="breadcrumb-item ps-1 text-white" aria-current="page"><a class="text-white" href="listaUsuarios.ejs">Lista de usuarios</a></li>
-                <li class="breadcrumb-item ps-1 text-white" aria-current="page">Envío de mensaje</li>
+                <li class="breadcrumb-item ps-1 text-white" aria-current="page">Perfil</li>
               </ol>
           </nav>
 
@@ -35,7 +34,7 @@
               <div class="col-5 text-center">
                 <img width="200" height="200" src="../img/profilepicture.png" alt="Foto de perfil">
                 <h3 class=""><%=nombreUsuario%></h3>
-                <button class="w-40 btn btn-md btn-primary" type="submit"> <a href="editProfile.ejs" class="nav-link text-white">Editar perfil</a> </button>
+                <button class="w-40 btn btn-md btn-primary" type="submit"> <a href="/editarPerfil" class="nav-link text-white">Editar perfil</a> </button>
               </div>
               <div class="col-7">
                 <style>
@@ -52,7 +51,7 @@
                       <label for="email">Email: <%=usuario[0].email%> </label>
                   </p> 
                 </section>
-                <button class="w-40 btn btn-md btn-secondary" type="submit"> <a href="/" class="nav-link text-white">Cerrar Sesión</a> </button>
+                <button class="w-40 btn btn-md btn-secondary" type="submit"> <a href="/cerrarSesion" class="nav-link text-white">Cerrar Sesión</a> </button>
                 <button class="w-40 btn btn-md btn-outline-danger" data-bs-toggle="modal" data-bs-target="#deleteAccount" type="submit" > <label class="nav-link text-danger" id="deleteaccountbtn">Borrar Cuenta</label> </button>
               </div>
           </div>
