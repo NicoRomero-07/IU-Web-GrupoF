@@ -22,7 +22,7 @@
   <main class="row">
 
     <!-- Crear Foro -->
-    <article class="container col-12 p-3 mx-0">
+    <article class="container col-12 p-3 mx-auto">
       <h2 class="text-center" id="labelCrearForo"> Crear foro </h2>
       
       <form class="text-center col-12" method="POST" action="/crearForo" accept-charset="UTF-8" id="formCrearForo">
@@ -40,7 +40,7 @@
         <div class="col-12">
           <label for="descripcion" class="form-label">Descripción</label>
           <div class="input-group has-validation w-25 mx-auto">
-            <textarea class ="form-control" name="descripcion" id="descripcion"></textarea>
+            <textarea class ="form-control" name="descripcion" id="descripcion" rows="8"></textarea>
             <div class="invalid-feedback">
               Descripcion requerida.
             </div>
@@ -53,10 +53,14 @@
               <option id="<%= categoria.idCategoria %>" name ="<%= categoria.nombre %>" value="<%= categoria.idCategoria%>"><%= categoria.nombre %></option>
           <% })  %>
         </select><br>
+        <br>
 
          <!-- Button trigger modal -->
-         <button type="submit" class="w-50 btn btn-md btn-success mt-3" data-bs-toggle="modal" data-bs-target="#exampleModal">Crear</button>
-         <button class="w-50 btn btn-secondary btn-md mt-3"><a class="nav-link text-white" href="../index">Cancelar</a></button>
+         
+         <div class="d-grid gap-2 col-2 mx-auto">
+          <button class="btn btn-md btn-success mt-4 p-3" type="submit" data-bs-toggle="modal" data-bs-target="#exampleModal">Crear</button>
+          <button class="btn btn-secondary btn-md mt-3 p-3" type="button"><a class="nav-link text-white p-0" href="../index">Cancelar</a></button>
+        </div>
       </form>
 
     </article>
