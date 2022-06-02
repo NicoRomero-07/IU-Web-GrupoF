@@ -27,15 +27,14 @@
       <h2 class="text-center mt-3 mb-3">
         <%= foro.Nombre %>
       </h2>
+      <p class="text-center fst-italic"><%= foro.Descripcion %></p>
+      <br/>
       <!--Enviar Mensaje-->
       <div class="row justify-content-center sticky-top foro-view-container-comentario">
         <form class="border border-dark " action="/enviarMensajeForo" method="POST">
           <input type="hidden" name="id" value="<%=foro.idForo %>">
           <div class="row bg-light">
-            <br />
-            <p class="">Comenta en el foro</p>
-            <textarea class="" id="forumMessageSubmit" rows="3" cols="120" name="contenido" required></textarea>
-
+            <textarea class="" id="forumMessageSubmit" rows="3" cols="120" name="contenido" required placeholder="Comenta aquí"></textarea>
             <input class="btn btn-primary" id="submitButton" type="submit" value="Publicar">
           </div>
         </form>
@@ -43,7 +42,7 @@
 
       <div class="foro-view-container">
 
-        <% mensajes.forEach((mensaje)=>{%>
+        <% mensajes.reverse().forEach((mensaje)=>{%>
           <% let fecha=new Date(mensaje.fechaEmision); year=fecha.getFullYear(); month=fecha.getMonth()+1;
             dt=fecha.getDate(); h=fecha.getHours(); min=fecha.getMinutes(); s=fecha.getSeconds(); if (dt < 10) { dt='0'
             + dt; } if (s < 10) { s='0' + s; } if (h < 10) { h='0' + h; } if (min < 10) { min='0' + min; } if (month <
@@ -105,8 +104,6 @@
       }
     });
 
-    // window.scrollTo(0,document.body.scrollHeight);
-    window.scrollTo({ left: 0, top: document.body.scrollHeight, behavior: "instant" });
   </script>
   <script src="../node_modules/bootstrap/dist/js/bootstrap.min.js"></script>
 </body>
