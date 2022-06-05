@@ -59,10 +59,10 @@ CREATE TABLE IF NOT EXISTS `bocaillo`.`foro` (
   INDEX `fk_foro_propietario_idx` (`Propietario` ASC) VISIBLE,
   CONSTRAINT `fk_foro_categoria`
     FOREIGN KEY (`Categoria`)
-    REFERENCES `bocaillo`.`categoria` (`idCategoria`),
+    REFERENCES `bocaillo`.`categoria` (`idCategoria`) ON DELETE CASCADE,
   CONSTRAINT `fk_foro_propietario`
     FOREIGN KEY (`Propietario`)
-    REFERENCES `bocaillo`.`usuario` (`idUsuario`))
+    REFERENCES `bocaillo`.`usuario` (`idUsuario`) ON DELETE CASCADE)
 ENGINE = InnoDB
 DEFAULT CHARACTER SET = utf8mb4
 COLLATE = utf8mb4_0900_ai_ci;
@@ -82,10 +82,10 @@ CREATE TABLE IF NOT EXISTS `bocaillo`.`mensaje_privado` (
   INDEX `fk_mensaje_receptor_idx` (`receptor` ASC) VISIBLE,
   CONSTRAINT `fk_mensaje_emisor`
     FOREIGN KEY (`emisor`)
-    REFERENCES `bocaillo`.`usuario` (`idUsuario`),
+    REFERENCES `bocaillo`.`usuario` (`idUsuario`) ON DELETE CASCADE,
   CONSTRAINT `fk_mensaje_receptor`
     FOREIGN KEY (`receptor`)
-    REFERENCES `bocaillo`.`usuario` (`idUsuario`))
+    REFERENCES `bocaillo`.`usuario` (`idUsuario`) ON DELETE CASCADE)
 ENGINE = InnoDB
 DEFAULT CHARACTER SET = utf8mb4
 COLLATE = utf8mb4_0900_ai_ci;
@@ -105,10 +105,10 @@ CREATE TABLE IF NOT EXISTS `bocaillo`.`mensaje_foro` (
   INDEX `fk_mensaje_foro_emisor_idx` (`emisor` ASC) VISIBLE,
   CONSTRAINT `fk_mensaje_foro`
     FOREIGN KEY (`foro`)
-    REFERENCES `bocaillo`.`foro` (`idForo`),
+    REFERENCES `bocaillo`.`foro` (`idForo`) ON DELETE CASCADE,
   CONSTRAINT `fk_mensaje_foro_emisor`
     FOREIGN KEY (`emisor`)
-    REFERENCES `bocaillo`.`usuario` (`idUsuario`))
+    REFERENCES `bocaillo`.`usuario` (`idUsuario`) ON DELETE CASCADE)
 ENGINE = InnoDB
 DEFAULT CHARACTER SET = utf8mb4
 COLLATE = utf8mb4_0900_ai_ci;
