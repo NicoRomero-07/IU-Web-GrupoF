@@ -84,12 +84,12 @@
                 <div style="position:relative; bottom:10px;">
                     <form class="row mb-3 m-0 p-0" action="/enviarMensajePrivado" method="POST" style="position:relative; bottom:0px;">
                         <div class="col-7 m-0 p-0">
-                            <input class="form-control mx-4 border-dark" type="text" size="90%" name="mensaje" id="mensaje" >
+                            <input autofocus class="form-control mx-4 border-dark" type="text" size="90%" name="mensaje" id="mensaje" >
                         </div>
                         <div class="col-1 m-0 p-0">
                         </div>
                         <div class="col-1 m-0 p-0">
-                            <a ref="javascript:void(0)"><label for="mensaje"><button class="form-control ms-6 btn btn-primary">Enviar</button></label></a>
+                            <label for="mensaje"><button class="form-control ms-6 btn btn-primary">Enviar</button></label>
                         </div>
                         <input type="hidden" name="idReceptor" value="<%=idReceptor%>">
                     </form>
