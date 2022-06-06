@@ -1,91 +1,132 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <%- include('../views/partials/head'); %>
-  </head>
-  <!-- Container -->
-  <body class="container-fluid min-vh-100 d-flex flex-column justify-content-between">
-    
-    
-    <% if(!login){%>
-       <a href="/">Por favor inicie sesion </a>  
-    <% }else{ %>
- 
-    <!--Header-->
-    <header class="row">
 
-      <!--Navbar-->
-      <%- include('../views/partials/navbar'); %>
-    
-    <!-- BreadCrumb -->
-          <nav class = "row col-12 px-3 py-2 m-0"  style=" background-color: #0d6efd;" aria-label="breadcrumb">
-              <ol class="breadcrumb"> 
-                <li class="breadcrumb-item ps-1 text-white" aria-current="page"><a class="text-white" href="index">Pagina inicial</a></li>
-                <li class="breadcrumb-item ps-1 text-white" aria-current="page">Perfil</li>
-              </ol>
+<head>
+  <%- include('../views/partials/head'); %>
+</head>
+<!-- Container -->
+
+<body class="container-fluid min-vh-100 d-flex flex-column justify-content-between">
+
+
+  <% if(!login){%>
+    <a href="/">Por favor inicie sesion </a>
+    <% }else{ %>
+
+      <!--Header-->
+      <header class="row">
+
+        <!--Navbar-->
+        <%- include('../views/partials/navbar'); %>
+
+          <!-- BreadCrumb -->
+          <nav class="row col-12 px-3 py-2 m-0" style=" background-color: #0d6efd;" aria-label="breadcrumb">
+            <ol class="breadcrumb">
+              <li class="breadcrumb-item ps-1 text-white" aria-current="page"><a class="text-white" href="index">Pagina
+                  inicial</a></li>
+              <li class="breadcrumb-item ps-1 text-white" aria-current="page">Perfil</li>
+            </ol>
           </nav>
 
-    </header>
-    <!-- Main-->
-    <main class="row">
+      </header>
+      <!-- Main-->
+      <main class="row">
         <!-- Informacion de perfil -->
         <div class="container col-10 p-3 mx-auto">
           <div class="row">
-              <div class="col-5 text-center">
-                <img width="200" height="200" src="../img/profilepicture.png" alt="Foto de perfil">
-                <h3 class=""><%=nombreUsuario%></h3>
-                <button class="w-40 btn btn-md btn-primary" type="submit"> <a href="/editarPerfil" class="nav-link text-white">Editar perfil</a> </button>
-              </div>
-              <div class="col-7">
-                <style>
-                  #section {
-                      background-color: rgb(225, 225, 225);
-                      border-radius: 25px;
-                  }
-                </style>
-                <section id="section">
-                  <p class="pt-4 px-3">
-                    <label for="usuario">Usuario: <%=usuario[0].nombre%></label>
-                  </p>
-                  <p class="pb-4 px-3">
-                      <label for="email">Email: <%=usuario[0].email%> </label>
-                  </p> 
-                </section>
-                <button class="w-40 btn btn-md btn-secondary" type="submit"> <a href="/cerrarSesion" class="nav-link text-white">Cerrar Sesión</a> </button>
-                <button class="w-40 btn btn-md btn-outline-danger" data-bs-toggle="modal" data-bs-target="#deleteAccount" type="submit" > <label class="nav-link text-danger" id="deleteaccountbtn">Borrar Cuenta</label> </button>
-              </div>
-          </div>
-        </div>
-      </section>
-    </main>
+            <div class="col-5 text-center">
+              <img width="200" height="200" src="../img/profilepicture.png" alt="Foto de perfil">
+              <h3 class="">
+                <%=nombreUsuario%>
+              </h3>
+              <button class="w-40 btn btn-md btn-primary" type="submit"> <a href="/editarPerfil"
+                  class="nav-link text-white">Editar perfil</a> </button>
+            </div>
 
-    
-  <!-- Pie de pagina-->
-  <%- include('../views/partials/footer'); %>
-  <% } %>
-  <script src="../node_modules/bootstrap/dist/js/bootstrap.min.js"></script>
-  
-  <!-- Modal -->
-  <div class="modal fade" id="deleteAccount" tabindex="-1" aria-labelledby="deleteAccountLabel" aria-hidden="true">
-    <div class="modal-dialog">
-      <div class="modal-content">
-        <div class="modal-header">
-          <h5 class="modal-title" id="deleteAccountLabel">Información</h5>
-          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            <div class="col-7">
+              <style>
+                #section {
+                  background-color: rgb(225, 225, 225);
+                  border-radius: 25px;
+                }
+              </style>
+              <section id="section">
+                <p class="pt-4 px-3">
+                  <label for="usuario">Usuario: <%=usuario[0].nombre%></label>
+                </p>
+                <p class="pb-4 px-3">
+                  <label for="email">Email: <%=usuario[0].email%> </label>
+                </p>
+              </section>
+              <button class="w-40 btn btn-md btn-secondary" type="submit"> <a href="/cerrarSesion"
+                  class="nav-link text-white">Cerrar Sesión</a> </button>
+              <button class="w-40 btn btn-md btn-outline-danger" data-bs-toggle="modal" data-bs-target="#deleteAccount"
+                type="submit"> <label class="nav-link text-danger" id="deleteaccountbtn">Borrar Cuenta</label> </button>
+
+              <div class="mt-4">
+                <% if(forosCreados.length>0){ %>
+                  <h4>Foros Creados</h4>
+
+                  <% } else { %>
+                    <div style="display:flex; flex-direction: row; justify-content: space-evenly;  margin-top: 80px; ">
+                      <h5> Usted no ha creado ningún foro. </h5>
+                    </div>
+                    <% } %>
+                      <% forosCreados.forEach( async function(foroCreado){ %>
+                        <article class="card border border-dark mb-3">
+                          <div class="card-body">
+                            <a class="nav-link text-dark card-title px-0" href="/foro/<%= foroCreado.idForo %>">
+                              <h5 class="card-title text-center ">
+                                <%= foroCreado.Nombre %>
+                              </h5>
+                            </a>
+                            <p class="card-text">
+                              <%= foroCreado.Descripcion %>
+                                <br>
+                                <a href="/foro/<%= foroCreado.idForo %>" class="mt-3 btn btn-primary">Ir al foro</a>
+                          </div>
+                        </article>
+                        <% }); %>
+              </div>
+            </div>
+
+          </div>
+
+
+
         </div>
-        <div class="modal-body">
-          ¿Seguro que quieres borrar tu cuenta?
-        </div>
-        <div class="modal-footer">
-          
-          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
-          <form action="../borrarUsuario">
-            <button type="submit" class="btn btn-danger">Borrar Cuenta</button>
-          </form>
-          
-        </div>
-      </div>
-    </div>
-  </div>
-  </body>
+        </section>
+      </main>
+
+
+      <!-- Pie de pagina-->
+      <%- include('../views/partials/footer'); %>
+        <% } %>
+          <script src="../node_modules/bootstrap/dist/js/bootstrap.min.js"></script>
+
+          <!-- Modal -->
+          <div class="modal fade" id="deleteAccount" tabindex="-1" aria-labelledby="deleteAccountLabel"
+            aria-hidden="true">
+            <div class="modal-dialog">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <h5 class="modal-title" id="deleteAccountLabel">Información</h5>
+                  <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                  ¿Seguro que quieres borrar tu cuenta?
+                </div>
+                <div class="modal-footer">
+
+                  <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+                  <form action="../borrarUsuario">
+                    <button type="submit" class="btn btn-danger">Borrar Cuenta</button>
+                  </form>
+
+                </div>
+              </div>
+            </div>
+          </div>
+</body>
+
 </html>

@@ -12,10 +12,22 @@ exports.crearForo = (req, res) => {
         if(error){
             console.log(error);
         }else{
-            res.redirect('/foro/'+results.insertId);
+            //res.redirect('/foro/'+results.insertId);
         }
     });
     console.log(nombre + "-" + descripcion);
+}
+
+exports.irUltimoForo = (req, res) => {
+    let selectQuery = 'SELECT idForo FROM ?? WHERE ?? = ? ORDER BY idForo DESC';
+    let query = mysql.format(selectQuery,["foro","propietario",req.session.idUsuario]);
+    pool.query(query,(error, foros)=>{
+        if(error){
+            throw error;
+        }else{
+            res.redirect('/foro/'+foros[0].idForo);
+        }
+    })
 }
 
 //Acceso perfil autor
