@@ -27,7 +27,7 @@
       
       <form class="text-center col-12" method="POST" action="/crearForo" accept-charset="UTF-8" id="formCrearForo">
         <input type="hidden" name="idUsuario" id="idUsuario" value="<%= usuario %>"/>
-        <div class="col-12">
+        <div class="form-group">
           <label for="nombreForo" class="form-label">Nombre foro (*)</label>
           <div class="input-group has-validation w-25 mx-auto">
             <input type="text" class="form-control" id="nombreForo" name="nombreForo" required>
@@ -37,7 +37,7 @@
           </div>
         </div>
 
-        <div class="col-12">
+        <div class="form-group">
           <label for="descripcion" class="form-label">Descripción</label>
           <div class="input-group has-validation w-25 mx-auto">
             <textarea class ="form-control" name="descripcion" id="descripcion" rows="8"></textarea>
@@ -86,7 +86,9 @@
         </div>
         <div class="modal-footer">
           <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
-          <button type="button" class="btn btn-primary">Ir al foro</button>
+            <a href="/ultimoForo">
+              <button type="button" class="btn btn-primary">Ir al foro</button>
+            </a>
         </div>
       </div>
     </div>

@@ -91,6 +91,7 @@ router.post('/crearForo', crud.crearForo);
 router.get('/perfilAutor/:id', crud.vistaAutor);
 router.get('/createForo', crud.createForoLoadView);
 router.get('/borrarUsuario', crud.borrarUsuario);
+router.get('/ultimoForo',crud.irUltimoForo);
 
 const loginController = require('../controllers/loginController');
 router.post('/loginform', loginController.loginform);
