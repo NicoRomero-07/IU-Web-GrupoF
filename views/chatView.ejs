@@ -28,9 +28,9 @@
 
     </header>
     <!-- Main-->
-    <main class="row">
+    <main class="row" style="flex: 1 1 auto;">
         <!-- Chat -->
-        <section class="d-none d-sm-block col-sm-12 d-lg-block col-lg-12 p-0 m-0">
+        <section class="d-none d-sm-block col-sm-12 d-lg-block col-lg-12 p-0 m-0" style="height:55vh;">
             <div id="userBar">
                 <nav class="navbar navbar-expand-lg py-2 justify-content-start" style="background-color: #202124;" id="userName">
                     <img src="https://github.com/mdo.png" alt="" class="rounded-circle ms-4 border border-white" width="32"
@@ -78,20 +78,23 @@
             <% } %>
             <% }; %>
             <br />
-
-            <!--Enviar Mensaje-->
-            <form class="row mb-3 m-0 p-0" action="/enviarMensajePrivado" method="POST">
-                <div class="col-7 m-0 p-0">
-                    <input autofocus class="form-control mx-4 border-dark" type="text" size="90%" name="mensaje" id="mensaje" >
-                </div>
-                <div class="col-1 m-0 p-0">
-                </div>
-                <div class="col-1 m-0 p-0">
-                    <label for="mensaje"><button class="form-control ms-6 btn btn-primary"><i class="bi bi-send"><i>Enviar</i></button></label>
-                </div>
-                <input type="hidden" name="idReceptor" value="<%=idReceptor%>">
-            </form>
         </section>
+        <!--Enviar Mensaje-->
+            <div>
+                <div style="position:relative; bottom:10px;">
+                    <form class="row mb-3 m-0 p-0" action="/enviarMensajePrivado" method="POST" style="position:relative; bottom:0px;">
+                        <div class="col-7 m-0 p-0">
+                            <input class="form-control mx-4 border-dark" type="text" size="90%" name="mensaje" id="mensaje" >
+                        </div>
+                        <div class="col-1 m-0 p-0">
+                        </div>
+                        <div class="col-1 m-0 p-0">
+                            <a ref="javascript:void(0)"><label for="mensaje"><button class="form-control ms-6 btn btn-primary">Enviar</button></label></a>
+                        </div>
+                        <input type="hidden" name="idReceptor" value="<%=idReceptor%>">
+                    </form>
+                </div>
+            </div>
     </main>
 
     
