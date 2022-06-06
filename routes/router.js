@@ -106,6 +106,8 @@ router.get('/trending', trendingController.trending);
 
 const listaUsuariosController = require('../controllers/listaUsuariosController');
 router.get('/listaUsuarios', listaUsuariosController.listaUsuarios);
+//Filtrar lista usuarios
+router.post('/listaUsuarios/filtro',listaUsuariosController.listaUsuariosFiltrada);
 
 const categoriasController = require('../controllers/categoriasController');
 router.get('/categorias', categoriasController.lista);
@@ -122,8 +124,7 @@ router.post('/categorias/filtro',buscarCategoriaController.buscarCategoria);
 //Enviar mensaje foro
 router.post('/enviarMensajeForo',crud.mesajeForo);
 
-//Filtrar lista usuarios
-router.post('/listaUsuarios/filtro',crud.filtrarUsuario)
+
 
 router.get('/',(req,res)=>{
     return res.render('login',{nombreUsuario:undefined, idUsuario: undefined});
