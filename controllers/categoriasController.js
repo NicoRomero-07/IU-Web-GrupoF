@@ -2,7 +2,7 @@ const db = require('../database/db_connection');
 const pool = db.pool;
 const mysql = db.mysql;
 
-// Controlador del apartado trending
+// Controlador del apartado categorias
 exports.lista = async(req, res)=>{
     if(typeof req.session.loggedin != "undefined"){
         let selectQuery = 'SELECT * FROM categoria;';

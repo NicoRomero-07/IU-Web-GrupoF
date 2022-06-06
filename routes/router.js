@@ -116,6 +116,8 @@ router.get('/cerrarSesion', sesionController.cerrarSesion);
 const documentacionController = require('../controllers/documentacionController');
 router.get('/documentacion',documentacionController.documentacion);
 
+const buscarCategoriaController = require('../controllers/buscarCategoriaController');
+router.post('/categorias/filtro',buscarCategoriaController.buscarCategoria);
 
 //Enviar mensaje foro
 router.post('/enviarMensajeForo',crud.mesajeForo);
