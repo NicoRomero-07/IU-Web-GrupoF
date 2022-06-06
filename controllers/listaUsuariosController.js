@@ -13,9 +13,10 @@ exports.listaUsuarios = async(req, res)=>{
                                 'WHERE t.receptor = ? ' +
                                 'GROUP BY t.emisor) ' +
         'OR m.fechaEmision IS NULL ' +
+        'AND u.idUsuario != ? ' +
         'GROUP BY u.nombre ' +
         'ORDER BY count(m.idMensaje) DESC;';
-        let query = mysql.format(selectQuery,[req.session.idUsuario]);
+        let query = mysql.format(selectQuery,[req.session.idUsuario,req.session.idUsuario]);
         pool.query(query,(err,data) => {
             if(err){
                 console.error(err);
@@ -32,7 +33,7 @@ exports.listaUsuarios = async(req, res)=>{
     }else{
         res.render('index',{
             login: false,
-            name: 'Debe iniciar sesión'
+            name: 'Por favor, inicie sesión'
         })
     }
 };

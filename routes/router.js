@@ -81,7 +81,7 @@ router.get('/foro/:id', async (req, res) => {
     }else{
         res.render('index',{
             login: false,
-            name: 'Debe iniciar sesión'
+            name: 'Por favor, inicie sesión'
         })
     }
 });
@@ -92,6 +92,8 @@ router.get('/perfilAutor/:id', crud.vistaAutor);
 router.get('/createForo', crud.createForoLoadView);
 router.get('/borrarUsuario', crud.borrarUsuario);
 router.get('/ultimoForo',crud.irUltimoForo);
+
+
 
 const loginController = require('../controllers/loginController');
 router.post('/loginform', loginController.loginform);
@@ -110,6 +112,10 @@ router.get('/categorias', categoriasController.lista);
 
 const sesionController = require('../controllers/sesionController');
 router.get('/cerrarSesion', sesionController.cerrarSesion);
+
+const documentacionController = require('../controllers/documentacionController');
+router.get('/documentacion',documentacionController.documentacion);
+
 
 //Enviar mensaje foro
 router.post('/enviarMensajeForo',crud.mesajeForo);
@@ -132,6 +138,8 @@ router.get('/confirmed',(req,res)=>{
 router.get('/confirmeEmail',(req,res)=>{
     res.render('confirmeEmail', {nombreUsuario:req.session.usuario});
 });
+
+
 
 //Controlador del index
 router.get('/index',(req,res)=>{
@@ -167,7 +175,7 @@ router.get('/index',(req,res)=>{
     }else{
         res.render('index',{
             login: false,
-            name: 'Debe iniciar sesión'
+            name: 'Por favor, inicie sesión'
         })
     }
 });
