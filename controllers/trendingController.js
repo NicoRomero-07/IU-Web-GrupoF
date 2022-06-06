@@ -35,7 +35,7 @@ exports.trending = async(req, res)=>{
     } else{
         res.render('index',{
             login: false,
-            name: 'Debe iniciar sesión'
+            name: 'Por favor, inicie sesión'
         })
     }
 
