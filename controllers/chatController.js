@@ -41,11 +41,9 @@ exports.enviarMensaje = (req, res) => {
                 console.log(error);
             }else{
                 res.redirect('/vistaChat/' + idReceptorP);
-                window.scrollTo(0,document.body.scrollHeight);
             }
         });
     } else {
         res.redirect('/vistaChat/' + idReceptorP);
-        window.scrollTo(0,document.body.scrollHeight);
     }
 }
