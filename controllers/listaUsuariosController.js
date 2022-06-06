@@ -5,18 +5,19 @@ const mysql = db.mysql;
 // Controlador del apartado trending
 exports.listaUsuarios = async(req, res)=>{
     if(typeof req.session.loggedin != "undefined"){
-        let selectQuery = 'SELECT u.nombre, u.idUsuario, m.contenido,min(m.fechaEmision) fechaEmision ' +
+        let selectQuery = 'SELECT u.nombre,u.idUsuario,m.contenido,min(m.fechaEmision) fechaEmision ' +
         'FROM usuario u ' +
-        'LEFT JOIN mensaje_privado m ON m.emisor = u.idUsuario ' +
-        'WHERE m.fechaEmision IN (SELECT max(t.fechaEmision) ' +
+        'LEFT JOIN mensaje_privado m ON (m.emisor = u.idUsuario or m.receptor = u.idUsuario) ' +
+        'WHERE (m.fechaEmision IN (SELECT max(t.fechaEmision) ' +
                                 'FROM mensaje_privado t ' +
                                 'WHERE t.receptor = ? ' +
-                                'GROUP BY t.emisor) ' +
-        'OR m.fechaEmision IS NULL ' +
+                                'OR t.emisor = ? ' +
+                                'GROUP BY t.emisor AND t.receptor) ' +
+        'OR m.fechaEmision IS NULL) ' +
         'AND u.idUsuario != ? ' +
         'GROUP BY u.nombre ' +
-        'ORDER BY count(m.idMensaje) DESC;';
-        let query = mysql.format(selectQuery,[req.session.idUsuario,req.session.idUsuario]);
+        'ORDER BY count(m.idMensaje) DESC';
+        let query = mysql.format(selectQuery,[req.session.idUsuario,req.session.idUsuario,req.session.idUsuario]);
         pool.query(query,(err,data) => {
             if(err){
                 console.error(err);
