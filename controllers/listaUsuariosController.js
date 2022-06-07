@@ -53,7 +53,7 @@ exports.listaUsuariosFiltrada = async(req, res)=>{
                                     'GROUP BY t.emisor,t.receptor) ' +
             'or m.fechaEmision IS NULL) ' +
             'and u.idUsuario != ? ' +
-            'and u.nombre like ?'
+            'and u.nombre like ?' +
             'GROUP BY u.nombre ' +
             'ORDER BY count(m.idMensaje) DESC';
             let query = mysql.format(selectQuery,[req.session.idUsuario,req.session.idUsuario,req.session.idUsuario,filtro]);
@@ -81,7 +81,6 @@ exports.listaUsuariosFiltrada = async(req, res)=>{
                                     'GROUP BY t.emisor,t.receptor) ' +
             'or m.fechaEmision IS NULL) ' +
             'and u.idUsuario != ? ' +
-            'and u.nombre like ?'
             'GROUP BY u.nombre ' +
             'ORDER BY count(m.idMensaje) DESC';
                 let query = mysql.format(selectQuery,[req.session.idUsuario,req.session.idUsuario,req.session.idUsuario]);
