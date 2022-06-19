@@ -14,3 +14,7 @@ Para arrancar el proyecto ejecute en consola: ```node app```
 Y el la aplicación empezará a correr en el puerto 5000.
 
 En el script ```database/db_connection.js``` habrá que especificar los datos de la base de datos (usuario,contraseña,nombre,host).
+
+## GitHub
+
+https://github.com/NicoRomero-07/IU-Web-GrupoF
