@@ -15,6 +15,14 @@ Y el la aplicación empezará a correr en el puerto 5000.
 
 En el script ```database/db_connection.js``` habrá que especificar los datos de la base de datos (usuario,contraseña,nombre,host).
 
+Ejecuta la siguiente query en mySQL
+
+```ALTER USER 'root'@'localhost' IDENTIFIED WITH mysql_native_password BY 'password';```
+
+Refreca privilegios
+
+```flush privileges;```
+
 ## GitHub
 
 https://github.com/NicoRomero-07/IU-Web-GrupoF
