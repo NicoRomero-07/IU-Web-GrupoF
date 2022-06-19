@@ -1,3 +1,11 @@
-$('#myModal').on('shown.bs.modal', function () {
-    $('#myInput').trigger('focus')
-  })
+(function(){
+
+  $(function(){
+    console.log("ENTRA");
+    
+    var myModal = document.getElementById('myModal')  
+      $('#myModal').modal('show');
+
+  });
+
+}());

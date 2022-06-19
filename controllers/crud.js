@@ -12,7 +12,7 @@ exports.crearForo = (req, res) => {
         if(error){
             console.log(error);
         }else{
-            //res.redirect('/foro/'+results.insertId);
+            //res.render('createForo',{categorias:categorias, usuario:req.session.idUsuario, nombreUsuario:req.session.usuario, idUsuario: req.session.idUsuario});
         }
     });
     console.log(nombre + "-" + descripcion);
@@ -70,7 +70,7 @@ exports.createForoLoadView = (req,res)=>{
     }else{
         res.render('index',{
             login: false,
-            name: 'Por favor, inicie sesión'
+            name: 'Debe iniciar sesión'
         })
     }
 }
@@ -123,7 +123,7 @@ exports.filtrarUsuario = async(req, res) => {
     }else{
         res.render('index',{
             login: false,
-            name: 'Por favor, inicie sesión'
+            name: 'Debe iniciar sesión'
         })
     }
 }
